@@ -26,7 +26,9 @@
     "lint": "eslint 'src/**.{ts,tsx,js,jsx}' --fix && prettier --write 'src/**/*.{ts,tsx,js,jsx}'"
   },
   "husky": {
-    "pre-commit": "npm run lint"
+    "hooks": {
+      "pre-commit": "npm run lint"
+    }
   },
   "browserslist": {
     "production": [
