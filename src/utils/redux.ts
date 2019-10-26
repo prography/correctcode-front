@@ -1,4 +1,5 @@
 import { Action } from 'redux';
+import produce from 'immer';
 
 type GetAction<
   TAction extends Action,
@@ -50,4 +51,33 @@ export const createReducer = <TAction extends Action, TState>(
   };
 
   return reducer;
+};
+
+export const baseAsyncActionHandler = <
+  State extends {
+    [index: string]: {
+      status: Status;
+    };
+  }
+>(
+  name: string,
+  actionTypes: { request: string; success: string; failure: string },
+) => {
+  return {
+    [actionTypes.request]: (state: State) => {
+      return produce(state, draft => {
+        draft[name].status = 'FETCHING';
+      });
+    },
+    [actionTypes.success]: (state: State) => {
+      return produce(state, draft => {
+        draft[name].status = 'SUCCESS';
+      });
+    },
+    [actionTypes.failure]: (state: State) => {
+      return produce(state, draft => {
+        draft[name].status = 'FAILURE';
+      });
+    },
+  };
 };
