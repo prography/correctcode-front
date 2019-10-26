@@ -1,10 +1,4 @@
 import { call, put } from 'redux-saga/effects';
-import { EntityTypes } from './redux';
-
-type EntitySchema = {
-  action: EntityTypes<any, any, any>;
-  service: (...args: any[]) => any;
-};
 
 export const fetchEntity = ({ action, service }: EntitySchema) => {
   return function*(...args: any[]) {

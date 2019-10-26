@@ -18,12 +18,12 @@ export type EntityTypes<R, S, F> = {
   failure: F;
 };
 
-export const createEntity = <R, S, F, Params extends any, Res>(
+export const createEntity = <R, S, F, Params extends any[], Res>(
   actionTypes: EntityTypes<R, S, F>,
-  service: Service<Params[], Res>,
+  service: Service<Params, Res>,
 ) => ({
   action: {
-    request: (args: Params) =>
+    request: (...args: Params) =>
       ({ type: actionTypes.request, payload: args } as const),
     success: (payload: Res) =>
       ({ type: actionTypes.success, payload } as const),

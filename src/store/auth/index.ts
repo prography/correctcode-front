@@ -1,13 +1,16 @@
 import produce from 'immer';
 import { createReducer } from 'utils/redux';
 import { User } from 'models/user';
-import AuthAction, { LoginAction } from './action';
+import AuthAction, { LoginAction, MeAction } from './action';
 
 export type AuthState = {
   user: User & {
     isLoggedIn: boolean;
   };
   login: {
+    status: Status;
+  };
+  me: {
     status: Status;
   };
 };
@@ -20,6 +23,9 @@ const initialState: AuthState = {
   login: {
     status: 'INIT',
   },
+  me: {
+    status: 'INIT',
+  },
 };
 
 const reducer = createReducer<AuthAction, AuthState>(initialState, {
@@ -28,15 +34,34 @@ const reducer = createReducer<AuthAction, AuthState>(initialState, {
       draft.login.status = 'FETCHING';
     });
   },
-  [LoginAction.success]: (state, action) => {
+  [LoginAction.success]: state => {
     return produce(state, draft => {
       draft.login.status = 'SUCCESS';
-      draft.user.username = action.payload.username;
     });
   },
   [LoginAction.failure]: state => {
     return produce(state, draft => {
       draft.login.status = 'FAILURE';
+    });
+  },
+  [MeAction.request]: state => {
+    return produce(state, draft => {
+      draft.me.status = 'FETCHING';
+    });
+  },
+  [MeAction.success]: (state, action) => {
+    return produce(state, draft => {
+      draft.me.status = 'SUCCESS';
+      draft.user.isLoggedIn = true;
+      draft.user = {
+        ...action.payload,
+        isLoggedIn: true,
+      };
+    });
+  },
+  [MeAction.failure]: state => {
+    return produce(state, draft => {
+      draft.me.status = 'FAILURE';
     });
   },
 });

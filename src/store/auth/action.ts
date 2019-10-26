@@ -1,6 +1,5 @@
-import { login } from 'store/auth/api';
+import { login, me } from 'store/auth/api';
 import { createEntity } from 'utils/redux';
-import { User } from 'models/user';
 
 export enum LoginAction {
   saga = 'LOGIN_SAGA',
@@ -9,10 +8,23 @@ export enum LoginAction {
   failure = 'LOGIN_FAILURE',
 }
 
+export enum MeAction {
+  saga = 'ME_SAGA',
+  request = 'ME_REQUEST',
+  success = 'ME_SUCCESS',
+  failure = 'ME_FAILURE',
+}
+
 export const loginEntity = createEntity(LoginAction, login);
-export const loginSaga = (user: User) => ({ type: LoginAction.saga, ...user });
+export const loginSaga = () => ({ type: LoginAction.saga });
 export type LoginSaga = ReturnType<typeof loginSaga>;
 
-type AuthAction = EntityActions<typeof loginEntity.action>;
+export const meEntity = createEntity(MeAction, me);
+export const meSaga = () => ({ type: MeAction.saga });
+export type MeSaga = ReturnType<typeof meSaga>;
+
+type AuthAction =
+  | EntityActions<typeof loginEntity>
+  | EntityActions<typeof meEntity>;
 
 export default AuthAction;
