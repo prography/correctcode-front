@@ -1,16 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { SAY_HI } from 'store';
+import { loginSaga } from 'store/auth/action';
 
 const App: React.FC = () => {
+  const [name, setName] = useState('');
   const dispatch = useDispatch();
-  const hi = useSelector((state: StoreState) => state.hi);
+  const username = useSelector((state: StoreState) => state.auth.user.username);
 
-  const handleClick = () => dispatch({ type: SAY_HI });
+  const handleClick = () =>
+    dispatch(
+      loginSaga({
+        username: name,
+      }),
+    );
   return (
     <div>
-      {hi}
-      <button onClick={handleClick}>click me</button>
+      {username}
+      <input value={name} onChange={e => setName(e.target.value)} />
+      <button onClick={handleClick}>login</button>
     </div>
   );
 };

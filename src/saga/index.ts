@@ -1,8 +1,6 @@
-import { take } from 'redux-saga/effects';
-import { SAY_HI } from 'store';
+import { all, fork } from 'redux-saga/effects';
+import authSaga from './auth';
 
 export default function* rootSaga() {
-  while (true) {
-    yield take(SAY_HI);
-  }
+  yield all([fork(authSaga)]);
 }

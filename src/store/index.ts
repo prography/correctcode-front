@@ -1,15 +1,10 @@
-export const SAY_HI = 'SAY_HI' as const;
+import { combineReducers } from 'redux';
+import AuthReducer, { AuthState } from 'store/auth';
 
 export type RootState = {
-  hi: string;
+  auth: AuthState;
 };
 
-const initialState: RootState = {
-  hi: 'hi~~',
-};
-
-const reducer = (state: RootState = initialState) => {
-  return state;
-};
-
-export default reducer;
+export default combineReducers({
+  auth: AuthReducer,
+});
