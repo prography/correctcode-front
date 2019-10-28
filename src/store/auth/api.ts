@@ -2,9 +2,7 @@ import fetcher from 'utils/fetcher';
 import { User } from 'models/user';
 
 export const login = async () => {
-  await fetcher.get('/github');
-
-  return 'ff';
+  await fetcher.get('/auth/github');
 };
 
 export const me = async () => {
