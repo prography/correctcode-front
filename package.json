@@ -7,12 +7,15 @@
     "@types/node": "12.7.5",
     "@types/react-dom": "16.9.0",
     "@types/react-redux": "^7.1.2",
-    "@types/react-router-dom": "^4.3.5",
+    "@types/react-router-dom": "^5.1.0",
+    "axios": "^0.19.0",
+    "immer": "^4.0.2",
     "node-sass": "^4.12.0",
+    "query-string": "^6.8.3",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-redux": "^7.1.1",
-    "react-router-dom": "^5.0.1",
+    "react-router-dom": "^5.1.2",
     "react-scripts": "3.1.1",
     "redux": "^4.0.4",
     "redux-saga": "^1.1.1",
@@ -23,12 +26,21 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint 'src/**.{ts,tsx,js,jsx}' --fix && prettier --write 'src/**/*.{ts,tsx,js,jsx}'"
+    "lint": "eslint 'src/**.{ts,tsx,js,jsx}' --fix",
+    "prettier": "prettier --write 'src/**/*.{ts,tsx,js,jsx}",
+    "tsc": "tsc --noEmit"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint"
+      "pre-commit": "tsc --noEmit && lint-staged"
     }
+  },
+  "lint-staged": {
+    "src/**.{ts,tsx,js,jsx}": [
+      "eslint --fix",
+      "prettier --write",
+      "git add"
+    ]
   },
   "browserslist": {
     "production": [
@@ -44,6 +56,8 @@
   },
   "devDependencies": {
     "@types/react": "^16.9.2",
-    "husky": "^3.0.5"
+    "husky": "^3.0.5",
+    "lint-staged": "^9.4.2",
+    "prettier": "^1.18.2"
   }
 }

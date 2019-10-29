@@ -1,5 +1,2 @@
-import { RootState } from 'store';
-
-declare global {
-  type StoreState = RootState;
-}
+type Status = 'INIT' | 'FETCHING' | 'SUCCESS' | 'FAILURE';
+type Service<A extends any[], R> = (...args: A) => Promise<R>;
