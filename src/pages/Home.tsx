@@ -7,7 +7,7 @@ const Home = () => {
   return (
     <div>
       Me status: {status}
-      <a href="/auth/github">github login</a>
+      <a href="/api/auth/github">github login</a>
     </div>
   );
 };
