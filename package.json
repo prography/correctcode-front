@@ -26,12 +26,21 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint 'src/**.{ts,tsx,js,jsx}' --fix && prettier --write 'src/**/*.{ts,tsx,js,jsx}'"
+    "lint": "eslint 'src/**.{ts,tsx,js,jsx}' --fix",
+    "prettier": "prettier --write 'src/**/*.{ts,tsx,js,jsx}",
+    "tsc": "tsc --noEmit"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint"
+      "pre-commit": "tsc --noEmit && lint-staged"
     }
+  },
+  "lint-staged": {
+    "src/**.{ts,tsx,js,jsx}": [
+      "eslint --fix",
+      "prettier --write",
+      "git add"
+    ]
   },
   "browserslist": {
     "production": [
@@ -48,6 +57,7 @@
   "devDependencies": {
     "@types/react": "^16.9.2",
     "husky": "^3.0.5",
+    "lint-staged": "^9.4.2",
     "prettier": "^1.18.2"
   }
 }

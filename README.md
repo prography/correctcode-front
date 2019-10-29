@@ -67,6 +67,29 @@ function* watchLogin() {
 비동기로직은 이런식으로 관리해주고, 동기로직은 고냥 짜던대로 하면 될듯합니다.
 `utils/redux`의 `createReducer` 는 쓰려면 쓰고, 안써도 무방.
 
+## 서버
+서버는 일단 간편하게 netlify 를 사용하고 있습니다.
+`netlify.toml` 에 세팅을 할 수 있는데,
+```
+[[redirects]]
+  from = "/api/*"
+  to = "https://api.correctcode.dev/:splat"
+  status = 200
+  force = false
+```
+이 설정은 모든 `/api` 하위의 서브 라우트들을 우리 api 서버로 프록시 해주는 설정이고,
+
+```
+[[redirects]]
+  from ="/*"
+  to = "/index.html"
+  status = 200
+  force = false
+```
+이 설정은 일반적인 CSR 설정으로, 모든 라우트에 대해서 `index.html` 을 반환해주는 설정입니다.
+
+서버는 계속 netlify 쓸지, 다른 클라우드 플랫폼 쓸지 나중에 결정해봅시다.
+
 ## 참고사항
 
 - 커밋시 린트 훅 걸어놨음.
