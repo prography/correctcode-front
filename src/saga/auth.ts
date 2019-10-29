@@ -1,9 +1,18 @@
-import { all, fork, take, call, select } from 'redux-saga/effects';
-import { LoginAction, loginEntity, meEntity } from 'store/auth/action';
+import { all, fork, take, call, takeLatest } from 'redux-saga/effects';
+import {
+  LoginAction,
+  loginEntity,
+  meEntity,
+  MeAction,
+} from 'store/auth/action';
 import { fetchEntity } from 'utils/saga';
 
 const fetchLogin = fetchEntity(loginEntity);
 const fetchMe = fetchEntity(meEntity);
+
+function* watchMeSaga() {
+  yield takeLatest(MeAction.saga, fetchMe);
+}
 
 function* watchAuth() {
   while (true) {
@@ -13,6 +22,5 @@ function* watchAuth() {
 }
 
 export default function* authSaga() {
-  yield call(fetchMe);
-  yield all([fork(watchAuth)]);
+  yield all([fork(watchAuth), fork(watchMeSaga)]);
 }

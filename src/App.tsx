@@ -1,18 +1,25 @@
-import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { loginSaga } from 'store/auth/action';
+import React, { useEffect } from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { meSaga } from 'store/auth/action';
+
+import AuthCheckPage from 'pages/AuthCheckPage';
+import Home from 'pages/Home';
 
 const App: React.FC = () => {
   const dispatch = useDispatch();
-  const status = useSelector((state: StoreState) => state.auth.me.status);
 
-  const handleClick = () => dispatch(loginSaga());
+  useEffect(() => {
+    dispatch(meSaga());
+  }, []);
 
   return (
-    <div>
-      Me status: {status}
-      <button onClick={handleClick}>github login</button>
-    </div>
+    <Router>
+      <Switch>
+        <Route path="/" exact component={Home} />
+        <Route path="/auth/callback" exact component={AuthCheckPage} />
+      </Switch>
+    </Router>
   );
 };
 
