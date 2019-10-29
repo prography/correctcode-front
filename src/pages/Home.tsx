@@ -5,8 +5,12 @@ const Home = () => {
   const isLoggedIn = useSelector(
     (state: StoreState) => state.auth.user.isLoggedIn,
   );
+  const authStatus = useSelector((state: StoreState) => state.auth.me.status);
   const email = useSelector((state: StoreState) => state.auth.user.email);
 
+  if (authStatus === 'INIT' || authStatus === 'FETCHING') {
+    return null;
+  }
   return (
     <div>
       Login Status: <strong>{isLoggedIn ? 'LOGIN' : 'NOT LOGGED IN'}</strong>
