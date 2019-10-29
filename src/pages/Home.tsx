@@ -7,7 +7,7 @@ const Home = () => {
   return (
     <div>
       Me status: {status}
-      <a href="https://api.correctcode.dev/auth/github">github login</a>
+      <a href="/auth/github">github login</a>
     </div>
   );
 };

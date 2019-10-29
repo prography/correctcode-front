@@ -2,7 +2,7 @@ import axios from 'axios';
 import { getAuthToken } from './auth';
 
 const instance = axios.create({
-  baseURL: 'https://api.correctcode.dev',
+  baseURL: '/api',
 });
 
 instance.interceptors.request.use(config => {
