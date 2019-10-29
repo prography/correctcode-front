@@ -2,11 +2,15 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 const Home = () => {
-  const status = useSelector((state: StoreState) => state.auth.me.status);
+  const isLoggedIn = useSelector(
+    (state: StoreState) => state.auth.user.isLoggedIn,
+  );
+  const email = useSelector((state: StoreState) => state.auth.user.email);
 
   return (
     <div>
-      Me status: {status}
+      Login Status: <strong>{isLoggedIn ? 'LOGIN' : 'NOT LOGGED IN'}</strong>
+      {isLoggedIn && <h1>hello! {email}</h1>}
       <a href="/api/auth/github">github login</a>
     </div>
   );

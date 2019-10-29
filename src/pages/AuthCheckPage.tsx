@@ -11,8 +11,8 @@ const AuthCheckPage = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const { token } = qs.parse(search);
-    setAuthToken(token);
+    const { accessToken } = qs.parse(search);
+    setAuthToken(accessToken);
     dispatch(meSaga());
     history.push('/');
   }, []);
