@@ -10,7 +10,7 @@ const Home = () => {
   const isLoggedIn = useSelector(
     (state: StoreState) => state.auth.user.isLoggedIn,
   );
-  const authStatus = useSelector((state: StoreState) => state.auth.me.status);
+  const authStatus = useSelector((state: StoreState) => state.auth.meStatus);
   const email = useSelector((state: StoreState) => state.auth.user.email);
 
   if (authStatus === 'INIT' || authStatus === 'FETCHING') {
