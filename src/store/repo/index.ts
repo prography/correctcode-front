@@ -18,6 +18,7 @@ export default createReducer<RepoAction, RepoState>(initialState, {
   [GetReposActions.success]: (state, action) => {
     return produce(state, draft => {
       draft.repos = action.payload;
+      draft.getReposStatus = 'SUCCESS';
     });
   },
 });

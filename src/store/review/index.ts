@@ -19,7 +19,7 @@ const initialState: ReviewState = {
 };
 
 const reducer = createReducer<ReviewAction, ReviewState>(initialState, {
-  ...baseAsyncActionHandler('reviewList', GetReviewsActions),
+  ...baseAsyncActionHandler('getReviewStatus', GetReviewsActions),
   ...baseAsyncActionHandler('createReviewStatus', CreateReviewActions),
   [GetReviewsActions.success]: (state, action) => {
     return produce(state, draft => {
