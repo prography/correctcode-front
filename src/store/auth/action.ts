@@ -1,4 +1,4 @@
-import { login, me } from 'store/auth/api';
+import { login, me } from 'api/auth';
 import { createEntity } from 'utils/redux';
 
 export enum LoginAction {

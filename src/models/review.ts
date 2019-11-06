@@ -15,4 +15,4 @@ export type Review = {
   startedAt: string;
   endedAt: string;
   commentCount: string;
-}
+};
