@@ -15,11 +15,9 @@ const Home = () => {
   }
   return (
     <div>
-      <Nav />
       Login Status: <strong>{isLoggedIn ? 'LOGIN' : 'NOT LOGGED IN'}</strong>
       {isLoggedIn && <h1>hello! {email}</h1>}
       <a href="/api/auth/github">github login</a>
-      <Card />
     </div>
   );
 };
