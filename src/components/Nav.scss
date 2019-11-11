@@ -1,0 +1,43 @@
+@import "scss/_font";
+
+.NavBox {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 80px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    padding-left: 160px;
+    width: 214px;
+    height: 40px;
+
+}
+
+.profile {
+    float: right;
+    width: auto;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    padding-right: 167px;
+    margin-left: auto;
+
+    p {
+        @include font_default;
+        font-size: 18px;
+        font-weight: 500;
+        color: #333;
+        margin: 0px 0px 0px 8px;
+
+    }
+
+    .profileImg {
+        width: 48px;
+        height: 48px;
+
+    }
+}

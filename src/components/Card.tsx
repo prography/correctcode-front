@@ -3,9 +3,11 @@ import styles from 'components/Card.module.scss';
 
 const Card = () => {
 	return (
-		<div className={styles.box_new}>
-			<p className={styles.language}>Language Name</p>
-			<p className={styles.time}>time</p>
+		<div className={styles.box}>
+			<div>
+				<p className={styles.language}>Language Name</p>
+				<p className={styles.time}>2019.11.11 17.15</p>
+			</div>
 			<p className={styles.repo}>Github Repository</p>
 			<p className={styles.description}>Description</p>
 

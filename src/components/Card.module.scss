@@ -8,20 +8,22 @@
     border-radius: 6px;
     box-shadow: 2px 2px 9px 0 rgba(157, 157, 157, 0.35);
     display: inline-block;
+    margin-bottom: 26px;
 }
 
 .box {
     @include card-setting;
+    position: relative;
     background-color: #ffffff;
-    padding: 28px 30px 20px 30px;
+    padding: 28px 0px 20px 0px;
+
+    :first-child {
+        display: flex;
+        align-items: center;
+    }
 }
 
-.box_new {
-    @include card-setting;
-    background-color: $green-light;
-    padding: 28px 30px 20px 30px;
-}
-
+//박스 내용물
 
 .language {
     @include font_default;
@@ -29,14 +31,17 @@
     letter-spacing: -0.57px;
     color: #333333;
     text-decoration: underline;
+    margin-left: 30px;
 }
 
-//박스 내용물
+
 .time {
     @include font_default;
     letter-spacing: -0.57px;
     color: #333333;
     float: right;
+    margin-right: 26px;
+    margin-left: auto;
 }
 
 .repo {
@@ -44,19 +49,29 @@
     font-size: 18px;
     font-weight: bold;
     color: #333333;
+    margin-left: 30px;
+    margin-top: 2px;
 }
 
 .description {
     @include font_default;
     color: #898989;
+    margin-left: 30px;
+    margin-top: 8px;
 }
 
 
 
 //상태 박스
 .statusBox {
-    display: flex;
+    position: absolute;
+    width: 736px;
+    height: 69px;
+    bottom: 0;
+    display: inline-flex;
     align-items: center;
+    background: #F9F9F9;
+    border-radius: 0 0 6px 6px;
 }
 
 .profileImg {
@@ -64,15 +79,18 @@
     height: 34px;
     border-radius: 17px;
     background-color: #333333;
+    margin-left: 30px;
 }
 
 .user {
     @include font_default;
     letter-spacing: -0.57px;
     color: #333333;
+    margin-left: 8px;
 }
 
 .statusColor {
+    margin-left: auto;
     width: 24px;
     height: 24px;
     border-radius: 4px;
@@ -86,4 +104,21 @@
     font-weight: bold;
     color: #0f741e;
     float: right;
+    margin-right: 26px;
+    margin-left: 8px;
+}
+
+//CardList
+.cardList {
+    margin-top: 116px;
+    margin-left: 32px;
+    float: left;
+
+}
+
+//box_new 
+.box_new {
+    @include card-setting;
+    background-color: $green-light;
+    padding: 28px 30px 20px 30px;
 }
