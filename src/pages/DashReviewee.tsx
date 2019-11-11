@@ -6,8 +6,10 @@ const DashReviewee = () => {
   return (
     <div>
       <Nav />
-      <SideBar />
-      <CardList />
+      <div style={{ width: 1119, margin: 'auto' }}>
+        <SideBar />
+        <CardList />
+      </div>
     </div>
   );
 };

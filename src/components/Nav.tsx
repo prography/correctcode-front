@@ -1,13 +1,13 @@
 import React from 'react';
-import 'components/Nav.scss';
+import styles from 'scss/components/Nav.module.scss';
 import logo from 'assets/img/logo.png';
 import profileImg from 'assets/img/TemporaryProfileImg.png';
 const Nav = () => {
   return (
-    <div className="NavBox">
-      <img src={logo} className="logo" />
-      <div className="profile">
-        <img src={profileImg} className="profileImg" />
+    <div className={styles.NavBox}>
+      <img src={logo} className={styles.logo} />
+      <div className={styles.profile}>
+        <img src={profileImg} className={styles.profileImg} />
         <p>George</p>
       </div>
     </div>

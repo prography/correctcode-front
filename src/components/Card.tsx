@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from 'components/Card.module.scss';
+import styles from 'scss/components/Card.module.scss';
 
 const Card = () => {
   return (
@@ -9,7 +9,12 @@ const Card = () => {
         <p className={styles.time}>2019.11.11 17.15</p>
       </div>
       <p className={styles.repo}>Github Repository</p>
-      <p className={styles.description}>Description</p>
+      <p className={styles.description}>
+        Lorem Ipsum is simply dummy text of the printing and typesetting
+        industry. Lorem Ipsum has been the industry's standard dummy text ever
+        since the 1500s, when an unknown printer took a galley of type and
+        scrambled it to make a type specimen book.
+      </p>
 
       <div className={styles.statusBox}>
         <div className={styles.profileImg} />

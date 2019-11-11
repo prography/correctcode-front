@@ -1,12 +1,12 @@
 import React from 'react';
 import profileImg from 'assets/img/TemporaryProfileImg.png';
-import 'components/SideBar.scss';
+import styles from 'scss/components/SideBar.module.scss';
 const SideBar = () => {
   return (
-    <div className="SideBarBox">
+    <div className={styles.SideBarBox}>
       <img src={profileImg} />
-      <p className="name">name</p>
-      <p className="description">descriptrion</p>
+      <p className={styles.name}>name</p>
+      <p className={styles.description}>descriptrion</p>
     </div>
   );
 };
