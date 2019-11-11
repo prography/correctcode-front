@@ -1,0 +1,89 @@
+@import "scss/_variables";
+@import "scss/_font";
+
+// 박스 세팅
+@mixin card-setting {
+    width: 736px;
+    height: 240px;
+    border-radius: 6px;
+    box-shadow: 2px 2px 9px 0 rgba(157, 157, 157, 0.35);
+    display: inline-block;
+}
+
+.box {
+    @include card-setting;
+    background-color: #ffffff;
+    padding: 28px 30px 20px 30px;
+}
+
+.box_new {
+    @include card-setting;
+    background-color: $green-light;
+    padding: 28px 30px 20px 30px;
+}
+
+
+.language {
+    @include font_default;
+    font-weight: 500;
+    letter-spacing: -0.57px;
+    color: #333333;
+    text-decoration: underline;
+}
+
+//박스 내용물
+.time {
+    @include font_default;
+    letter-spacing: -0.57px;
+    color: #333333;
+    float: right;
+}
+
+.repo {
+    @include font_default;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333333;
+}
+
+.description {
+    @include font_default;
+    color: #898989;
+}
+
+
+
+//상태 박스
+.statusBox {
+    display: flex;
+    align-items: center;
+}
+
+.profileImg {
+    width: 34px;
+    height: 34px;
+    border-radius: 17px;
+    background-color: #333333;
+}
+
+.user {
+    @include font_default;
+    letter-spacing: -0.57px;
+    color: #333333;
+}
+
+.statusColor {
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    border: solid 1px #10741d;
+    float: right;
+}
+
+.status {
+    @include font_default;
+    font-size: 14px;
+    font-weight: bold;
+    color: #0f741e;
+    float: right;
+}
