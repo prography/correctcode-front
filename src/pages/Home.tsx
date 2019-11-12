@@ -1,5 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import Card from 'components/Card';
+import Nav from 'components/Nav';
 
 const Home = () => {
   const isLoggedIn = useSelector(

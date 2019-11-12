@@ -1,0 +1,153 @@
+@import "scss/_variables";
+@import "scss/_font";
+
+// 박스 세팅
+@mixin card-setting {
+    width: 736px;
+    border-radius: 6px;
+    box-shadow: 2px 2px 9px 0 rgba(157, 157, 157, 0.35);
+    display: inline-block;
+    margin-bottom: 26px;
+    position: relative;
+    padding: 28px 0px 20px 0px;
+}
+
+.box {
+    @include card-setting;
+    height: 200px;
+    background-color: #ffffff;
+
+    :first-child {
+        display: flex;
+        align-items: center;
+    }
+}
+
+//박스 내용물
+
+.language {
+    @include font_default;
+    font-weight: 500;
+    letter-spacing: -0.57px;
+    color: #333333;
+    text-decoration: underline;
+    margin-left: 30px;
+}
+
+
+.time {
+    @include font_default;
+    letter-spacing: -0.57px;
+    color: #333333;
+    float: right;
+    margin-right: 26px;
+    margin-left: auto;
+}
+
+.repo {
+    @include font_default;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333333;
+    margin-left: 30px;
+    margin-top: 2px;
+}
+
+.description {
+    @include font_default;
+    color: #898989;
+    margin-left: 30px;
+    margin-top: 8px;
+}
+
+
+
+//상태 박스
+.statusBox {
+    position: absolute;
+    width: 736px;
+    height: 69px;
+    bottom: 0;
+    display: inline-flex;
+    align-items: center;
+    background: #F9F9F9;
+    border-radius: 0 0 6px 6px;
+}
+
+.profileImg {
+    width: 34px;
+    height: 34px;
+    border-radius: 17px;
+    background-color: #333333;
+    margin-left: 30px;
+}
+
+.user {
+    @include font_default;
+    letter-spacing: -0.57px;
+    color: #333333;
+    margin-left: 8px;
+}
+
+.statusColor {
+    margin-left: auto;
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    border: solid 1px #10741d;
+    float: right;
+}
+
+.status {
+    @include font_default;
+    font-size: 14px;
+    font-weight: bold;
+    color: #0f741e;
+    float: right;
+    margin-right: 26px;
+    margin-left: 8px;
+}
+
+//CardList
+.cardList {
+    margin-top: 116px;
+    margin-left: 80px;
+    float: left;
+
+}
+
+//box_new 
+.box_request {
+    @include card-setting;
+    height: 152px;
+    background-color: $green-light;
+
+    p {
+        color: #ffffff;
+        margin: -2px 0px 8px 30px;
+    }
+
+    .requestTitle {
+        font-size: 22px;
+        font-weight: bold;
+    }
+
+    .requestButton {
+        width: 150px;
+        height: 40px;
+        background-color: #0DBA8D;
+        color: #fff;
+        font-weight: bold;
+        border: 0px solid;
+        margin: 20px 0px 0px 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+
+        &:hover {
+            background-color: darken(#0DBA8D, 10%);
+        }
+    }
+}
