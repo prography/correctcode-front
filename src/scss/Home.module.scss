@@ -2,78 +2,78 @@
 @import "scss/_font";
 
 .homeBody {
-    width: 100%;
-    height: 100vh;
-    background-color: $green-light;
-    @include centerAlign;
+	width: 100%;
+	height: 100vh;
+	background-color: $green-light;
+	@include centerAlign;
 }
 
 .centerDiv {
-    width: 73%;
-    height: 82%;
-    border-radius: 6px;
-    box-shadow: 2px 2px 9px 0 rgba(157, 157, 157, 0.35), 10px 9px 16px 0 rgba(65, 65, 65, 0.32);
-    background-color: $green-black;
-    position: relative;
+	width: 73%;
+	height: 82%;
+	border-radius: 6px;
+	box-shadow: 2px 2px 9px 0 rgba(157, 157, 157, 0.35), 10px 9px 16px 0 rgba(65, 65, 65, 0.32);
+	background-color: $green-black;
+	position: relative;
 
-    .homeLogo {
-        width: 220px;
-        height: auto;
-        margin: 100px 0px 26px 117px;
-    }
+	.homeLogo {
+		width: 220px;
+		height: auto;
+		margin: 100px 0px 26px 117px;
+	}
 
-    .homeSlogan {
-        @include font_default;
-        font-size: 22px;
-        font-weight: 600;
-        line-height: 140%;
-        letter-spacing: -0.81px;
-        color: #eaeaea;
-        margin-left: 117px;
-    }
+	.homeSlogan {
+		@include font_default;
+		font-size: 22px;
+		font-weight: 600;
+		line-height: 140%;
+		letter-spacing: -0.81px;
+		color: #eaeaea;
+		margin-left: 117px;
+	}
 }
 
 .bottomDivs {
-    width: 83%;
-    display: flex;
-    position: absolute;
-    bottom: 80px;
-    justify-content: space-between;
-    align-items: flex-end;
-    padding: 0px 30px 0px 117px;
+	width: 83%;
+	display: flex;
+	position: absolute;
+	bottom: 80px;
+	justify-content: space-between;
+	align-items: flex-end;
+	padding: 0px 30px 0px 117px;
 }
 
 .signInAnchor {
-    text-decoration: none;
+	text-decoration: none;
 }
 
 .signIn {
-    width: 280px;
-    height: auto;
-    border-radius: 40px;
-    background-color: #ffffff;
-    cursor: pointer;
-    @include centerAlign;
-    margin-bottom: 25px;
+	width: 280px;
+	height: auto;
+	border-radius: 40px;
+	background-color: #ffffff;
+	cursor: pointer;
+	@include centerAlign;
+	margin-bottom: 25px;
 
-    align-self: center;
+	align-self: center;
 
-    .githubLogo {
-        height: 28px;
-    }
+	.githubLogo {
+		height: 28px;
+	}
 
-    p {
-        text-decoration: none;
-        font-family: AvenirNext;
-        font-size: 18px;
-        font-weight: 600;
-        line-height: 1.33;
-        letter-spacing: -0.48px;
-        color: #181717;
-        margin-left: 15px;
-    }
+	p {
+		text-decoration: none;
+		font-family: AvenirNext;
+		font-size: 18px;
+		font-weight: 600;
+		line-height: 1.33;
+		letter-spacing: -0.48px;
+		color: #181717;
+		margin-left: 15px;
+	}
 }
 
 .backgroundLogo {
-    width: 230px;
+	width: 210px;
 }

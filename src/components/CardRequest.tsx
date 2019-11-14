@@ -5,7 +5,7 @@ const CardRequest = () => {
   //임시적으로 request 상태별 카드 작성, 코드리뷰중인 상태 받아와서 바꿔줘야함
   const [request, setRequest] = useState(true);
 
-  const eeRequest = () => {
+  const revieweeRequest = () => {
     return (
       <div className={styles.box_request}>
         <p className={styles.requestTitle}>코드 리뷰를 요청해보세요! </p>
@@ -17,7 +17,7 @@ const CardRequest = () => {
       </div>
     );
   };
-  const eeWaiting = () => {
+  const revieweeWaiting = () => {
     return (
       <div className={styles.box_request}>
         <p className={styles.requestTitle}>코드 리뷰가 진행 중이에요. </p>
@@ -28,7 +28,7 @@ const CardRequest = () => {
       </div>
     );
   };
-  const erFindNull = () => {
+  const reviewerFindNull = () => {
     return (
       <div className={styles.box_request}>
         <p className={styles.requestTitle}>리뷰를 기다리는 코드가 없어요.</p>
@@ -40,7 +40,7 @@ const CardRequest = () => {
       </div>
     );
   };
-  const erHistoryNull = () => {
+  const reviewerHistoryNull = () => {
     return (
       <div className={styles.box_request}>
         <p className={styles.requestTitle}>리뷰 중인 코드가 없어요.</p>
