@@ -17,6 +17,7 @@ const RepoStep = () => {
       {repos.map(repo => (
         <RepoItem key={repo.id} {...repo} />
       ))}
+      <a href="https://github.com/apps/correct-code/installations/new">레포 추가</a>
     </div>
   );
 };
