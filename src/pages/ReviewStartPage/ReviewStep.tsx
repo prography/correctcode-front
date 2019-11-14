@@ -16,7 +16,7 @@ const ReviewStep: React.FC<Props> = () => {
   }
   return (
     <div>
-      <div>선택된 레포 : {currentRepo.fullName}</div>
+      <div>선택된 레포 : {currentRepo.name}</div>
     </div>
   );
 };

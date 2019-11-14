@@ -14,10 +14,14 @@ const RepoStep = () => {
   return (
     <div>
       <h3>내 레포목록</h3>
-      {repos.map(repo => (
-        <RepoItem key={repo.id} {...repo} />
-      ))}
-      <a href="https://github.com/apps/correct-code/installations/new">레포 추가</a>
+      <div>
+        {repos.map(repo => (
+          <RepoItem key={repo.id} {...repo} />
+        ))}
+      </div>
+      <a href="https://github.com/apps/correct-code/installations/new">
+        레포 추가
+      </a>
     </div>
   );
 };

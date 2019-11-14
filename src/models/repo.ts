@@ -1,10 +1,9 @@
 export type Repo = {
   id: string;
-  fullName: string;
+  type: string;
+  name: string;
+  url: string;
   isPrivate: boolean;
-  serviceId: string;
-  serviceType: string;
   createdAt: string;
-  deletedAt: string;
   updatedAt: string;
 };
