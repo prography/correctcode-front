@@ -1,7 +1,10 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import Card from 'components/Card';
-import Nav from 'components/Nav';
+
+import styles from 'scss/Home.module.scss';
+import logo from 'assets/img/logo_2line.png';
+import githubLogo from 'assets/img/GitHubMark.png';
+import backgroundLogo from 'assets/img/backgroundLogo.png';
 
 const Home = () => {
   const isLoggedIn = useSelector(
@@ -14,10 +17,23 @@ const Home = () => {
     return null;
   }
   return (
-    <div>
-      Login Status: <strong>{isLoggedIn ? 'LOGIN' : 'NOT LOGGED IN'}</strong>
-      {isLoggedIn && <h1>hello! {email}</h1>}
-      <a href="/api/auth/github">github login</a>
+    <div className={styles.homeBody}>
+      <div className={styles.centerDiv}>
+        <img src={logo} className={styles.homeLogo} />
+        <p className={styles.homeSlogan}>
+          당신의 코드를 완벽하게! <br />
+          지금 바로 코드 리뷰를 받아보세요
+        </p>
+        <div className={styles.bottomDivs}>
+          <a href="/api/auth/github" className={styles.signInAnchor}>
+            <div className={styles.signIn}>
+              <img src={githubLogo} className={styles.githubLogo} />
+              <p>Sign-in with Github</p>
+            </div>
+          </a>
+          <img src={backgroundLogo} className={styles.backgroundLogo} />
+        </div>
+      </div>
     </div>
   );
 };
