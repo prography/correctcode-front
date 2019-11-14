@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getReposSaga } from 'store/repo/action';
 import { RepoItem } from 'components';
+import { APP_NAME } from 'constants/github';
 
 const RepoStep = () => {
   const repos = useSelector((state: StoreState) => state.repo.repos);
@@ -19,7 +20,7 @@ const RepoStep = () => {
           <RepoItem key={repo.id} {...repo} />
         ))}
       </div>
-      <a href="https://github.com/apps/correct-code/installations/new">
+      <a href={`https://github.com/apps/${APP_NAME}/installations/new`}>
         레포 추가
       </a>
     </div>
