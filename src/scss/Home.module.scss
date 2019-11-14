@@ -17,14 +17,14 @@
     position: relative;
 
     .homeLogo {
-        width: 280px;
-        height: 82px;
-        margin: 117px 0px 32px 117px;
+        width: 220px;
+        height: auto;
+        margin: 100px 0px 26px 117px;
     }
 
     .homeSlogan {
         @include font_default;
-        font-size: 170%;
+        font-size: 22px;
         font-weight: 600;
         line-height: 140%;
         letter-spacing: -0.81px;
@@ -37,7 +37,7 @@
     width: 83%;
     display: flex;
     position: absolute;
-    bottom: 90px;
+    bottom: 80px;
     justify-content: space-between;
     align-items: flex-end;
     padding: 0px 30px 0px 117px;
@@ -48,25 +48,24 @@
 }
 
 .signIn {
-    width: 320px;
-    height: 77px;
+    width: 280px;
+    height: auto;
     border-radius: 40px;
     background-color: #ffffff;
     cursor: pointer;
     @include centerAlign;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
 
     align-self: center;
 
     .githubLogo {
-        height: 34px;
-        width: 34px;
+        height: 28px;
     }
 
     p {
         text-decoration: none;
         font-family: AvenirNext;
-        font-size: 21px;
+        font-size: 18px;
         font-weight: 600;
         line-height: 1.33;
         letter-spacing: -0.48px;
@@ -76,5 +75,5 @@
 }
 
 .backgroundLogo {
-    width: 270px;
+    width: 230px;
 }
