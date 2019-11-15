@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Nav from 'components/Nav';
 import CardList from 'components/CardList';
 import SideBar from 'components/SideBar';
@@ -7,12 +7,7 @@ import { useDispatch } from 'react-redux';
 import { reviewListSaga } from 'store/review/action';
 
 const DashReviewee = () => {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-      dispatch(reviewListSaga())
-  }, []);
-
+  
   return (
     <div>
       <Nav />

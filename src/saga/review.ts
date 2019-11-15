@@ -1,20 +1,17 @@
-import { all, fork, take, call } from 'redux-saga/effects';
+import { all, fork, takeLatest } from 'redux-saga/effects';
 import {
-  ReviewListAction,
-  reviewListEntity,  
+  GetReviewsActions,
+  getReviewsEntity,  
 } from 'store/review/action';
 import { fetchEntity } from 'utils/saga';
 
-const fetchReviewList = fetchEntity(reviewListEntity);
+const fetchReviewList = fetchEntity(getReviewsEntity);
 
 
-function* watchReview() {
-  while (true) {
-    yield take([ReviewListAction.saga]);
-    yield call(fetchReviewList);
-  }
+function* watchReview() {  
+  yield takeLatest(GetReviewsActions.saga, fetchReviewList);    
 }
 
-export default function* reviewSaga() {
+export default function* root() {
   yield all([fork(watchReview)]);
 }
