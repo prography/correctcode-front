@@ -3,8 +3,6 @@ import Nav from 'components/Nav';
 import CardList from 'components/CardList';
 import SideBar from 'components/SideBar';
 import pageStyles from 'scss/pages.module.scss';
-import { useDispatch } from 'react-redux';
-import { reviewListSaga } from 'store/review/action';
 
 const DashReviewee = () => {
   
