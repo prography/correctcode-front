@@ -2,6 +2,7 @@ import React, { memo } from 'react';
 import { Repo } from 'models/repo';
 import { useParams } from 'react-router';
 import { useSelector } from 'react-redux';
+import { Dropdown } from 'components';
 import GithubIcon from 'assets/img/GitHubMark.png';
 
 import styles from 'scss/ReviewStep.module.scss';
@@ -33,7 +34,12 @@ const ReviewStep: React.FC<Props> = () => {
           <div className={styles.formItem}>
             <span className={styles.description}>리뷰어에게 보내는 메세지</span>
           </div>
-          <div className={styles.formItem}>브랜치를 선택해주세요.</div>
+          <div className={styles.formItem}>
+            <Dropdown
+              items={[{ text: 'ff', value: 'ff' }, { text: 'zz', value: 'cc' }]}
+              selected={null}
+            />
+          </div>
         </div>
         <div className={styles.formRow}>
           <div className={styles.formItem}>
