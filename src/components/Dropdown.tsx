@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, memo } from 'react';
 import classnames from 'classnames';
 
 import styles from 'scss/components/Dropdown.module.scss';
@@ -8,17 +8,20 @@ type DropdownItem = {
   text: string;
 };
 type Props = {
+  className?: string;
   items: DropdownItem[];
   selected: string | null | undefined;
+  onSelect: (value: string) => void;
   loading?: boolean;
   placeholder?: string;
-} & React.HTMLAttributes<HTMLDivElement>;
+};
 
 const Dropdown: React.FC<Props> = ({
   items,
   selected,
   placeholder = '선택해주세요.',
   loading = false,
+  onSelect,
   ...props
 }) => {
   const [open, setOpen] = useState(false);
@@ -26,16 +29,19 @@ const Dropdown: React.FC<Props> = ({
     e.preventDefault();
     setOpen(prev => !prev);
   };
-  const selectedItem = items.find(({ value }) => value === selected);
+  const handleItemClick = (value: string) => () => {
+    onSelect(value);
+    setOpen(false);
+  };
   return (
     <div {...props} className={classnames(props.className, styles.container)}>
       <a href="#" className={styles.trigger} onClick={handleTriggerClick}>
         <span
           className={classnames(styles.text, {
-            [styles.placeholder]: !selectedItem,
+            [styles.placeholder]: !selected,
           })}
         >
-          {selectedItem || placeholder}
+          {selected || placeholder}
         </span>
         <i className={classnames('fas fa-chevron-down', styles.icon)}></i>
       </a>
@@ -46,7 +52,11 @@ const Dropdown: React.FC<Props> = ({
       >
         {loading && <li className={styles.listItem}>불러오는중...</li>}
         {items.map(({ value, text }) => (
-          <li key={value} className={styles.listItem}>
+          <li
+            key={value}
+            className={styles.listItem}
+            onClick={handleItemClick(value)}
+          >
             {text}
           </li>
         ))}
@@ -55,4 +65,4 @@ const Dropdown: React.FC<Props> = ({
   );
 };
 
-export default Dropdown;
+export default memo(Dropdown);

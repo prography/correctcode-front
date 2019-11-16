@@ -1,5 +1,5 @@
 import { useEffect, useReducer, Reducer } from 'react';
-import produce, { isDraft } from 'immer';
+import produce from 'immer';
 
 enum ActionType {
   Request = 'request',
@@ -14,10 +14,11 @@ type State<T> = {
 };
 
 const requestAction = () => ({ type: ActionType.Request } as const);
-const successAction = <T>(payload: T) => ({
-  type: ActionType.Success,
-  payload,
-});
+const successAction = <T>(payload: T) =>
+  ({
+    type: ActionType.Success,
+    payload,
+  } as const);
 const failureAction = (error: any) =>
   ({ type: ActionType.Failure, error } as const);
 
@@ -55,17 +56,21 @@ const useFetch = <Params extends any[], Res>(
 ) => {
   const [state, dispatch] = useReducer<Reducer<State<Res>, Action<Res>>>(
     reducer,
-    initialData,
+    {
+      status: 'INIT',
+      data: initialData,
+      error: '',
+    },
   );
-
   useEffect(() => {
-    dispatch({ type: ActionType.Request });
+    dispatch(requestAction());
     api(...params)
       .then(res => {
-        dispatch({ type: ActionType.Success, payload: res });
+        dispatch(successAction(res));
       })
       .catch(err => {
-        dispatch({ type: ActionType.Failure, error: err });
+        console.log('ff');
+        dispatch(failureAction(err));
       });
   }, [...deps, dispatch]);
 
