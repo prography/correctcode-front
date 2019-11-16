@@ -17,7 +17,8 @@ const Step: React.FC<Props> = ({ steps, currentStep }) => {
       {steps.map(({ description }, i) => (
         <div
           className={classnames(styles.wrapper, {
-            [styles.isActive]: i < currentStep,
+            [styles.isActiveCircle]: i <= currentStep,
+            [styles.isActiveLine]: i < currentStep,
           })}
           key={i}
         >

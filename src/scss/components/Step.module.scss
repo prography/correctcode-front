@@ -16,10 +16,21 @@
     background-color: $gray-light;
   }
 }
+.isActiveCircle {
+  & .circle {
+    background-color: $green-light;
+  }
+}
+.isActiveLine {
+  & .line:after {
+    background-color: $green-light;
+  }
+}
 
 .step {
   text-align: center;
   position: relative;
+  z-index: 1;
 }
 
 .circle {
@@ -27,13 +38,14 @@
   width: 30px;
   height: 30px;
   border-radius: 15px;
+  z-index: 2;
 }
 
 .line {
   width: 100%;
   position: absolute;
   top: 2px;
-
+  z-index: -1;
   &::after {
     content: '';
     display: inline-block;
@@ -54,14 +66,5 @@
   }
   .description {
     color: $gray;
-  }
-}
-
-.isActive {
-  & .circle {
-    background-color: $green-light;
-  }
-  & .line:after {
-    background-color: $green-light;
   }
 }
