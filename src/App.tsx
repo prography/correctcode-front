@@ -7,7 +7,7 @@ import AuthCheckPage from 'pages/AuthCheckPage';
 import Home from 'pages/Home';
 import DashReviewee from 'pages/DashReviewee';
 import DashReviewer from 'pages/DashReviewer';
-import ReviewStartPage from 'pages/ReviewStartPage';
+import Start from 'pages/Start';
 
 const App: React.FC = () => {
   const dispatch = useDispatch();
@@ -23,7 +23,7 @@ const App: React.FC = () => {
         <Route path="/auth/callback" exact component={AuthCheckPage} />
         <Route path="/reviewee" exact component={DashReviewee} />
         <Route path="/reviewer" exact component={DashReviewer} />
-        <Route path="/start/:step" component={ReviewStartPage} />
+        <Route path="/start/:step" component={Start} />
       </Switch>
     </Router>
   );
