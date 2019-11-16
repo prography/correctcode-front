@@ -1,0 +1,15 @@
+@import 'scss/base.scss';
+
+.container {
+  width: 1120px;
+  margin: auto;
+  padding: 40px 20px;
+
+  border-radius: $card-border-radius;
+  box-shadow: $card-box-shadow;
+}
+
+.inner {
+  width: 740px;
+  margin: auto;
+}

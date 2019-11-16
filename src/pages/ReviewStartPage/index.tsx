@@ -1,7 +1,9 @@
 import React from 'react';
 import { Switch, Route, useParams } from 'react-router-dom';
+import { Step as StepComponent } from 'components';
 import RepoStep from './RepoStep';
 import ReviewStep from './ReviewStep';
+import styles from 'scss/Start.module.scss';
 
 enum Step {
   repo = 'repo',
@@ -20,12 +22,14 @@ const ReviewStartPage = () => {
   }
 
   return (
-    <div>
-      <h1>{title}</h1>
-      <Switch>
-        <Route path="/start/repo" exact component={RepoStep} />
-        <Route path="/start/review/:repoId" component={ReviewStep} />
-      </Switch>
+    <div className={styles.container}>
+      <StepComponent />
+      <div className={styles.inner}>
+        <Switch>
+          <Route path="/start/repo" exact component={RepoStep} />
+          <Route path="/start/review/:repoId" component={ReviewStep} />
+        </Switch>
+      </div>
     </div>
   );
 };

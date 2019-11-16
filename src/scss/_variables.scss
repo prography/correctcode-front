@@ -2,8 +2,18 @@ $green-light: #5bd3b4;
 $green-dark: #0f741e;
 $green-black: #1b3137;
 
+$gray-light: #d8d8d8;
+$gray: #6c6c6c;
+
+$black-light: #333333;
+
+$white: #ffffff;
+
+$card-border-radius: 6px;
+$card-box-shadow: 2px 2px 9px 0 rgba(157, 157, 157, 0.35);
+
 @mixin centerAlign {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
