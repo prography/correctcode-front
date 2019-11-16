@@ -2,29 +2,22 @@ import React from 'react';
 import classnames from 'classnames';
 import styles from 'scss/components/Step.module.scss';
 
-const MOCK_DATA = [
-  {
-    text: 'Github 연동',
-  },
-  {
-    text: 'Repo 선택',
-  },
-  {
-    text: 'Branch 선택',
-  },
-  {
-    text: 'Done!',
-  },
-];
-const MOCK_ACTIVE_INDEX = 2;
+type Step = {
+  step: string;
+  description?: string;
+};
+type Props = {
+  steps: Step[];
+  currentStep: number;
+};
 
-const Step = () => {
+const Step: React.FC<Props> = ({ steps, currentStep }) => {
   return (
     <div className={styles.container}>
-      {MOCK_DATA.map(({ text }, i) => (
+      {steps.map(({ description }, i) => (
         <div
           className={classnames(styles.wrapper, {
-            [styles.isActive]: i < MOCK_ACTIVE_INDEX,
+            [styles.isActive]: i < currentStep,
           })}
           key={i}
         >
@@ -32,9 +25,9 @@ const Step = () => {
             <div className={styles.circle} />
             <div className={styles.text}>
               <div className={styles.stepIndex}>Step {i + 1}</div>
-              <div className={styles.description}>{text}</div>
+              <div className={styles.description}>{description}</div>
             </div>
-            {i !== MOCK_DATA.length - 1 && <div className={styles.line} />}
+            {i !== steps.length - 1 && <div className={styles.line} />}
           </div>
         </div>
       ))}
