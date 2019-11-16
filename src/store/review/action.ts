@@ -1,4 +1,4 @@
-import { reviewList } from 'store/review/api'
+import { createReview, getReviewList } from 'api/review';
 import { createEntity } from 'utils/redux';
 
 export enum GetReviewsActions {
@@ -8,10 +8,26 @@ export enum GetReviewsActions {
   failure = 'GET_REVIEWS_FAILURE',
 }
 
-export const getReviewsEntity = createEntity(GetReviewsActions, reviewList);
-export const getReviewsSaga = () => ({ type: GetReviewsActions.saga })
+export enum CreateReviewActions {
+  saga = 'CREATE_REVIEW_SAGA',
+  request = 'CREATE_REVIEW_REQUEST',
+  success = 'CREATE_REVIEW_SUCCESS',
+  failure = 'CREATE_REVIEW_FAILURE',
+}
+
+export const getReviewsEntity = createEntity(GetReviewsActions, getReviewList);
+export const getReviewsSaga = () => ({ type: GetReviewsActions.saga });
 export type getReviewsSaga = ReturnType<typeof getReviewsSaga>;
 
-type ReviewAction = EntityActions<typeof getReviewsEntity>;
+export const createReviewEntity = createEntity(
+  CreateReviewActions,
+  createReview,
+);
+export const createReviewSaga = () => ({ type: CreateReviewActions.saga });
+export type CreateReviewSaga = ReturnType<typeof createReviewSaga>;
+
+type ReviewAction =
+  | EntityActions<typeof createReviewEntity>
+  | EntityActions<typeof getReviewsEntity>;
 
 export default ReviewAction;

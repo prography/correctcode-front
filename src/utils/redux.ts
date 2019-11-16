@@ -54,29 +54,30 @@ export const createReducer = <TAction extends Action, TState>(
 };
 
 export const baseAsyncActionHandler = <
-  State extends {
-    [index: string]: {
-      status: Status;
-    };
-  }
+  T extends {
+    [key in K]: Status;
+  },
+  K extends {
+    [K in keyof T]: T[K] extends Status ? K : never;
+  }[keyof T]
 >(
-  name: string,
+  name: K,
   actionTypes: { request: string; success: string; failure: string },
 ) => {
   return {
-    [actionTypes.request]: (state: State) => {
-      return produce(state, draft => {
-        draft[name].status = 'FETCHING';
+    [actionTypes.request]: (state: T) => {
+      return produce(state, (draft: T) => {
+        draft[name] = 'FETCHING' as T[K];
       });
     },
-    [actionTypes.success]: (state: State) => {
-      return produce(state, draft => {
-        draft[name].status = 'SUCCESS';
+    [actionTypes.success]: (state: T) => {
+      return produce(state, (draft: T) => {
+        draft[name] = 'SUCCESS' as T[K];
       });
     },
-    [actionTypes.failure]: (state: State) => {
-      return produce(state, draft => {
-        draft[name].status = 'FAILURE';
+    [actionTypes.failure]: (state: T) => {
+      return produce(state, (draft: T) => {
+        draft[name] = 'FAILURE' as T[K];
       });
     },
   };

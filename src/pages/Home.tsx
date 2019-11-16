@@ -1,6 +1,6 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import styles from 'scss/Home.module.scss';
 import logo from 'assets/img/logo_2line.png';
 import githubLogo from 'assets/img/GitHubMark.png';
@@ -10,11 +10,14 @@ const Home = () => {
   const isLoggedIn = useSelector(
     (state: StoreState) => state.auth.user.isLoggedIn,
   );
-  const authStatus = useSelector((state: StoreState) => state.auth.me.status);
+  const authStatus = useSelector((state: StoreState) => state.auth.meStatus);
   const email = useSelector((state: StoreState) => state.auth.user.email);
 
   if (authStatus === 'INIT' || authStatus === 'FETCHING') {
     return null;
+  }
+  if (!isLoggedIn) {
+    return <a href="/api/auth/github">github login</a>;
   }
   return (
     <div className={styles.homeBody}>
@@ -33,6 +36,10 @@ const Home = () => {
           </a>
           <img src={backgroundLogo} className={styles.backgroundLogo} />
         </div>
+      </div>
+      <div>
+        <h1>hello! {email}</h1>
+        <Link to="/start/repo">레포 만들기</Link>
       </div>
     </div>
   );

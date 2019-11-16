@@ -7,12 +7,8 @@ export type AuthState = {
   user: User & {
     isLoggedIn: boolean;
   };
-  login: {
-    status: Status;
-  };
-  me: {
-    status: Status;
-  };
+  loginStatus: Status;
+  meStatus: Status;
 };
 
 const initialState: AuthState = {
@@ -20,20 +16,16 @@ const initialState: AuthState = {
     email: '',
     isLoggedIn: false,
   },
-  login: {
-    status: 'INIT',
-  },
-  me: {
-    status: 'INIT',
-  },
+  loginStatus: 'INIT',
+  meStatus: 'INIT',
 };
 
 const reducer = createReducer<AuthAction, AuthState>(initialState, {
-  ...baseAsyncActionHandler('login', LoginAction),
-  ...baseAsyncActionHandler('me', MeAction),
+  ...baseAsyncActionHandler('loginStatus', LoginAction),
+  ...baseAsyncActionHandler('meStatus', MeAction),
   [MeAction.success]: (state, action) => {
     return produce(state, draft => {
-      draft.me.status = 'SUCCESS';
+      draft.meStatus = 'SUCCESS';
       draft.user.isLoggedIn = true;
       draft.user = {
         ...action.payload,
