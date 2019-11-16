@@ -10,8 +10,8 @@ enum Step {
   review = 'review',
 }
 const STEP_TITLE = {
-  [Step.repo]: '레포 선택',
-  [Step.review]: '리뷰 생성',
+  [Step.repo]: 'Repository를 선택해주세요.',
+  [Step.review]: 'Branch를 선택해주세요.',
 };
 const ReviewStartPage = () => {
   const { step } = useParams<{ step: Step }>();
@@ -25,6 +25,7 @@ const ReviewStartPage = () => {
     <div className={styles.container}>
       <StepComponent />
       <div className={styles.inner}>
+        <div className={styles.title}>{title}</div>
         <Switch>
           <Route path="/start/repo" exact component={RepoStep} />
           <Route path="/start/review/:repoId" component={ReviewStep} />
