@@ -1,13 +1,20 @@
-@import 'scss/_font';
+@import 'scss/base.scss';
 
 .NavBox {
   position: fixed;
   top: 0;
   width: 100%;
   height: 80px;
+  color: #333;
   background-color: #fff;
   z-index: 1;
 }
+
+.isStartPage {
+  color: $white;
+  background-color: $green-black;
+}
+
 .innerBox {
   height: 100%;
   margin: 0 120px;
@@ -27,18 +34,16 @@
   height: 48px;
   display: flex;
   align-items: center;
-  margin-left: auto;
 
-  p {
-    @include font_default;
+  span {
+    display: inline-block;
     font-size: 18px;
     font-weight: 500;
-    color: #333;
-    margin: 0px 0px 0px 8px;
+    margin-left: 10px;
   }
 
   .profileImg {
-    width: 48px;
-    height: 48px;
+    width: 36px;
+    height: 36px;
   }
 }

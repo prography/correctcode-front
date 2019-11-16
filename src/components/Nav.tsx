@@ -1,20 +1,27 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
+import classnames from 'classnames';
 import styles from 'scss/components/Nav.module.scss';
 import logo from 'assets/img/logo.png';
 import profileImg from 'assets/img/TemporaryProfileImg.png';
 
-const Nav = () => {
-  const location = useLocation();
+type Props = {
+  isStartPage?: boolean;
+};
+
+const Nav: React.FC<Props> = ({ isStartPage = false }) => {
   return (
-    <div className={styles.NavBox}>
+    <div
+      className={classnames(styles.NavBox, {
+        [styles.isStartPage]: isStartPage,
+      })}
+    >
       <div className={styles.innerBox}>
         <div className={styles.left}>
           <img src={logo} className={styles.logo} />
         </div>
         <div className={styles.profile}>
           <img src={profileImg} className={styles.profileImg} />
-          <p>George</p>
+          <span>George</span>
         </div>
       </div>
     </div>

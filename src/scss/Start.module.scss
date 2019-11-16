@@ -2,8 +2,9 @@
 
 .container {
   width: 1120px;
-  margin: auto;
+  margin: 24px auto;
   padding: 40px 20px;
+  background-color: $white;
 
   border-radius: $card-border-radius;
   box-shadow: $card-box-shadow;
