@@ -33,13 +33,22 @@ const Home = () => {
               <img src={githubLogo} className={styles.githubLogo} />
               <p>Sign-in with Github</p>
             </div>
+
+            <Link
+              style={{
+                float: 'right',
+                fontSize: 24,
+                color: 'white',
+                textDecoration: 'none',
+                marginRight: 20,
+              }}
+              to="/start/repo"
+            >
+              레포 만들기 테스트 링크 ^^
+            </Link>
           </a>
           <img src={backgroundLogo} className={styles.backgroundLogo} />
         </div>
-      </div>
-      <div>
-        <h1>hello! {email}</h1>
-        <Link to="/start/repo">레포 만들기</Link>
       </div>
     </div>
   );
