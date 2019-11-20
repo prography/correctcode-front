@@ -1,11 +1,11 @@
-import React, { memo, useState, useCallback } from 'react';
+import React, { memo, useState, useMemo } from 'react';
 import { Repo } from 'models/repo';
 import { useParams } from 'react-router';
 import { useSelector } from 'react-redux';
 import { Dropdown } from 'components';
 import GithubIcon from 'assets/img/GitHubMark.png';
-// import useFetch from 'hooks/useFetch';
-// import { getBranches } from 'api/repo';
+import useFetch from 'hooks/useFetch';
+import { getBranches } from 'api/repo';
 
 import styles from 'scss/ReviewStep.module.scss';
 
@@ -53,10 +53,15 @@ const ReviewStep: React.FC<Props> = () => {
   const handleMessageChange = (e: React.ChangeEvent<HTMLTextAreaElement>) =>
     setMessage(e.target.value);
 
-  // const { state } = useFetch(getBranches, [], [], repoId || '');
-  // if (!currentRepo) {
-  //   return null;
-  // }
+  // branch 패칭
+  const { state: branchState } = useFetch(getBranches, [], [], repoId || '');
+  const branches = useMemo(
+    () => branchState.data.map(({ name }) => ({ value: name, text: name })),
+    [branchState.data],
+  );
+  const isFetching = {
+    branch: branchState.status === 'FETCHING',
+  };
 
   return (
     <div className={styles.container}>
@@ -74,9 +79,10 @@ const ReviewStep: React.FC<Props> = () => {
           </div>
           <div className={styles.formItem}>
             <Dropdown
-              items={MOCK_BRANCH}
+              items={branches}
               selected={branch}
               placeholder="브랜치를 선택해주세요."
+              loading={isFetching.branch}
               onSelect={onBranchSelect}
             />
           </div>
