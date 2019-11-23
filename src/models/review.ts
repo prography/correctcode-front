@@ -16,3 +16,8 @@ export type Review = {
   endedAt: string;
   commentCount: string;
 };
+
+export enum ReviewType {
+  REVIEWER = 'reviewer',
+  REVIEWEE = 'reviewee',
+}

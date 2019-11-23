@@ -1,9 +1,10 @@
 import React from 'react';
 import cx from 'classnames';
-
 import Nav from 'components/Nav';
 import SideBar from 'components/SideBar';
 import CardList from 'components/CardList';
+import { ReviewType } from 'models/review';
+
 import styles from 'scss/components/Card.module.scss';
 import pageStyles from 'scss/pages.module.scss';
 
@@ -20,7 +21,7 @@ const DashReviewer = () => {
             </div>
             <div className={styles.historyReviews}>나의 코드 리뷰</div>
           </div>
-          <CardList />
+          <CardList reviewType={ReviewType.REVIEWER} />
         </div>
       </div>
     </div>
