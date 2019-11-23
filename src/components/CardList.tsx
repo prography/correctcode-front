@@ -22,7 +22,7 @@ const CardList: React.FC<Props> = ({ reviewType }) => {
     <div className={styles.cardList}>
       <CardRequest />
       {reviews.map(review => (
-        <Card key={review.id} />
+        <Card key={review.id} review={review} />
       ))}
     </div>
   );
