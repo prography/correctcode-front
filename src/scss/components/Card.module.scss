@@ -14,7 +14,7 @@
 
 .box {
     @include card-setting;
-    height: 200px;
+    height: 248px;
     background-color: #ffffff;
 
     :first-child {
@@ -27,10 +27,11 @@
 
 .language {
     @include font_default;
-    font-weight: 500;
+    font-weight: 700;
     letter-spacing: -0.57px;
     color: #333333;
     text-decoration: underline;
+    margin-bottom: 3px;
     margin-left: 30px;
 }
 
@@ -50,14 +51,16 @@
     font-weight: bold;
     color: #333333;
     margin-left: 30px;
-    margin-top: 2px;
+    text-decoration: none;
 }
 
 .description {
     @include font_default;
     color: #898989;
-    margin-left: 30px;
-    margin-top: 8px;
+    font-size: 15px;
+    margin: 16px 30px;
+    width: 500px;
+    height: 102px;
 }
 
 
@@ -66,7 +69,7 @@
 .statusBox {
     position: absolute;
     width: 736px;
-    height: 69px;
+    height: 60px;
     bottom: 0;
     display: inline-flex;
     align-items: center;
