@@ -11,7 +11,7 @@ import styles from 'scss/components/Card.module.scss';
 import pageStyles from 'scss/pages.module.scss';
 
 const DashReviewer = () => {
-  const [isReviewers, setIsReviewers] = useState(true);
+  const [isReviewers, setIsReviewers] = useState(false);
   const reviews = useSelector((state: StoreState) =>
     isReviewers ? state.review.reviews : state.review.userReviews,
   );
@@ -41,17 +41,17 @@ const DashReviewer = () => {
           <div className={styles.reviewerBox}>
             <div
               className={cx(styles.findReviews, {
-                [styles.selected]: isReviewers,
+                [styles.selected]: !isReviewers,
               })}
-              onClick={handleReviewersClick}
+              onClick={handleReviewsClick}
             >
               리뷰를 기다리는 코드
             </div>
             <div
               className={cx(styles.historyReviews, {
-                [styles.selected]: !isReviewers,
+                [styles.selected]: isReviewers,
               })}
-              onClick={handleReviewsClick}
+              onClick={handleReviewersClick}
             >
               나의 코드 리뷰
             </div>
