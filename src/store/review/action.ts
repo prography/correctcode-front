@@ -26,7 +26,6 @@ export const getReviewsEntity = createEntity(GetReviewsActions, getReviews);
 export const getReviewsSaga = () => ({
   type: GetReviewsActions.saga,
 });
-export type getReviewsSaga = ReturnType<typeof getReviewsSaga>;
 
 export const getUserReviewsEntity = createEntity(
   GetUserReviewsActions,
@@ -36,13 +35,15 @@ export const getUserReviewsSaga = (userType: UserType) => ({
   type: GetUserReviewsActions.saga,
   userType,
 });
-export type getUserReviewsSaga = ReturnType<typeof getUserReviewsSaga>;
 
 export const createReviewEntity = createEntity(
   CreateReviewActions,
   createReview,
 );
 export const createReviewSaga = () => ({ type: CreateReviewActions.saga });
+
+export type GetReviewsSaga = ReturnType<typeof getReviewsSaga>;
+export type GetUserReviewsSaga = ReturnType<typeof getUserReviewsSaga>;
 export type CreateReviewSaga = ReturnType<typeof createReviewSaga>;
 
 type ReviewAction =

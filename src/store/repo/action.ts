@@ -10,6 +10,7 @@ export enum GetReposActions {
 
 export const getReposEntity = createEntity(GetReposActions, getRepos);
 export const getReposSaga = () => ({ type: GetReposActions.saga });
+
 export type GetReposSaga = ReturnType<typeof getReposSaga>;
 
 type RepoAction = EntityActions<typeof getReposEntity>;
