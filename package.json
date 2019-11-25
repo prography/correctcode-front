@@ -12,6 +12,7 @@
     "@types/react-router-dom": "^5.1.0",
     "axios": "^0.19.0",
     "classnames": "^2.2.6",
+    "date-fns": "^2.8.1",
     "immer": "^4.0.2",
     "lodash.debounce": "^4.0.8",
     "node-sass": "^4.12.0",

@@ -1,5 +1,6 @@
 import { createReview, getReviewList } from 'api/review';
 import { createEntity } from 'utils/redux';
+import { ReviewType } from 'models/review';
 
 export enum GetReviewsActions {
   saga = 'GET_REVIEWS_SAGA',
@@ -16,7 +17,10 @@ export enum CreateReviewActions {
 }
 
 export const getReviewsEntity = createEntity(GetReviewsActions, getReviewList);
-export const getReviewsSaga = () => ({ type: GetReviewsActions.saga });
+export const getReviewsSaga = (reviewType: ReviewType) => ({
+  type: GetReviewsActions.saga,
+  reviewType,
+});
 export type getReviewsSaga = ReturnType<typeof getReviewsSaga>;
 
 export const createReviewEntity = createEntity(
