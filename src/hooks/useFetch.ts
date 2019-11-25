@@ -69,9 +69,9 @@ const useFetch = <Params extends any[], Res>(
         dispatch(successAction(res));
       })
       .catch(err => {
-        console.log('ff');
         dispatch(failureAction(err));
       });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [...deps, dispatch]);
 
   return {

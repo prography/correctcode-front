@@ -13,17 +13,6 @@ type Props = {
   repo: Repo;
 };
 
-const MOCK_BRANCH = [
-  {
-    value: 'master',
-    text: 'master',
-  },
-  {
-    value: 'develop',
-    text: 'develop',
-  },
-];
-
 const MOCK_TAG = [
   {
     value: 'javascript',

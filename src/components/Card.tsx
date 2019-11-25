@@ -1,6 +1,5 @@
 import React from 'react';
 import { Review } from 'models/review';
-import { format } from 'date-fns';
 import styles from 'scss/components/Card.module.scss';
 
 type Props = {

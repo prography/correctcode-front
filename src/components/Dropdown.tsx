@@ -35,7 +35,7 @@ const Dropdown: React.FC<Props> = ({
   };
   return (
     <div {...props} className={classnames(props.className, styles.container)}>
-      <a href="#" className={styles.trigger} onClick={handleTriggerClick}>
+      <button className={styles.trigger} onClick={handleTriggerClick}>
         <span
           className={classnames(styles.text, {
             [styles.placeholder]: !selected,
@@ -44,7 +44,7 @@ const Dropdown: React.FC<Props> = ({
           {selected || placeholder}
         </span>
         <i className={classnames('fas fa-chevron-down', styles.icon)}></i>
-      </a>
+      </button>
       <ul
         className={classnames(styles.list, {
           [styles.isActive]: open,

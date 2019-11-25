@@ -17,10 +17,10 @@ const Nav: React.FC<Props> = ({ isStartPage = false }) => {
     >
       <div className={styles.innerBox}>
         <div className={styles.left}>
-          <img src={logo} className={styles.logo} />
+          <img src={logo} className={styles.logo} alt="logo" />
         </div>
         <div className={styles.profile}>
-          <img src={profileImg} className={styles.profileImg} />
+          <img src={profileImg} className={styles.profileImg} alt="profile" />
           <span>George</span>
         </div>
       </div>

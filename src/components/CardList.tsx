@@ -1,6 +1,4 @@
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { getReviewsSaga } from 'store/review/action';
+import React from 'react';
 import { Review } from 'models/review';
 import Card from './Card';
 import CardRequest from './CardRequest';

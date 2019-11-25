@@ -11,7 +11,6 @@ const Home = () => {
     (state: StoreState) => state.auth.user.isLoggedIn,
   );
   const authStatus = useSelector((state: StoreState) => state.auth.meStatus);
-  const email = useSelector((state: StoreState) => state.auth.user.email);
 
   if (authStatus === 'INIT' || authStatus === 'FETCHING') {
     return null;
@@ -22,7 +21,7 @@ const Home = () => {
   return (
     <div className={styles.homeBody}>
       <div className={styles.centerDiv}>
-        <img src={logo} className={styles.homeLogo} />
+        <img src={logo} className={styles.homeLogo} alt="home logo" />
         <p className={styles.homeSlogan}>
           당신의 코드를 완벽하게! <br />
           지금 바로 코드 리뷰를 받아보세요
@@ -30,7 +29,11 @@ const Home = () => {
         <div className={styles.bottomDivs}>
           <a href="/api/auth/github" className={styles.signInAnchor}>
             <div className={styles.signIn}>
-              <img src={githubLogo} className={styles.githubLogo} />
+              <img
+                src={githubLogo}
+                className={styles.githubLogo}
+                alt="github logo"
+              />
               <p>Sign-in with Github</p>
             </div>
 
@@ -47,7 +50,11 @@ const Home = () => {
               레포 만들기 테스트 링크 ^^
             </Link>
           </a>
-          <img src={backgroundLogo} className={styles.backgroundLogo} />
+          <img
+            src={backgroundLogo}
+            className={styles.backgroundLogo}
+            alt="logo"
+          />
         </div>
       </div>
     </div>
