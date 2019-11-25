@@ -7,9 +7,11 @@ export const createReview = async (repoId: string) => {
 };
 
 export const getReviewList = async (userId: string, reviewType: ReviewType) => {
-  const route = reviewType === ReviewType.REVIEWEE ? 'reviewees' : 'reviewers';
-  const { data } = await fetcher.get<{ data: Review[] }>(
-    `${route}/${userId}/reviews`,
-  );
+  const { data } =
+    reviewType === ReviewType.REVIEWEE
+      ? await fetcher.get<{ data: Review[] }>(`reviewees/${userId}/reviews`)
+      : reviewType === ReviewType.REVIEWER
+      ? await fetcher.get<{ data: Review[] }>(`reviews`)
+      : await fetcher.get<{ data: Review[] }>(`reviewers/1/reviews`);
   return data.data;
 };

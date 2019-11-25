@@ -18,6 +18,7 @@ export type Review = {
 };
 
 export enum ReviewType {
-  REVIEWER = 'reviewer',
   REVIEWEE = 'reviewee',
+  REVIEWER = 'reviewer',
+  REVIEWER_DONE = 'reviewerDone',
 }
