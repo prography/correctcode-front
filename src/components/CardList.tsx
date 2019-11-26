@@ -6,14 +6,15 @@ import styles from 'scss/components/Card.module.scss';
 
 type Props = {
   reviews: Review[];
+  userType: string;
 };
 
-const CardList: React.FC<Props> = ({ reviews }) => {
+const CardList: React.FC<Props> = ({ reviews, userType }) => {
   return (
     <div className={styles.cardList}>
       <CardRequest />
       {reviews.map(review => (
-        <Card key={review.id} review={review} />
+        <Card key={review.id} review={review} userType={userType} />
       ))}
     </div>
   );

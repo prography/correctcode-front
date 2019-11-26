@@ -56,7 +56,7 @@ const DashReviewer = () => {
               나의 코드 리뷰
             </div>
           </div>
-          <CardList reviews={reviews} />
+          <CardList reviews={reviews} userType={UserType.REVIEWER} />
         </div>
       </div>
     </div>
