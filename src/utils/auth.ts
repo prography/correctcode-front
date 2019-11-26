@@ -1,4 +1,4 @@
-const TOKEN_KEY = 'corret-code-token-key';
+const TOKEN_KEY = process.env.STORAGE_TOKEN_KEY as string;
 
 export const getAuthToken = () => {
   return localStorage.getItem(TOKEN_KEY);

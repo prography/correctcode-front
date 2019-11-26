@@ -1,0 +1,13 @@
+@import 'scss/base.scss';
+
+.page {
+  min-height: 100vh;
+}
+
+.isStartPage {
+  background-color: $green-black;
+}
+
+.fakeNav {
+  height: 80px;
+}

@@ -4,7 +4,7 @@ import styles from 'scss/components/SideBar.module.scss';
 const SideBar = () => {
   return (
     <div className={styles.SideBarBox}>
-      <img src={profileImg} />
+      <img src={profileImg} alt="profile" />
       <p className={styles.name}>name</p>
       <p className={styles.description}>descriptrion</p>
     </div>

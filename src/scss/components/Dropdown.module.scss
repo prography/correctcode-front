@@ -1,0 +1,57 @@
+@import 'scss/base.scss';
+
+.container {
+  width: 100%;
+  position: relative;
+}
+.placeholder {
+  color: $gray;
+}
+.trigger {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  color: inherit;
+  border: none;
+  background-color: inherit;
+  font: inherit;
+  cursor: pointer;
+  outline: none;
+  .text {
+    flex: 1;
+    text-overflow: ellipsis;
+  }
+}
+.list {
+  display: none;
+}
+.list.isActive {
+  z-index: 1;
+  display: block;
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  top: 30px;
+  width: 100%;
+  max-height: 200px;
+  overflow-y: auto;
+  background-color: $white;
+  border-radius: $card-border-radius;
+  box-shadow: $card-box-shadow;
+}
+
+.listItem {
+  padding: 10px;
+  z-index: 1;
+  border-bottom: 1px solid $gray-light;
+  cursor: pointer;
+
+  &:last-child {
+    border: none;
+  }
+
+  &:hover {
+    opacity: 0.7;
+  }
+}

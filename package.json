@@ -5,23 +5,26 @@
   "dependencies": {
     "@types/classnames": "^2.2.9",
     "@types/jest": "24.0.18",
+    "@types/lodash.debounce": "^4.0.6",
     "@types/node": "12.7.5",
     "@types/react-dom": "16.9.0",
     "@types/react-redux": "^7.1.2",
     "@types/react-router-dom": "^5.1.0",
     "axios": "^0.19.0",
     "classnames": "^2.2.6",
+    "date-fns": "^2.8.1",
     "immer": "^4.0.2",
+    "lodash.debounce": "^4.0.8",
     "node-sass": "^4.12.0",
     "query-string": "^6.8.3",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-redux": "^7.1.1",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "3.1.1",
+    "react-scripts": "^3.3.0-next.62",
     "redux": "^4.0.4",
     "redux-saga": "^1.1.1",
-    "typescript": "3.6.3"
+    "typescript": "^3.7.2"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -38,7 +41,7 @@
     }
   },
   "lint-staged": {
-    "src/**.{ts,tsx,js,jsx}": [
+    "src/*.{ts,tsx,js,jsx}": [
       "eslint --fix",
       "prettier --write",
       "git add"
@@ -58,8 +61,9 @@
   },
   "devDependencies": {
     "@types/react": "^16.9.2",
-    "husky": "^3.0.5",
+    "http-proxy-middleware": "^0.20.0",
+    "husky": "^3.1.0",
     "lint-staged": "^9.4.2",
-    "prettier": "^1.18.2"
+    "prettier": "^1.19.1"
   }
 }

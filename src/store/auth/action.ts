@@ -1,4 +1,4 @@
-import { login, me } from 'store/auth/api';
+import { login, me } from 'api/auth';
 import { createEntity } from 'utils/redux';
 
 export enum LoginAction {
@@ -17,10 +17,11 @@ export enum MeAction {
 
 export const loginEntity = createEntity(LoginAction, login);
 export const loginSaga = () => ({ type: LoginAction.saga });
-export type LoginSaga = ReturnType<typeof loginSaga>;
 
 export const meEntity = createEntity(MeAction, me);
 export const meSaga = () => ({ type: MeAction.saga });
+
+export type LoginSaga = ReturnType<typeof loginSaga>;
 export type MeSaga = ReturnType<typeof meSaga>;
 
 type AuthAction =

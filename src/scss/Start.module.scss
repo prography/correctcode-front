@@ -1,0 +1,25 @@
+@import 'scss/base.scss';
+
+.container {
+  width: 1120px;
+  margin: 24px auto;
+  padding: 40px 20px;
+  background-color: $white;
+
+  border-radius: $card-border-radius;
+  box-shadow: $card-box-shadow;
+}
+
+.inner {
+  width: 740px;
+  margin: auto;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  color: $black-light;
+
+  padding: 100px 0;
+}

@@ -1,44 +1,49 @@
-@import "scss/_font";
+@import 'scss/base.scss';
 
 .NavBox {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    height: 80px;
-    background-color: #fff;
-    display: flex;
-    align-items: center;
-    z-index: 1;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 80px;
+  color: #333;
+  background-color: #fff;
+  z-index: 1;
 }
 
-.logo {
-    padding-left: 160px;
-    width: 214px;
-    height: 40px;
+.isStartPage {
+  color: $white;
+  background-color: $green-black;
+}
 
+.innerBox {
+  height: 100%;
+  margin: 0 120px;
+  display: flex;
+  align-items: center;
+}
+.left {
+  flex: 1;
+  .logo {
+    width: 214px;
+    height: auto;
+  }
 }
 
 .profile {
-    float: right;
-    width: auto;
-    height: 48px;
-    display: flex;
-    align-items: center;
-    padding-right: 167px;
-    margin-left: auto;
+  width: auto;
+  height: 48px;
+  display: flex;
+  align-items: center;
 
-    p {
-        @include font_default;
-        font-size: 18px;
-        font-weight: 500;
-        color: #333;
-        margin: 0px 0px 0px 8px;
+  span {
+    display: inline-block;
+    font-size: 18px;
+    font-weight: 500;
+    margin-left: 10px;
+  }
 
-    }
-
-    .profileImg {
-        width: 48px;
-        height: 48px;
-
-    }
+  .profileImg {
+    width: 36px;
+    height: 36px;
+  }
 }

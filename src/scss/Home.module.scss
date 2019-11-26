@@ -34,13 +34,13 @@
 }
 
 .bottomDivs {
-	width: 83%;
+	width: 100%;
 	display: flex;
 	position: absolute;
 	bottom: 80px;
 	justify-content: space-between;
 	align-items: flex-end;
-	padding: 0px 30px 0px 117px;
+	padding: 0px 100px 0px 117px;
 }
 
 .signInAnchor {
@@ -49,7 +49,7 @@
 
 .signIn {
 	width: 280px;
-	height: auto;
+	height: 65px;
 	border-radius: 40px;
 	background-color: #ffffff;
 	cursor: pointer;

@@ -1,0 +1,70 @@
+@import 'scss/base.scss';
+
+.container {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+}
+
+.wrapper {
+  flex: 1;
+  & .circle {
+    background-color: $gray-light;
+  }
+  & .line:after {
+    background-color: $gray-light;
+  }
+}
+.isActiveCircle {
+  & .circle {
+    background-color: $green-light;
+  }
+}
+.isActiveLine {
+  & .line:after {
+    background-color: $green-light;
+  }
+}
+
+.step {
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.circle {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  z-index: 2;
+}
+
+.line {
+  width: 100%;
+  position: absolute;
+  top: 2px;
+  z-index: -1;
+  &::after {
+    content: '';
+    display: inline-block;
+    width: calc(100% - 20px);
+    height: 7px;
+    margin-left: calc(100% - 110px);
+  }
+}
+
+.text {
+  margin-top: 10px;
+  & > div {
+    text-align: center;
+  }
+  .stepIndex {
+    font-weight: bold;
+    color: $black-light;
+  }
+  .description {
+    color: $gray;
+  }
+}
