@@ -5,7 +5,7 @@ import {
   Route,
   useLocation,
 } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { meSaga } from 'store/auth/action';
 
 import { PageLayout, Nav } from 'components';
@@ -36,11 +36,22 @@ const Pages = () => {
 };
 
 const App: React.FC = () => {
+  const user = useSelector((state: StoreState) => state.auth.user);
+  const isAuthenticating = useSelector(
+    (state: StoreState) => state.auth.meStatus === 'FETCHING',
+  );
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(meSaga());
   }, [dispatch]);
+
+  if (isAuthenticating) {
+    return null;
+  }
+  if (!user.isLoggedIn) {
+    return <Home />;
+  }
 
   return (
     <Router>

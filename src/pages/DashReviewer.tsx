@@ -1,24 +1,35 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import cx from 'classnames';
 import Nav from 'components/Nav';
 import SideBar from 'components/SideBar';
 import CardList from 'components/CardList';
-import { ReviewType } from 'models/review';
+import { getReviewsSaga, getUserReviewsSaga } from 'store/review/action';
+import { UserType } from 'models/review';
 
 import styles from 'scss/components/Card.module.scss';
 import pageStyles from 'scss/pages.module.scss';
 
 const DashReviewer = () => {
-  const [reviewerSelect, setReviewerSelect] = useState(ReviewType.REVIEWER);
-  const selectSearch = () => {
-    if (reviewerSelect === ReviewType.REVIEWER_DONE) {
-      setReviewerSelect(ReviewType.REVIEWER);
+  const [isReviewers, setIsReviewers] = useState(false);
+  const reviews = useSelector((state: StoreState) =>
+    isReviewers ? state.review.reviews : state.review.userReviews,
+  );
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (isReviewers) {
+      dispatch(getUserReviewsSaga(UserType.REVIEWER));
+    } else {
+      dispatch(getReviewsSaga());
     }
+  }, [dispatch, isReviewers]);
+
+  const handleReviewersClick = () => {
+    setIsReviewers(true);
   };
-  const selectDone = () => {
-    if (reviewerSelect === ReviewType.REVIEWER) {
-      setReviewerSelect(ReviewType.REVIEWER_DONE);
-    }
+  const handleReviewsClick = () => {
+    setIsReviewers(false);
   };
 
   return (
@@ -29,31 +40,23 @@ const DashReviewer = () => {
         <div style={{ display: 'inline-block', width: '816px' }}>
           <div className={styles.reviewerBox}>
             <div
-              className={cx(
-                styles.findReviews,
-                `${
-                  reviewerSelect === ReviewType.REVIEWER ? styles.selected : ''
-                }`,
-              )}
-              onClick={() => selectSearch()}
+              className={cx(styles.findReviews, {
+                [styles.selected]: !isReviewers,
+              })}
+              onClick={handleReviewsClick}
             >
               리뷰를 기다리는 코드
             </div>
             <div
-              className={cx(
-                styles.historyReviews,
-                `${
-                  reviewerSelect === ReviewType.REVIEWER_DONE
-                    ? styles.selected
-                    : ''
-                }`,
-              )}
-              onClick={() => selectDone()}
+              className={cx(styles.historyReviews, {
+                [styles.selected]: isReviewers,
+              })}
+              onClick={handleReviewersClick}
             >
               나의 코드 리뷰
             </div>
           </div>
-          <CardList reviewType={reviewerSelect} />
+          <CardList reviews={reviews} />
         </div>
       </div>
     </div>
