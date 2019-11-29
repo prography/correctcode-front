@@ -15,6 +15,14 @@ export type Review = {
   startedAt: string;
   endedAt: string;
   commentCount: string;
+  reviewee: {
+    name: string;
+    profileImg: string;
+  };
+  reviewer: {
+    name: string;
+    profileImg: string;
+  };
 };
 
 export enum UserType {

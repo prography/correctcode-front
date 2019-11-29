@@ -1,197 +1,204 @@
-@import "scss/_variables";
-@import "scss/_font";
+@import 'scss/_variables';
+@import 'scss/_font';
 
 // 박스 세팅
 @mixin card-setting {
-    width: 736px;
-    border-radius: 6px;
-    box-shadow: 2px 2px 9px 0 rgba(157, 157, 157, 0.35);
-    display: inline-block;
-    margin-bottom: 26px;
-    position: relative;
-    padding: 28px 0px 20px 0px;
+  width: 736px;
+  border-radius: 6px;
+  box-shadow: 2px 2px 9px 0 rgba(157, 157, 157, 0.35);
+  display: inline-block;
+  margin-bottom: 26px;
+  position: relative;
+  padding: 28px 0px 20px 0px;
 }
 
 .box {
-    @include card-setting;
-    height: 248px;
-    background-color: #ffffff;
+  @include card-setting;
+  height: 248px;
+  background-color: #ffffff;
 
-    :first-child {
-        display: flex;
-        align-items: center;
-    }
+  :first-child {
+    display: flex;
+    align-items: center;
+  }
 }
 
 //박스 내용물
 
 .language {
-    @include font_default;
-    font-weight: 700;
-    letter-spacing: -0.57px;
-    color: #333333;
-    text-decoration: underline;
-    margin-bottom: 3px;
-    margin-left: 30px;
+  @include font_default;
+  font-weight: 700;
+  letter-spacing: -0.57px;
+  color: #333333;
+  text-decoration: underline;
+  margin-bottom: 3px;
+  margin-left: 30px;
 }
 
-
 .time {
-    @include font_default;
-    letter-spacing: -0.57px;
-    color: #333333;
-    float: right;
-    margin-right: 26px;
-    margin-left: auto;
+  @include font_default;
+  letter-spacing: -0.57px;
+  color: #333333;
+  float: right;
+  margin-right: 26px;
+  margin-left: auto;
 }
 
 .repo {
-    @include font_default;
-    font-size: 18px;
-    font-weight: bold;
-    color: #333333;
-    margin-left: 30px;
-    text-decoration: none;
+  @include font_default;
+  font-size: 18px;
+  font-weight: bold;
+  color: #333333;
+  margin-left: 30px;
+  text-decoration: none;
 }
 
 .description {
-    @include font_default;
-    color: #898989;
-    font-size: 15px;
-    margin: 16px 30px;
-    width: 500px;
-    height: 102px;
+  @include font_default;
+  color: #898989;
+  font-size: 15px;
+  margin: 16px 30px;
+  width: 500px;
+  height: 102px;
 }
-
-
 
 //상태 박스
 .statusBox {
-    position: absolute;
-    width: 736px;
-    height: 60px;
-    bottom: 0;
-    display: inline-flex;
-    align-items: center;
-    background: #F9F9F9;
-    border-radius: 0 0 6px 6px;
+  position: absolute;
+  width: 736px;
+  height: 60px;
+  bottom: 0;
+  display: inline-flex;
+  align-items: center;
+  background: #f9f9f9;
+  border-radius: 0 0 6px 6px;
 }
 
 .profileImg {
-    width: 34px;
-    height: 34px;
-    border-radius: 17px;
-    background-color: #333333;
-    margin-left: 30px;
+  width: 34px;
+  height: 34px;
+  border-radius: 17px;
+  background-color: #333333;
+  margin-left: 30px;
 }
 
 .user {
-    @include font_default;
-    letter-spacing: -0.57px;
-    color: #333333;
-    margin-left: 8px;
+  @include font_default;
+  letter-spacing: -0.57px;
+  color: #333333;
+  margin-left: 8px;
 }
 
 .statusColor {
-    margin-left: auto;
-    width: 24px;
-    height: 24px;
-    border-radius: 4px;
-    border: solid 1px #10741d;
-    float: right;
+  margin-left: auto;
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  border: solid 1px #10741d;
+  float: right;
+  &.completed {
+    background-color: #0f741e;
+  }
 }
 
 .status {
-    @include font_default;
-    font-size: 14px;
-    font-weight: bold;
-    color: #0f741e;
-    float: right;
-    margin-right: 26px;
-    margin-left: 8px;
+  @include font_default;
+  font-size: 14px;
+  font-weight: bold;
+  color: #0f741e;
+  float: right;
+  margin-right: 26px;
+  margin-left: 8px;
+}
+
+.revieweePending {
+  @include font_default;
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: -0.57px;
+  color: #0f741e;
+  padding-left: 32px;
 }
 
 //CardList
 .cardList {
-    margin-left: 80px;
-    float: left;
-
+  margin-left: 80px;
+  float: left;
 }
 
-//box_new 
+//box_new
 .box_request {
-    @include card-setting;
-    height: 152px;
-    background-color: $green-light;
+  @include card-setting;
+  height: 200px;
+  background-color: $green-light;
 
-    p {
-        color: #ffffff;
-        margin: -2px 0px 8px 30px;
+  p {
+    color: #ffffff;
+    margin: -2px 0px 8px 30px;
+  }
+
+  .requestTitle {
+    font-size: 22px;
+    font-weight: bold;
+  }
+
+  .requestButton {
+    width: 150px;
+    height: 40px;
+    background-color: #0dba8d;
+    color: #fff;
+    font-weight: bold;
+    border: 0px solid;
+    margin: 20px 0px 0px 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: darken(#0dba8d, 10%);
     }
-
-    .requestTitle {
-        font-size: 22px;
-        font-weight: bold;
-    }
-
-    .requestButton {
-        width: 150px;
-        height: 40px;
-        background-color: #0DBA8D;
-        color: #fff;
-        font-weight: bold;
-        border: 0px solid;
-        margin: 20px 0px 0px 30px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        cursor: pointer;
-        transition: background-color 0.2s ease;
-
-        &:hover {
-            background-color: darken(#0DBA8D, 10%);
-        }
-    }
+  }
 }
 
 //reviewerDash 에서 사용하는 리뷰 찾기 or 내가 한 리뷰 구분하는 버튼
 
 @mixin reviewsDetail {
-    width: 368px;
-    height: 62px;
-    background-color: #EAEAEA;
-    border: 1px solid #EAEAEA;
-    color: #898989;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
+  width: 368px;
+  height: 62px;
+  background-color: #eaeaea;
+  border: 1px solid #eaeaea;
+  color: #898989;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
 
-    &.selected {
-        background-color: $green-light;
-        border: 1px solid $green-light;
-        color: #fff;
-    }
+  &.selected {
+    background-color: $green-light;
+    border: 1px solid $green-light;
+    color: #fff;
+  }
 }
 
 .reviewerBox {
+  width: 736px;
+  height: 62px;
+  border-radius: 6px;
+  display: flex;
+  font-size: 19px;
+  font-weight: bold;
+  margin-left: 80px;
+  margin-bottom: 35px;
 
-    width: 736px;
-    height: 62px;
-    border-radius: 6px;
-    display: flex;
-    font-size: 19px;
-    font-weight: bold;
-    margin-left: 80px;
-    margin-bottom: 35px;
+  .findReviews {
+    @include reviewsDetail;
+    border-radius: 6px 0 0 6px;
+  }
 
-    .findReviews {
-        @include reviewsDetail;
-        border-radius: 6px 0 0 6px;
-    }
-
-    .historyReviews {
-        @include reviewsDetail;
-        border-radius: 0 6px 6px 0;
-    }
+  .historyReviews {
+    @include reviewsDetail;
+    border-radius: 0 6px 6px 0;
+  }
 }

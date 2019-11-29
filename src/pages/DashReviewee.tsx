@@ -18,7 +18,7 @@ const DashReviewee = () => {
       <Nav />
       <div className={pageStyles.underNav}>
         <SideBar />
-        <CardList reviews={reviews} />
+        <CardList reviews={reviews} userType={UserType.REVIEWEE} />
       </div>
     </div>
   );
