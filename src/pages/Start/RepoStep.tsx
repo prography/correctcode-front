@@ -2,7 +2,7 @@ import React, { useEffect, useState, useMemo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import classnames from 'classnames';
 import { getReposSaga } from 'store/repo/action';
-import { RepoItem } from 'components';
+import { RepoItem, EmptySection } from 'components';
 import { APP_NAME } from 'constants/github';
 import profileImg from 'assets/img/TemporaryProfileImg.png';
 
@@ -12,15 +12,18 @@ const RepoStep = () => {
   const [searchWord, setSearchWord] = useState('');
   const username = useSelector((state: StoreState) => state.auth.user.name);
   const repos = useSelector((state: StoreState) => state.repo.repos);
-  const dispatch = useDispatch();
-
-  const handleSearchWordChange = (e: React.ChangeEvent<HTMLInputElement>) =>
-    setSearchWord(e.target.value);
-
   const repoResults = useMemo(
     () => repos.filter(({ name }) => name.match(searchWord)),
     [repos, searchWord],
   );
+  const isFetching = useSelector(
+    (state: StoreState) => state.repo.getReposStatus === 'FETCHING',
+  );
+  const isEmpty = !isFetching && repoResults.length === 0;
+  const dispatch = useDispatch();
+
+  const handleSearchWordChange = (e: React.ChangeEvent<HTMLInputElement>) =>
+    setSearchWord(e.target.value);
 
   useEffect(() => {
     dispatch(getReposSaga());
@@ -44,6 +47,7 @@ const RepoStep = () => {
         </div>
       </div>
       <div className={styles.repoListBody}>
+        {isEmpty && <EmptySection message="등록된 Repository가 없어요." />}
         {repoResults.map(repo => (
           <RepoItem key={repo.id} {...repo} />
         ))}
