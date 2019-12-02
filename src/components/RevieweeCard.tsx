@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Review } from 'models/review';
 import cx from 'classnames';
 import styles from 'scss/components/Card.module.scss';

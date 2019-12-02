@@ -1,6 +1,6 @@
 import React from 'react';
 import { Review, UserType } from 'models/review';
-import CardListNoti from './CardListNoti';
+import { CardListNoti } from 'components';
 import styles from 'scss/components/Card.module.scss';
 import RevieweeCard from './RevieweeCard';
 import ReviewerCard from './ReviewerCard';
@@ -19,9 +19,14 @@ const CardList: React.FC<Props> = ({ reviews, userType, isReviewers }) => {
         reviews={reviews}
         isReviewers={!!isReviewers}
       />
-      {reviews.map(review => (
-        <ReviewerCard key={review.id} review={review} />
-      ))}
+
+      {userType === UserType.REVIEWEE
+        ? reviews.map(review => (
+            <RevieweeCard key={review.id} review={review} />
+          ))
+        : reviews.map(review => (
+            <ReviewerCard key={review.id} review={review} />
+          ))}
     </div>
   );
 };

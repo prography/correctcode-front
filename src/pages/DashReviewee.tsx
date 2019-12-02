@@ -1,8 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Nav from 'components/Nav';
-import CardList from 'components/CardList';
-import SideBar from 'components/SideBar';
+import { Nav, CardList, SideBar } from 'components';
 import pageStyles from 'scss/pages.module.scss';
 import { UserType } from 'models/review';
 import { getUserReviewsSaga } from 'store/review/action';
