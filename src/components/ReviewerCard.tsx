@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Review } from 'models/review';
 import cx from 'classnames';
+import fromUnixTime from 'date-fns/fromUnixTime';
 import styles from 'scss/components/Card.module.scss';
 
 type Props = {
