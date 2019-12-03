@@ -47,7 +47,9 @@ const ReviewerCard: React.FC<Props> = ({ review }) => {
           <p className={styles.language}>Language Name</p>
           <p className={styles.time}>{Date.parse(review.createdAt)}</p>
         </div>
-        <p className={styles.repo}>{review.repositoryUrl}</p>
+        <a className={styles.repo} href={review.repositoryUrl}>
+          {review.head}
+        </a>
         <p className={styles.description}>{review.description}</p>
         <PendingCard review={review} />
       </div>
@@ -59,7 +61,9 @@ const ReviewerCard: React.FC<Props> = ({ review }) => {
         <p className={styles.language}>Language Name</p>
         <p className={styles.time}>{Date.parse(review.createdAt)}</p>
       </div>
-      <p className={styles.repo}>{review.repositoryUrl}</p>
+      <a className={styles.repo} href={review.repositoryUrl}>
+        {review.head}
+      </a>
       <p className={styles.description}>{review.description}</p>
       <MatchedCard review={review} />
     </div>

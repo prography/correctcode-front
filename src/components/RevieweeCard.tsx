@@ -35,7 +35,9 @@ const RevieweeCard: React.FC<Props> = ({ review }) => {
           <p className={styles.language}>Language Name</p>
           <p className={styles.time}>{Date.parse(review.createdAt)}</p>
         </div>
-        <p className={styles.repo}>{review.repositoryUrl}</p>
+        <a className={styles.repo} href={review.repositoryUrl}>
+          {review.head}
+        </a>
         <p className={styles.description}>{review.description}</p>
         <div className={styles.statusBox}>
           <p className={styles.revieweePending}>리뷰어를 기다리고 있어요.</p>
@@ -49,7 +51,9 @@ const RevieweeCard: React.FC<Props> = ({ review }) => {
         <p className={styles.language}>Language Name</p>
         <p className={styles.time}>{Date.parse(review.createdAt)}</p>
       </div>
-      <p className={styles.repo}>{review.repositoryUrl}</p>
+      <a className={styles.repo} href={review.repositoryUrl}>
+        {review.head}
+      </a>
       <p className={styles.description}>{review.description}</p>
       <MatchedCard review={review} />
     </div>
