@@ -6,7 +6,7 @@ import { UserType } from 'models/review';
 import { getUserReviewsSaga } from 'store/review/action';
 
 const DashReviewee = () => {
-  const reviews = useSelector((state: StoreState) => state.review.userReviews);
+  const reviews = useSelector((state: StoreState) => state.review.reviews);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getUserReviewsSaga(UserType.REVIEWEE));

@@ -18,6 +18,7 @@ const initialState: AuthState = {
     displayName: '',
     email: '',
     isLoggedIn: false,
+    profileImg: '',
   },
   loginStatus: 'INIT',
   meStatus: 'INIT',

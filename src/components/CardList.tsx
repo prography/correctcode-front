@@ -1,9 +1,7 @@
 import React from 'react';
 import { Review, UserType } from 'models/review';
-import { CardListNoti } from 'components';
+import { CardListNoti, RevieweeCard, ReviewerCard } from 'components';
 import styles from 'scss/components/Card.module.scss';
-import RevieweeCard from './RevieweeCard';
-import ReviewerCard from './ReviewerCard';
 
 type Props = {
   reviews: Review[];
@@ -19,7 +17,6 @@ const CardList: React.FC<Props> = ({ reviews, userType, isReviewers }) => {
         reviews={reviews}
         isReviewers={!!isReviewers}
       />
-
       {userType === UserType.REVIEWEE
         ? reviews.map(review => (
             <RevieweeCard key={review.id} review={review} />

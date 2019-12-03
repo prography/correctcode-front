@@ -1,4 +1,6 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+
 import classnames from 'classnames';
 import styles from 'scss/components/Nav.module.scss';
 import logo from 'assets/img/logo.png';
@@ -9,6 +11,7 @@ type Props = {
 };
 
 const Nav: React.FC<Props> = ({ isStartPage = false }) => {
+  const user = useSelector((state: StoreState) => state.auth.user);
   return (
     <div
       className={classnames(styles.NavBox, {
@@ -20,8 +23,12 @@ const Nav: React.FC<Props> = ({ isStartPage = false }) => {
           <img src={logo} className={styles.logo} alt="logo" />
         </div>
         <div className={styles.profile}>
-          <img src={profileImg} className={styles.profileImg} alt="profile" />
-          <span>George</span>
+          <img
+            src={user.profileImg ? user.profileImg : profileImg}
+            className={styles.profileImg}
+            alt="profile"
+          />
+          <span>{user.displayName}</span>
         </div>
       </div>
     </div>
