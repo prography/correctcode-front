@@ -1,61 +1,64 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Review } from 'models/review';
 import cx from 'classnames';
 import styles from 'scss/components/Card.module.scss';
-import fromUnixTime from 'date-fns/fromUnixTime';
+import dateFormat from 'date-fns/format';
 
-type Props = {
-  review: Review;
-};
+type Props = Review;
+type MatchedCardProps = Pick<Review, 'reviewer' | 'status'>;
 
-const MatchedCard = ({ review }: Props) => {
+const PendingCard: FC = () => (
+  <div className={styles.statusBox}>
+    <p className={styles.revieweePending}>리뷰어를 기다리고 있어요.</p>
+  </div>
+);
+const MatchedCard: FC<MatchedCardProps> = ({ reviewer, status }) => {
   return (
     <div className={styles.statusBox}>
       <img
         className={styles.profileImg}
-        src={review.reviewer.profileImg}
-        alt="Profile Image"
+        src={reviewer.profileImg}
+        alt="Profile"
       />
-      <p className={styles.user}>{review.reviewer.name}</p>
+      <p className={styles.user}>{reviewer.name}</p>
       <div
         className={cx(styles.statusColor, {
-          [styles.completed]: review.status === 'completed',
+          [styles.completed]: status === 'completed',
         })}
       />
-      <div className={styles.status}>{review.status}</div>
+      <div className={styles.status}>{status}</div>
     </div>
   );
 };
 
-const RevieweeCard: React.FC<Props> = ({ review }) => {
-  if (review.status === 'pending') {
-    return (
-      <div className={styles.box}>
-        <div>
-          <p className={styles.language}>Language Name</p>
-          <p className={styles.time}>{Date.parse(review.createdAt)}</p>
-        </div>
-        <a className={styles.repo} href={review.repositoryUrl}>
-          {review.head}
-        </a>
-        <p className={styles.description}>{review.description}</p>
-        <div className={styles.statusBox}>
-          <p className={styles.revieweePending}>리뷰어를 기다리고 있어요.</p>
-        </div>
-      </div>
-    );
-  }
+const RevieweeCard: React.FC<Props> = ({
+  status,
+  reviewer,
+  createdAt = new Date(),
+  language = 'javascript',
+  head,
+  description,
+  repositoryUrl,
+}) => {
+  const isPending = status === 'pending';
+  const StatusComponent = isPending ? PendingCard : MatchedCard;
   return (
     <div className={styles.box}>
       <div>
-        <p className={styles.language}>Language Name</p>
-        <p className={styles.time}>{Date.parse(review.createdAt)}</p>
+        <p className={styles.language}>{language}</p>
+        <p className={styles.time}>{dateFormat(createdAt, 'yyyy-mm-dd')}</p>
       </div>
-      <a className={styles.repo} href={review.repositoryUrl}>
-        {review.head}
+      <a className={styles.repo} href={repositoryUrl}>
+        {head}
       </a>
-      <p className={styles.description}>{review.description}</p>
-      <MatchedCard review={review} />
+      <p className={styles.description}>{description}</p>
+      {isPending ? (
+        <div className={styles.statusBox}>
+          <p className={styles.revieweePending}>리뷰어를 기다리고 있어요.</p>
+        </div>
+      ) : (
+        <StatusComponent status={status} reviewer={reviewer} />
+      )}
     </div>
   );
 };

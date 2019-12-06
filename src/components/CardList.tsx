@@ -18,12 +18,8 @@ const CardList: React.FC<Props> = ({ reviews, userType, isReviewers }) => {
         isReviewers={!!isReviewers}
       />
       {userType === UserType.REVIEWEE
-        ? reviews.map(review => (
-            <RevieweeCard key={review.id} review={review} />
-          ))
-        : reviews.map(review => (
-            <ReviewerCard key={review.id} review={review} />
-          ))}
+        ? reviews.map(review => <RevieweeCard key={review.id} {...review} />)
+        : reviews.map(review => <ReviewerCard key={review.id} {...review} />)}
     </div>
   );
 };
