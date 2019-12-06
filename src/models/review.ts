@@ -2,7 +2,7 @@ export type ReviewStatus = 'ongoing' | 'pending' | 'completed';
 
 export type Review = {
   id: string;
-  createdAt: string;
+  createdAt: number;
   updatedAt: string;
   serviceId: string;
   serviceType: string;
@@ -17,6 +17,7 @@ export type Review = {
   startedAt: string;
   endedAt: string;
   commentCount: string;
+  language: string;
   reviewee: {
     name: string;
     profileImg: string;

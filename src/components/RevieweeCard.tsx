@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { Review } from 'models/review';
 import cx from 'classnames';
 import styles from 'scss/components/Card.module.scss';
-import fromUnixTime from 'date-fns/fromUnixTime';
+import dateFormat from 'date-fns/format';
 
 type Props = Review;
 type MatchedCardProps = Pick<Review, 'reviewer' | 'status'>;
@@ -34,7 +34,8 @@ const MatchedCard: FC<MatchedCardProps> = ({ reviewer, status }) => {
 const RevieweeCard: React.FC<Props> = ({
   status,
   reviewer,
-  createdAt,
+  createdAt = new Date(),
+  language = 'javascript',
   head,
   description,
   repositoryUrl,
@@ -44,8 +45,8 @@ const RevieweeCard: React.FC<Props> = ({
   return (
     <div className={styles.box}>
       <div>
-        <p className={styles.language}>Language Name</p>
-        <p className={styles.time}>{Date.parse(createdAt)}</p>
+        <p className={styles.language}>{language}</p>
+        <p className={styles.time}>{dateFormat(createdAt, 'yyyy-mm-dd')}</p>
       </div>
       <a className={styles.repo} href={repositoryUrl}>
         {head}
