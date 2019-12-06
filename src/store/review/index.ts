@@ -39,11 +39,6 @@ const reducer = createReducer<ReviewAction, ReviewState>(initialState, {
       draft.getReviewsStatus = 'SUCCESS';
     });
   },
-  [CreateReviewActions.success]: (state, action) => {
-    return produce(state, draft => {
-      draft.reviews = action.payload;
-    });
-  },
 });
 
 export default reducer;

@@ -27,6 +27,8 @@ export type Review = {
   };
 };
 
+export type NewReview = Pick<Review, 'title' | 'description' | 'head' | 'base'>;
+
 export enum UserType {
   REVIEWEE = 'reviewee',
   REVIEWER = 'reviewer',

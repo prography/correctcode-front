@@ -10,6 +10,7 @@ const RepoItem: FC<Repo> = ({ id, name }) => {
   const history = useHistory();
   const [ownername, reponame] = name.split('/');
   const handleClick = () => history.push(`/start/review/${id}`);
+
   return (
     <div className={styles.container} onClick={handleClick}>
       <img src={GithubIcon} alt="github" className={styles.githubIcon} />

@@ -1,9 +1,12 @@
 import fetcher from 'utils/fetcher';
-import { Review, UserType } from 'models/review';
+import { Review, UserType, NewReview } from 'models/review';
 
-export const createReview = async (repoId: string) => {
-  const { data } = await fetcher.post<any>(`/repositories/${repoId}/reviews`);
-  return data;
+export const createReview = async (repoId: string, review: NewReview) => {
+  const { data } = await fetcher.post<{ data: NewReview }>(
+    `/repositories/${repoId}/reviews`,
+    review,
+  );
+  return data.data;
 };
 
 export const getReviews = async () => {
