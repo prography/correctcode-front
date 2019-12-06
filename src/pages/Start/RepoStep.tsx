@@ -6,7 +6,7 @@ import { RepoItem, EmptySection } from 'components';
 import { APP_NAME } from 'constants/github';
 import profileImg from 'assets/img/TemporaryProfileImg.png';
 
-import styles from 'scss/RepoStep.module.scss';
+import styles from 'scss/pages/RepoStep.module.scss';
 
 const RepoStep = () => {
   const [searchWord, setSearchWord] = useState('');

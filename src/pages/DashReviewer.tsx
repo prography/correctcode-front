@@ -6,7 +6,7 @@ import { getReviewsSaga, getUserReviewsSaga } from 'store/review/action';
 import { UserType } from 'models/review';
 
 import styles from 'scss/components/Card.module.scss';
-import pageStyles from 'scss/pages.module.scss';
+import pageStyles from 'scss/pages/DashBoard.module.scss';
 
 const DashReviewer = () => {
   const [isReviewers, setIsReviewers] = useState(false);

@@ -3,7 +3,7 @@ import { Switch, Route, useParams } from 'react-router-dom';
 import { Step as StepComponent } from 'components';
 import RepoStep from './RepoStep';
 import ReviewStep from './ReviewStep';
-import styles from 'scss/Start.module.scss';
+import styles from 'scss/pages/Start.module.scss';
 
 enum Step {
   github = 'github',

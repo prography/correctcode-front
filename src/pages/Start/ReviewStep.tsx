@@ -7,7 +7,7 @@ import GithubIcon from 'assets/img/GitHubMark.png';
 import useFetch from 'hooks/useFetch';
 import { getBranches } from 'api/repo';
 
-import styles from 'scss/ReviewStep.module.scss';
+import styles from 'scss/pages/ReviewStep.module.scss';
 
 type Props = {
   repo: Repo;

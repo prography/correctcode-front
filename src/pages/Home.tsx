@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import styles from 'scss/Home.module.scss';
+import styles from 'scss/pages/Home.module.scss';
 import logo from 'assets/img/logo_2line.png';
 import githubLogo from 'assets/img/GitHubMark.png';
 import backgroundLogo from 'assets/img/backgroundLogo.png';
