@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import cx from 'classnames';
-import Nav from 'components/Nav';
-import SideBar from 'components/SideBar';
-import CardList from 'components/CardList';
+import { Nav, SideBar, CardList } from 'components';
 import { getReviewsSaga, getUserReviewsSaga } from 'store/review/action';
 import { UserType } from 'models/review';
 
@@ -56,7 +54,11 @@ const DashReviewer = () => {
               나의 코드 리뷰
             </div>
           </div>
-          <CardList reviews={reviews} />
+          <CardList
+            reviews={reviews}
+            userType={UserType.REVIEWER}
+            isReviewers={isReviewers}
+          />
         </div>
       </div>
     </div>

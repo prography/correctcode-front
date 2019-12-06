@@ -1,44 +1,12 @@
-import React, { useState } from 'react';
+import React, { useMemo } from 'react';
+import { Review, UserType } from 'models/review';
+import Message from './Message';
 import styles from 'scss/components/Card.module.scss';
-import { UserType } from 'models/review';
 
 type RevieweeStatus = 'request' | 'waiting';
 type ReviewerStatus = 'empty' | 'null';
-type MessageConfigType = {
-  [UserType.REVIEWEE]: {
-    [key in RevieweeStatus]: MessageProps;
-  };
-  [UserType.REVIEWER]: {
-    [key in ReviewerStatus]: MessageProps;
-  };
-};
 
-type MessageProps = {
-  title: string;
-  message: string;
-  subMessage: string;
-  children?: React.ReactNode;
-};
-
-const Message: React.FC<MessageProps> = ({
-  title,
-  message,
-  subMessage,
-  children,
-}) => {
-  return (
-    <div className={styles.box_request}>
-      <p className={styles.requestTitle}>{title}</p>
-      <p>
-        {message}
-        <br />
-        {subMessage}
-      </p>
-      {children}
-    </div>
-  );
-};
-const MessageConfig: MessageConfigType = {
+const MessageConfig = {
   [UserType.REVIEWEE]: {
     request: {
       title: '코드 리뷰를 요청해보세요!',
@@ -67,14 +35,29 @@ const MessageConfig: MessageConfigType = {
   },
 };
 
-const CardRequest = () => {
-  //임시적으로 request 상태별 카드 작성, 코드리뷰중인 상태 받아와서 바꿔줘야함
-  const [userType] = useState<UserType>(UserType.REVIEWEE);
-  const [reviewStatus] = useState<RevieweeStatus | ReviewerStatus>('request');
+type Props = {
+  userType: UserType;
+  reviews: Review[];
+  isReviewers: boolean;
+};
 
+const CartListNoti: React.FC<Props> = ({ userType, reviews, isReviewers }) => {
   const messageConfig = MessageConfig[userType] as any;
-  const messageProps =
-    reviewStatus in messageConfig ? messageConfig[reviewStatus] : null;
+  const reviewStatus = useMemo(() => {
+    const hasOngoing = reviews.some(({ status }) => status === 'ongoing');
+    if (userType === UserType.REVIEWEE) {
+      return !hasOngoing ? 'request' : 'waiting';
+    }
+    if (!isReviewers && reviews.length === 0) {
+      return 'empty';
+    }
+    if (isReviewers && !hasOngoing) {
+      return 'null';
+    }
+    return '';
+  }, [reviews, userType, isReviewers]);
+
+  const messageProps = messageConfig[reviewStatus];
 
   if (!messageProps) {
     return null;
@@ -82,4 +65,4 @@ const CardRequest = () => {
   return <Message {...messageProps} />;
 };
 
-export default CardRequest;
+export default CartListNoti;

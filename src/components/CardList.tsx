@@ -1,20 +1,29 @@
 import React from 'react';
-import { Review } from 'models/review';
-import Card from './Card';
-import CardRequest from './CardRequest';
+import { Review, UserType } from 'models/review';
+import { CardListNoti, RevieweeCard, ReviewerCard } from 'components';
 import styles from 'scss/components/Card.module.scss';
 
 type Props = {
   reviews: Review[];
+  userType: UserType;
+  isReviewers?: boolean;
 };
 
-const CardList: React.FC<Props> = ({ reviews }) => {
+const CardList: React.FC<Props> = ({ reviews, userType, isReviewers }) => {
   return (
     <div className={styles.cardList}>
-      <CardRequest />
-      {reviews.map(review => (
-        <Card key={review.id} review={review} />
-      ))}
+      <CardListNoti
+        userType={userType}
+        reviews={reviews}
+        isReviewers={!!isReviewers}
+      />
+      {userType === UserType.REVIEWEE
+        ? reviews.map(review => (
+            <RevieweeCard key={review.id} review={review} />
+          ))
+        : reviews.map(review => (
+            <ReviewerCard key={review.id} review={review} />
+          ))}
     </div>
   );
 };
