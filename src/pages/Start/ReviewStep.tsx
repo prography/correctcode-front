@@ -1,28 +1,20 @@
 import React, { memo, useState, useMemo, useEffect } from 'react';
-import { Repo } from 'models/repo';
 import { useParams } from 'react-router';
 import { useSelector } from 'react-redux';
+import classnames from 'classnames';
 import { Dropdown } from 'components';
 import GithubIcon from 'assets/img/GitHubMark.png';
 import useFetch from 'hooks/useFetch';
 import { getBranches } from 'api/repo';
+import { Repo } from 'models/repo';
 
 import styles from 'scss/pages/ReviewStep.module.scss';
+
+const MAX_MESSAGE_COUNT = 100;
 
 type Props = {
   repo: Repo;
 };
-
-// const MOCK_TAG = [
-//   {
-//     value: 'javascript',
-//     text: 'javascript',
-//   },
-//   {
-//     value: 'typescript',
-//     text: 'typescript',
-//   },
-// ];
 
 const ReviewStep: React.FC<Props> = () => {
   const { repoId } = useParams();
@@ -34,6 +26,7 @@ const ReviewStep: React.FC<Props> = () => {
     state.repo.repos.find(({ id }) => String(id) === repoId),
   );
 
+  const isMaxMessageCount = message.length === MAX_MESSAGE_COUNT;
   const isButtonActive = message && firstBranch && secondBranch;
   const { name = 'aa/ff' } = currentRepo || ({} as any);
   const [ownername, reponame] = name.split('/');
@@ -41,8 +34,9 @@ const ReviewStep: React.FC<Props> = () => {
   const onFirstBranchSelect = (branch: string) => setFirstBranch(branch);
   const onSecondBranchSelect = (branch: string) => setSecondBranch(branch);
   // const onTagSelect = (tag: string) => setTag(tag);
-  const handleMessageChange = (e: React.ChangeEvent<HTMLTextAreaElement>) =>
+  const handleMessageChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setMessage(e.target.value);
+  };
 
   // branch 패칭
   const { state: branchState } = useFetch(getBranches, [], [], repoId || '');
@@ -63,6 +57,13 @@ const ReviewStep: React.FC<Props> = () => {
       setSecondBranch('');
     }
   }, [firstBranch]);
+
+  useEffect(() => {
+    if (message.length > MAX_MESSAGE_COUNT) {
+      alert('메시지는 100자까지 입력 가능합니다.');
+      setMessage(prev => prev.slice(0, MAX_MESSAGE_COUNT));
+    }
+  }, [message]);
 
   return (
     <div className={styles.container}>
@@ -96,6 +97,13 @@ const ReviewStep: React.FC<Props> = () => {
               placeholder="최대 100자까지 입력 가능합니다."
               onChange={handleMessageChange}
             />
+            <div
+              className={classnames(styles.messageCount, {
+                [styles.maxMessageCount]: isMaxMessageCount,
+              })}
+            >
+              <span>{message.length}/100</span>
+            </div>
           </div>
           <div className={styles.formCol}>
             <div className={styles.formItem}>
