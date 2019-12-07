@@ -2,7 +2,7 @@ export type ReviewStatus = 'ongoing' | 'pending' | 'completed';
 
 export type Review = {
   id: string;
-  createdAt: number;
+  createdAt: string;
   updatedAt: string;
   serviceId: string;
   serviceType: string;

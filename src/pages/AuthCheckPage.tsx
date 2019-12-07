@@ -9,7 +9,6 @@ const AuthCheckPage = () => {
   const { search } = useLocation();
   const history = useHistory();
   const dispatch = useDispatch();
-
   useEffect(() => {
     const { accessToken } = qs.parse(search);
     setAuthToken(accessToken);

@@ -19,7 +19,7 @@ import Start from 'pages/Start';
 const Pages = () => {
   const { pathname } = useLocation();
   const isStartPage = pathname.startsWith('/start');
-
+  console.log(pathname);
   return (
     <>
       <Nav isStartPage={isStartPage} />
@@ -36,7 +36,6 @@ const Pages = () => {
 };
 
 const App: React.FC = () => {
-  const user = useSelector((state: StoreState) => state.auth.user);
   const isAuthenticating = useSelector(
     (state: StoreState) => state.auth.meStatus === 'FETCHING',
   );
@@ -48,9 +47,6 @@ const App: React.FC = () => {
 
   if (isAuthenticating) {
     return null;
-  }
-  if (!user.isLoggedIn) {
-    return <Home />;
   }
 
   return (

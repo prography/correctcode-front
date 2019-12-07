@@ -1,4 +1,4 @@
-const TOKEN_KEY = process.env.STORAGE_TOKEN_KEY as string;
+const TOKEN_KEY = process.env.REACT_APP_STORAGE_TOKEN_KEY as string;
 
 export const getAuthToken = () => {
   return localStorage.getItem(TOKEN_KEY);
