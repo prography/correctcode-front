@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import classnames from 'classnames';
 import styles from 'scss/components/Step.module.scss';
 
@@ -12,6 +13,8 @@ type Props = {
 };
 
 const Step: React.FC<Props> = ({ steps, currentStep }) => {
+  const history = useHistory();
+
   return (
     <div className={styles.container}>
       {steps.map(({ description }, i) => (
@@ -21,6 +24,9 @@ const Step: React.FC<Props> = ({ steps, currentStep }) => {
             [styles.isActiveLine]: i < currentStep,
           })}
           key={i}
+          onClick={() => {
+            i == 1 && history.push('/start/repo');
+          }}
         >
           <div className={styles.step}>
             <div className={styles.circle} />
