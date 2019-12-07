@@ -54,7 +54,7 @@ const ReviewerCard: React.FC<Props> = ({
     <div className={styles.box}>
       <div>
         <p className={styles.language}>{language}</p>
-        <p className={styles.time}>{format(createdAt, 'yyyy-mm-dd')}</p>
+        <p className={styles.time}>{format(createdAt, 'YYYY-MM-DD')}</p>
       </div>
       <a className={styles.repo} href={repositoryUrl}>
         {head}
