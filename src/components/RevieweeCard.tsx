@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { Review } from 'models/review';
 import cx from 'classnames';
 import styles from 'scss/components/Card.module.scss';
-import { format } from 'date-fns';
+import { formatDate } from 'utils/format';
 
 type Props = Review;
 type MatchedCardProps = Pick<Review, 'reviewer' | 'status'>;
@@ -46,7 +46,7 @@ const RevieweeCard: React.FC<Props> = ({
     <div className={styles.box}>
       <div>
         <p className={styles.language}>{language}</p>
-        <p className={styles.time}>{format(createdAt, 'YYYY-MM-DD')}</p>
+        <p className={styles.time}>{formatDate(createdAt)}</p>
       </div>
       <a className={styles.repo} href={repositoryUrl}>
         {head}
