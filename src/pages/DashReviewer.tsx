@@ -32,7 +32,7 @@ const DashReviewer = () => {
 
   return (
     <div>
-      <Nav />
+      <Nav isReviewer={true} />
       <div className={pageStyles.underNav}>
         <SideBar />
         <div style={{ display: 'inline-block', width: '816px' }}>

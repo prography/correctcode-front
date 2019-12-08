@@ -8,10 +8,13 @@ import profileImg from 'assets/img/TemporaryProfileImg.png';
 
 type Props = {
   isStartPage?: boolean;
+  isReviewer?: boolean;
 };
 
-const Nav: React.FC<Props> = ({ isStartPage = false }) => {
+const Nav: React.FC<Props> = ({ isStartPage = false, isReviewer }) => {
   const user = useSelector((state: StoreState) => state.auth.user);
+  const logoToReviewerDash = isReviewer ? '/reviewer' : '/reviewee';
+
   return (
     <div
       className={classnames(styles.NavBox, {
@@ -19,9 +22,9 @@ const Nav: React.FC<Props> = ({ isStartPage = false }) => {
       })}
     >
       <div className={styles.innerBox}>
-        <div className={styles.left}>
+        <a className={styles.left} href={logoToReviewerDash}>
           <img src={logo} className={styles.logo} alt="logo" />
-        </div>
+        </a>
         <div className={styles.profile}>
           <img
             src={user.profileImg ? user.profileImg : profileImg}

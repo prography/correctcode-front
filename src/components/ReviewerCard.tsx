@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
 import { Review } from 'models/review';
+import CommonCard from './CommonCard';
 import cx from 'classnames';
 import styles from 'scss/components/Card.module.scss';
-import { formatDate } from 'utils/format';
 
 type Props = Review;
 
@@ -52,14 +52,13 @@ const ReviewerCard: React.FC<Props> = ({
   const StatusComponent = isPending ? PendingCard : MatchedCard;
   return (
     <div className={styles.box}>
-      <div>
-        <p className={styles.language}>{language}</p>
-        <p className={styles.time}>{formatDate(createdAt)}</p>
-      </div>
-      <a className={styles.repo} href={repositoryUrl}>
-        {head}
-      </a>
-      <p className={styles.description}>{description}</p>
+      <CommonCard
+        language={language}
+        createdAt={createdAt}
+        repositoryUrl={repositoryUrl}
+        head={head}
+        description={description}
+      />
       <StatusComponent reviewee={reviewee} status={status} />
     </div>
   );
