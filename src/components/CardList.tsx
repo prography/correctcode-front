@@ -10,6 +10,8 @@ type Props = {
 };
 
 const CardList: React.FC<Props> = ({ reviews, userType, isReviewers }) => {
+  const CardComponent =
+    userType === UserType.REVIEWEE ? RevieweeCard : ReviewerCard;
   return (
     <div className={styles.cardList}>
       <CardListNoti
@@ -17,9 +19,9 @@ const CardList: React.FC<Props> = ({ reviews, userType, isReviewers }) => {
         reviews={reviews}
         isReviewers={!!isReviewers}
       />
-      {userType === UserType.REVIEWEE
-        ? reviews.map(review => <RevieweeCard key={review.id} {...review} />)
-        : reviews.map(review => <ReviewerCard key={review.id} {...review} />)}
+      {reviews.map(review => (
+        <CardComponent key={review.id} {...review} />
+      ))}
     </div>
   );
 };

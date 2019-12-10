@@ -1,7 +1,7 @@
 import parseISO from 'date-fns/parseISO';
 import format from 'date-fns/format';
 
-const DEFAULT_DATE_FORMAT = 'YYYY-MM-DD';
+const DEFAULT_DATE_FORMAT = 'yyyy-mm-dd';
 
 export const formatDate = (
   date: string,
