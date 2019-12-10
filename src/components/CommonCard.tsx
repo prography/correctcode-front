@@ -2,15 +2,11 @@ import React from 'react';
 import { Review } from 'models/review';
 
 import styles from 'scss/components/Card.module.scss';
-import { format } from 'date-fns';
 
-type Props = {
-  language: string;
-  createdAt: string;
-  repositoryUrl: string;
-  head: string;
-  description: string;
-};
+type Props = Pick<
+  Review,
+  'language' | 'createdAt' | 'repositoryUrl' | 'head' | 'description'
+>;
 const CommonCard: React.FC<Props> = ({
   language,
   createdAt,
