@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
 import { Review } from 'models/review';
+import CommonCard from './CommonCard';
 import cx from 'classnames';
 import styles from 'scss/components/Card.module.scss';
-import { formatDate } from 'utils/format';
 
 type Props = Review;
 type MatchedCardProps = Pick<Review, 'reviewer' | 'status'>;
@@ -44,21 +44,20 @@ const RevieweeCard: React.FC<Props> = ({
   const StatusComponent = isPending ? PendingCard : MatchedCard;
   return (
     <div className={styles.box}>
-      <div>
-        <p className={styles.language}>{language}</p>
-        <p className={styles.time}>{formatDate(createdAt)}</p>
-      </div>
-      <a className={styles.repo} href={repositoryUrl}>
-        {head}
-      </a>
-      <p className={styles.description}>{description}</p>
+      <CommonCard
+        language={language}
+        createdAt={createdAt}
+        repositoryUrl={repositoryUrl}
+        head={head}
+        description={description}
+      />
       {isPending ? (
         <div className={styles.statusBox}>
           <p className={styles.revieweePending}>리뷰어를 기다리고 있어요.</p>
         </div>
       ) : (
-        <StatusComponent status={status} reviewer={reviewer} />
-      )}
+          <StatusComponent status={status} reviewer={reviewer} />
+        )}
     </div>
   );
 };
