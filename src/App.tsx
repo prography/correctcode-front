@@ -19,7 +19,6 @@ import Start from 'pages/Start';
 const Pages = () => {
   const { pathname } = useLocation();
   const isStartPage = pathname.startsWith('/start');
-  console.log(pathname);
   return (
     <>
       <Nav isStartPage={isStartPage} />
