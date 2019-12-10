@@ -21,6 +21,7 @@ const STEPS = [
     step: Step.repo,
     title: 'Repository를 선택해주세요.',
     description: 'Repo 선택',
+    route: '/start/repo',
   },
   {
     step: Step.review,
