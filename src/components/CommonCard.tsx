@@ -1,5 +1,6 @@
 import React from 'react';
 import { Review } from 'models/review';
+import { formatDate } from 'utils/format';
 
 import styles from 'scss/components/Card.module.scss';
 
@@ -14,15 +15,11 @@ const CommonCard: React.FC<Props> = ({
   head,
   description,
 }) => {
-  const intervalTime = createdAt
-    .toString()
-    .slice(0, 16)
-    .replace('T', ' ');
   return (
     <>
       <div>
         <p className={styles.language}>{language}</p>
-        <p className={styles.time}>{intervalTime}</p>
+        <p className={styles.time}>{formatDate(createdAt)}</p>
       </div>
       <a className={styles.repo} href={repositoryUrl}>
         {head}
