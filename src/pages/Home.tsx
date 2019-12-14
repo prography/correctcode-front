@@ -15,9 +15,6 @@ const Home = () => {
   if (authStatus === 'INIT' || authStatus === 'FETCHING') {
     return null;
   }
-  if (!isLoggedIn) {
-    return <a href="/api/auth/github">github login</a>;
-  }
   return (
     <div className={styles.homeBody}>
       <div className={styles.centerDiv}>
@@ -27,7 +24,10 @@ const Home = () => {
           지금 바로 코드 리뷰를 받아보세요
         </p>
         <div className={styles.bottomDivs}>
-          <a href="/api/auth/github" className={styles.signInAnchor}>
+          <a
+            href={isLoggedIn ? '/reviewee' : '/api/auth/github'}
+            className={styles.signInAnchor}
+          >
             <div className={styles.signIn}>
               <img
                 src={githubLogo}
@@ -36,19 +36,6 @@ const Home = () => {
               />
               <p>Sign-in with Github</p>
             </div>
-
-            <Link
-              style={{
-                float: 'right',
-                fontSize: 24,
-                color: 'white',
-                textDecoration: 'none',
-                marginRight: 20,
-              }}
-              to="/start/repo"
-            >
-              레포 만들기 테스트 링크 ^^
-            </Link>
           </a>
           <img
             src={backgroundLogo}

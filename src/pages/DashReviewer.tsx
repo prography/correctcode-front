@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import cx from 'classnames';
-import { Nav, SideBar, CardList } from 'components';
+import { Nav, SideBar, CardList, LoadingLottie } from 'components';
 import { getReviewsSaga, getUserReviewsSaga } from 'store/review/action';
 import { UserType } from 'models/review';
 
@@ -14,6 +14,9 @@ const DashReviewer = () => {
     isReviewers ? state.review.reviews : state.review.userReviews,
   );
   const dispatch = useDispatch();
+  const isFetching = useSelector(
+    (state: StoreState) => state.review.getReviewsStatus !== 'SUCCESS',
+  );
 
   useEffect(() => {
     if (isReviewers) {
@@ -33,6 +36,7 @@ const DashReviewer = () => {
   return (
     <div>
       <Nav isReviewer={true} />
+      {isFetching && <LoadingLottie />}
       <div className={pageStyles.underNav}>
         <SideBar />
         <div style={{ display: 'inline-block', width: '816px' }}>

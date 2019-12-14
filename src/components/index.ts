@@ -10,3 +10,4 @@ export { default as Message } from './Message';
 export { default as RevieweeCard } from './RevieweeCard';
 export { default as ReviewerCard } from './ReviewerCard';
 export { default as SideBar } from './SideBar';
+export { default as LoadingLottie } from './LoadingLottie';

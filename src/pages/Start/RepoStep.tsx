@@ -2,7 +2,7 @@ import React, { useEffect, useState, useMemo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import classnames from 'classnames';
 import { getReposSaga } from 'store/repo/action';
-import { RepoItem, EmptySection } from 'components';
+import { RepoItem, EmptySection, LoadingLottie } from 'components';
 import { APP_NAME } from 'constants/github';
 import profileImg from 'assets/img/TemporaryProfileImg.png';
 
@@ -36,6 +36,7 @@ const RepoStep = () => {
           <img src={profileImg} alt="profile" className={styles.img} />
           <span className={styles.name}>{username}</span>
         </div>
+        {isEmpty && <EmptySection message="등록된 Repository가 없어요." />}
         <div className={styles.search}>
           <i className={classnames('fas fa-search', styles.icon)}></i>
           <input
@@ -47,6 +48,7 @@ const RepoStep = () => {
         </div>
       </div>
       <div className={styles.repoListBody}>
+        {isFetching && <LoadingLottie isRepoStep={true} />}
         {isEmpty && <EmptySection message="등록된 Repository가 없어요." />}
         {repoResults.map(repo => (
           <RepoItem key={repo.id} {...repo} />

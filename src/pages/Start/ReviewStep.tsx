@@ -2,14 +2,13 @@ import React, { memo, useState, useMemo, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router';
 import { useSelector, useDispatch } from 'react-redux';
 import classnames from 'classnames';
-import { Dropdown } from 'components';
+import { Dropdown, LoadingLottie } from 'components';
 import GithubIcon from 'assets/img/GitHubMark.png';
 import useFetch from 'hooks/useFetch';
 import { getBranches } from 'api/repo';
 import { Repo } from 'models/repo';
 import { createReviewSaga } from 'store/review/action';
 import usePrevious from 'hooks/usePrevious';
-
 import styles from 'scss/pages/ReviewStep.module.scss';
 
 const MAX_MESSAGE_COUNT = 100;
