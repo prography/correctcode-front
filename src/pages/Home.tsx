@@ -24,8 +24,8 @@ const Home = () => {
           지금 바로 코드 리뷰를 받아보세요
         </p>
         <div className={styles.bottomDivs}>
-          <a
-            href={isLoggedIn ? '/reviewee' : '/api/auth/github'}
+          <Link
+            to={isLoggedIn ? '/reviewee' : '/api/auth/github'}
             className={styles.signInAnchor}
           >
             <div className={styles.signIn}>
@@ -36,7 +36,7 @@ const Home = () => {
               />
               <p>Sign-in with Github</p>
             </div>
-          </a>
+          </Link>
           <img
             src={backgroundLogo}
             className={styles.backgroundLogo}

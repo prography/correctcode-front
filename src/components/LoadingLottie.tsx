@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import styles from 'scss/components/LoadingLottie.module.scss';
 import lottie from 'lottie-web';
 import animationData from 'assets/img/lottie/data.json';
