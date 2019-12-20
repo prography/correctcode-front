@@ -1,23 +1,31 @@
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { useLocation, useHistory } from 'react-router-dom';
-import qs from 'query-string';
-import { setAuthToken } from 'utils/auth';
-import { meSaga } from 'store/auth/action';
+import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import style from 'scss/pages/AuthCheck.module.scss';
+import { Loading } from 'components';
+import { useHistory } from 'react-router-dom';
 
 const AuthCheckPage = () => {
-  const { search } = useLocation();
+  const authenticateStatus = useSelector(
+    (state: StoreState) => state.auth.meStatus,
+  );
   const history = useHistory();
-  const dispatch = useDispatch();
-  useEffect(() => {
-    const { accessToken } = qs.parse(search);
-    setAuthToken(accessToken);
-    dispatch(meSaga());
-    history.push('/');
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
-  return null;
+  useEffect(() => {
+    if (authenticateStatus === 'SUCCESS') {
+      history.push('/reviewee');
+    }
+    if (authenticateStatus === 'FAILURE') {
+      history.push('/');
+    }
+  }, [authenticateStatus, history]);
+
+  return (
+    <div className={style.container}>
+      <div>
+        <Loading />
+      </div>
+    </div>
+  );
 };
 
 export default AuthCheckPage;
