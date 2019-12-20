@@ -2,7 +2,8 @@ import React, { useEffect, useState, useMemo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import classnames from 'classnames';
 import { getReposSaga } from 'store/repo/action';
-import { RepoItem, EmptySection } from 'components';
+import { Link } from 'react-router-dom';
+import { RepoItem, EmptySection, Loading } from 'components';
 import { APP_NAME } from 'constants/github';
 import profileImg from 'assets/img/TemporaryProfileImg.png';
 
@@ -47,18 +48,19 @@ const RepoStep = () => {
         </div>
       </div>
       <div className={styles.repoListBody}>
+        {isFetching && <Loading />}
         {isEmpty && <EmptySection message="등록된 Repository가 없어요." />}
         {repoResults.map(repo => (
           <RepoItem key={repo.id} {...repo} />
         ))}
       </div>
       <div className={styles.repoListFooter}>
-        <a
+        <Link
           className={styles.repoAddLink}
-          href={`https://github.com/apps/${APP_NAME}/installations/new`}
+          to={`https://github.com/apps/${APP_NAME}/installations/new`}
         >
           Add Repository
-        </a>
+        </Link>
       </div>
     </div>
   );

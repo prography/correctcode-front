@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-
+import { Link } from 'react-router-dom';
 import classnames from 'classnames';
 import styles from 'scss/components/Nav.module.scss';
 import logo from 'assets/img/logo.png';
@@ -22,9 +22,9 @@ const Nav: React.FC<Props> = ({ isStartPage = false, isReviewer }) => {
       })}
     >
       <div className={styles.innerBox}>
-        <a className={styles.left} href={logoToReviewerDash}>
+        <Link className={styles.left} to={logoToReviewerDash}>
           <img src={logo} className={styles.logo} alt="logo" />
-        </a>
+        </Link>
         <div className={styles.profile}>
           <img
             src={user.profileImg ? user.profileImg : profileImg}

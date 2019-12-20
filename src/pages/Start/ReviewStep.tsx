@@ -9,7 +9,6 @@ import { getBranches } from 'api/repo';
 import { Repo } from 'models/repo';
 import { createReviewSaga } from 'store/review/action';
 import usePrevious from 'hooks/usePrevious';
-
 import styles from 'scss/pages/ReviewStep.module.scss';
 
 const MAX_MESSAGE_COUNT = 100;
