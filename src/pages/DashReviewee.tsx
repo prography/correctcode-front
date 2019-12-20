@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Nav, CardList, SideBar, LoadingLottie } from 'components';
+import { Nav, CardList, SideBar, Loading } from 'components';
 import pageStyles from 'scss/pages/DashBoard.module.scss';
 import { UserType } from 'models/review';
 import { getUserReviewsSaga } from 'store/review/action';
@@ -17,7 +17,7 @@ const DashReviewee = () => {
 
   return (
     <div>
-      {isFetching && <LoadingLottie />}
+      {isFetching && <Loading />}
       <Nav />
       <div className={pageStyles.underNav}>
         <SideBar />

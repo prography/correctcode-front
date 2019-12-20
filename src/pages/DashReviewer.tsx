@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import cx from 'classnames';
-import { Nav, SideBar, CardList, LoadingLottie } from 'components';
+import { Nav, SideBar, CardList, Loading } from 'components';
 import { getReviewsSaga, getUserReviewsSaga } from 'store/review/action';
 import { UserType } from 'models/review';
 
@@ -36,7 +36,7 @@ const DashReviewer = () => {
   return (
     <div>
       <Nav isReviewer={true} />
-      {isFetching && <LoadingLottie />}
+      {isFetching && <Loading />}
       <div className={pageStyles.underNav}>
         <SideBar />
         <div style={{ display: 'inline-block', width: '816px' }}>
