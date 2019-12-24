@@ -1,7 +1,8 @@
-import React, { useState, memo } from 'react';
+import React, { useState, useRef, memo } from 'react';
 import classnames from 'classnames';
 
 import styles from 'scss/components/Dropdown.module.scss';
+import useOnClickOutside from 'hooks/useClickOutside';
 
 type DropdownItem = {
   value: string;
@@ -25,6 +26,10 @@ const Dropdown: React.FC<Props> = ({
   ...props
 }) => {
   const [open, setOpen] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+  useOnClickOutside(containerRef.current, () => {
+    setOpen(false);
+  });
   const handleTriggerClick = (e: React.MouseEvent) => {
     e.preventDefault();
     setOpen(prev => !prev);
@@ -34,7 +39,11 @@ const Dropdown: React.FC<Props> = ({
     setOpen(false);
   };
   return (
-    <div {...props} className={classnames(props.className, styles.container)}>
+    <div
+      {...props}
+      className={classnames(props.className, styles.container)}
+      ref={containerRef}
+    >
       <button className={styles.trigger} onClick={handleTriggerClick}>
         <span
           className={classnames(styles.text, {
