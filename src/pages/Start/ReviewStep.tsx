@@ -1,5 +1,5 @@
 import React, { memo, useState, useMemo, useEffect } from 'react';
-import { useParams, useHistory } from 'react-router';
+import { useParams, useHistory, Redirect } from 'react-router';
 import { useSelector, useDispatch } from 'react-redux';
 import classnames from 'classnames';
 import { Dropdown } from 'components';
@@ -42,10 +42,9 @@ const ReviewStep: React.FC<Props> = () => {
   );
   // const [tag, setTag] = useState('');
   const [message, setMessage] = useState('');
-  const currentRepo =
-    useSelector((state: StoreState) =>
-      state.repo.repos.find(({ id }) => String(id) === repoId),
-    ) || ({} as any);
+  const currentRepo = useSelector((state: StoreState) =>
+    state.repo.repos.find(({ id }) => String(id) === repoId),
+  );
   const createReviewStatus = useSelector(
     (state: StoreState) => state.review.createReviewStatus,
   );
@@ -53,7 +52,7 @@ const ReviewStep: React.FC<Props> = () => {
 
   const isMaxMessageCount = message.length === MAX_MESSAGE_COUNT;
   const isButtonActive = message && firstBranch && secondBranch;
-  const { name = '' } = currentRepo;
+  const name = currentRepo?.name || '';
   const [ownername, reponame] = name.split('/');
 
   const onFirstBranchSelect = (branch: string) => {
@@ -116,8 +115,8 @@ const ReviewStep: React.FC<Props> = () => {
     });
   }, [repoId, firstBranch, secondBranch]);
 
-  if (!repoId) {
-    return null;
+  if (!repoId || !currentRepo) {
+    return <Redirect to="/start/repo" />;
   }
 
   return (
