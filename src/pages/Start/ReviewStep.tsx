@@ -1,11 +1,11 @@
 import React, { memo, useState, useMemo, useEffect } from 'react';
-import { useParams, useHistory } from 'react-router';
+import { useParams, useHistory, Redirect } from 'react-router';
 import { useSelector, useDispatch } from 'react-redux';
 import classnames from 'classnames';
 import { Dropdown } from 'components';
 import GithubIcon from 'assets/img/GitHubMark.png';
 import useFetch from 'hooks/useFetch';
-import { getBranches } from 'api/repo';
+import { getBranches, compareBranch } from 'api/repo';
 import { Repo } from 'models/repo';
 import { createReviewSaga } from 'store/review/action';
 import usePrevious from 'hooks/usePrevious';
@@ -17,18 +17,34 @@ type Props = {
   repo: Repo;
 };
 
+enum CompareStatus {
+  Init = 'init',
+  behind = 'behind',
+  ahead = 'ahead',
+  loading = 'loading',
+}
+
+const CompareMessage = {
+  [CompareStatus.Init]: '',
+  [CompareStatus.behind]: '❌ Base 브랜치가 Compare 브랜치보다 뒤에 있습니다.',
+  [CompareStatus.ahead]: '👌 등록할 수 있는 브랜치입니다.',
+  [CompareStatus.loading]: '🔍 브랜치 검사 중입니다.',
+};
+
 const ReviewStep: React.FC<Props> = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const { repoId } = useParams();
   const [firstBranch, setFirstBranch] = useState('');
   const [secondBranch, setSecondBranch] = useState('');
+  const [compareStatus, setCompareStatus] = useState<CompareStatus>(
+    CompareStatus.Init,
+  );
   // const [tag, setTag] = useState('');
   const [message, setMessage] = useState('');
-  const currentRepo =
-    useSelector((state: StoreState) =>
-      state.repo.repos.find(({ id }) => String(id) === repoId),
-    ) || ({} as any);
+  const currentRepo = useSelector((state: StoreState) =>
+    state.repo.repos.find(({ id }) => String(id) === repoId),
+  );
   const createReviewStatus = useSelector(
     (state: StoreState) => state.review.createReviewStatus,
   );
@@ -36,10 +52,13 @@ const ReviewStep: React.FC<Props> = () => {
 
   const isMaxMessageCount = message.length === MAX_MESSAGE_COUNT;
   const isButtonActive = message && firstBranch && secondBranch;
-  const { name = '' } = currentRepo;
+  const name = currentRepo?.name || '';
   const [ownername, reponame] = name.split('/');
 
-  const onFirstBranchSelect = (branch: string) => setFirstBranch(branch);
+  const onFirstBranchSelect = (branch: string) => {
+    setFirstBranch(branch);
+    setSecondBranch('');
+  };
   const onSecondBranchSelect = (branch: string) => setSecondBranch(branch);
   // const onTagSelect = (tag: string) => setTag(tag);
   const handleMessageChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -72,12 +91,6 @@ const ReviewStep: React.FC<Props> = () => {
   };
 
   useEffect(() => {
-    if (firstBranch) {
-      setSecondBranch('');
-    }
-  }, [firstBranch]);
-
-  useEffect(() => {
     if (message.length > MAX_MESSAGE_COUNT) {
       alert('메시지는 100자까지 입력 가능합니다.');
       setMessage(prev => prev.slice(0, MAX_MESSAGE_COUNT));
@@ -90,8 +103,20 @@ const ReviewStep: React.FC<Props> = () => {
     }
   }, [createReviewStatus, prevStatus, history]);
 
-  if (!repoId) {
-    return null;
+  useEffect(() => {
+    if (!repoId || !firstBranch || !secondBranch) {
+      return setCompareStatus(CompareStatus.Init);
+    }
+    setCompareStatus(CompareStatus.loading);
+    compareBranch(repoId, firstBranch, secondBranch).then(({ status }) => {
+      setCompareStatus(
+        status === 'behind' ? CompareStatus.behind : CompareStatus.ahead,
+      );
+    });
+  }, [repoId, firstBranch, secondBranch]);
+
+  if (!repoId || !currentRepo) {
+    return <Redirect to="/start/repo" />;
   }
 
   return (
@@ -143,6 +168,16 @@ const ReviewStep: React.FC<Props> = () => {
                 loading={isFetching.branch}
                 onSelect={onSecondBranchSelect}
               />
+              <div
+                className={classnames(styles.compareMessage, {
+                  [styles.error]: compareStatus === CompareStatus.behind,
+                  [styles.success]: compareStatus === CompareStatus.ahead,
+                  [styles.init]: compareStatus === CompareStatus.Init,
+                  [styles.loading]: compareStatus === CompareStatus.loading,
+                })}
+              >
+                {CompareMessage[compareStatus]}
+              </div>
             </div>
             {/* <div className={styles.formItem}>
               <Dropdown
@@ -154,7 +189,9 @@ const ReviewStep: React.FC<Props> = () => {
             </div> */}
             <button
               className={styles.button}
-              disabled={!isButtonActive}
+              disabled={
+                !isButtonActive || compareStatus !== CompareStatus.ahead
+              }
               onClick={handleCreateReview}
             >
               등록 완료하기

@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import cx from 'classnames';
-import { Nav, SideBar, CardList, Loading } from 'components';
+import { Nav, SideBar, Loading, ReviewerCard, CardListNoti } from 'components';
 import { getReviewsSaga, getUserReviewsSaga } from 'store/review/action';
 import { UserType } from 'models/review';
 
-import styles from 'scss/components/Card.module.scss';
+import cardStyles from 'scss/components/Card.module.scss';
 import pageStyles from 'scss/pages/DashBoard.module.scss';
 
 const DashReviewer = () => {
@@ -15,7 +15,7 @@ const DashReviewer = () => {
   );
   const dispatch = useDispatch();
   const isFetching = useSelector(
-    (state: StoreState) => state.review.getReviewsStatus !== 'SUCCESS',
+    (state: StoreState) => state.review.getReviewsStatus === 'FETCHING',
   );
 
   useEffect(() => {
@@ -36,33 +36,43 @@ const DashReviewer = () => {
   return (
     <div>
       <Nav isReviewer={true} />
-      {isFetching && <Loading />}
       <div className={pageStyles.underNav}>
         <SideBar />
         <div style={{ display: 'inline-block', width: '816px' }}>
-          <div className={styles.reviewerBox}>
+          <div className={cardStyles.reviewerBox}>
             <div
-              className={cx(styles.findReviews, {
-                [styles.selected]: !isReviewers,
+              className={cx(cardStyles.findReviews, {
+                [cardStyles.selected]: !isReviewers,
               })}
               onClick={handleReviewsClick}
             >
               리뷰를 기다리는 코드
             </div>
             <div
-              className={cx(styles.historyReviews, {
-                [styles.selected]: isReviewers,
+              className={cx(cardStyles.historyReviews, {
+                [cardStyles.selected]: isReviewers,
               })}
               onClick={handleReviewersClick}
             >
               나의 코드 리뷰
             </div>
           </div>
-          <CardList
-            reviews={reviews}
-            userType={UserType.REVIEWER}
-            isReviewers={isReviewers}
-          />
+          <div className={cardStyles.cardList}>
+            <CardListNoti
+              userType={UserType.REVIEWER}
+              reviews={reviews}
+              isReviewers={true}
+            />
+            {isFetching ? (
+              <Loading />
+            ) : (
+              <>
+                {reviews.map(review => (
+                  <ReviewerCard key={review.id} {...review} />
+                ))}
+              </>
+            )}
+          </div>
         </div>
       </div>
     </div>

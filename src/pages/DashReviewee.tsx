@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Nav, CardList, SideBar, Loading } from 'components';
+import { Nav, CardListNoti, SideBar, Loading, RevieweeCard } from 'components';
 import pageStyles from 'scss/pages/DashBoard.module.scss';
+import cardStyles from 'scss/components/Card.module.scss';
 import { UserType } from 'models/review';
 import { getUserReviewsSaga } from 'store/review/action';
 
@@ -17,11 +18,25 @@ const DashReviewee = () => {
 
   return (
     <div>
-      {isFetching && <Loading />}
       <Nav />
       <div className={pageStyles.underNav}>
         <SideBar />
-        <CardList reviews={reviews} userType={UserType.REVIEWEE} />
+        <div className={cardStyles.cardList}>
+          <CardListNoti
+            userType={UserType.REVIEWEE}
+            reviews={reviews}
+            isReviewers={false}
+          />
+          {isFetching ? (
+            <Loading />
+          ) : (
+            <>
+              {reviews.map(review => (
+                <RevieweeCard key={review.id} {...review} />
+              ))}
+            </>
+          )}
+        </div>
       </div>
     </div>
   );

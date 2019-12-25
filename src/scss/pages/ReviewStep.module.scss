@@ -47,6 +47,7 @@
 }
 
 .formItem {
+  position: relative;
   width: 345px;
   padding: 10px 0;
   border-bottom: 1px solid $gray-light;
@@ -74,8 +75,27 @@
   .maxMessageCount {
     color: $red;
   }
-}
 
+  .compareMessage {
+    position: absolute;
+    text-align: right;
+    top: 50px;
+    right: 0px;
+    font-size: 12px;
+  }
+}
+.error {
+  color: $red;
+}
+.success {
+  color: $green-dark;
+}
+.init {
+  display: none;
+}
+.loading {
+  color: black;
+}
 .button {
   display: inline-block;
   width: 100%;
