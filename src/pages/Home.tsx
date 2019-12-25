@@ -1,19 +1,20 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import styles from 'scss/pages/Home.module.scss';
+import { Redirect } from 'react-router-dom';
 import logo from 'assets/img/logo_2line.png';
 import githubLogo from 'assets/img/GitHubMark.png';
 import backgroundLogo from 'assets/img/backgroundLogo.png';
+import styles from 'scss/pages/Home.module.scss';
 
 const Home = () => {
   const isLoggedIn = useSelector(
     (state: StoreState) => state.auth.user.isLoggedIn,
   );
-  const authStatus = useSelector((state: StoreState) => state.auth.meStatus);
 
-  if (authStatus === 'INIT' || authStatus === 'FETCHING') {
-    return null;
+  if (isLoggedIn) {
+    return <Redirect to="/reviewee" />;
   }
+
   return (
     <div className={styles.homeBody}>
       <div className={styles.centerDiv}>
