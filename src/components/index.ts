@@ -4,7 +4,6 @@ export { default as EmptySection } from './EmptySection';
 export { default as Nav } from './Nav';
 export { default as PageLayout } from './PageLayout';
 export { default as Step } from './Step';
-export { default as CardList } from './CardList';
 export { default as CardListNoti } from './CardListNoti';
 export { default as Message } from './Message';
 export { default as RevieweeCard } from './RevieweeCard';

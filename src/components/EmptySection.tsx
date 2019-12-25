@@ -1,5 +1,5 @@
 import React from 'react';
-import emptyImg from 'assets/img/backgroundLogo.png';
+import { ReactComponent as EmptyImg } from 'assets/img/empty.svg';
 import styles from 'scss/components/EmptySection.module.scss';
 
 type Props = {
@@ -10,7 +10,7 @@ const EmptySection: React.FC<Props> = ({ message }) => {
   return (
     <div className={styles.container}>
       <div>
-        <img className={styles.emptyImg} src={emptyImg} alt="empty" />
+        <EmptyImg width={100} />
         <p className={styles.message}>{message}</p>
       </div>
     </div>
