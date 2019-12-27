@@ -19,7 +19,7 @@ export const loginEntity = createEntity(LoginAction, login);
 export const loginSaga = () => ({ type: LoginAction.saga });
 
 export const meEntity = createEntity(MeAction, me);
-export const meSaga = () => ({ type: MeAction.saga });
+export const meSaga = (token?: string) => ({ type: MeAction.saga, token });
 
 export type LoginSaga = ReturnType<typeof loginSaga>;
 export type MeSaga = ReturnType<typeof meSaga>;
