@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { Switch, Route, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import qs from 'query-string';
 import { meSaga } from 'store/auth/action';
 import { PageLayout, Nav } from 'components';
 
@@ -36,9 +37,12 @@ const App: React.FC = () => {
       state.auth.meStatus === 'FETCHING' || state.auth.meStatus === 'INIT',
   );
   const dispatch = useDispatch();
+  const { search } = useLocation();
 
   useEffect(() => {
-    dispatch(meSaga());
+    const { accessToken } = qs.parse(search);
+    const token = Array.isArray(accessToken) ? accessToken[0] : accessToken;
+    dispatch(meSaga(token || undefined));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
