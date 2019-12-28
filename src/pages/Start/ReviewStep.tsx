@@ -2,7 +2,7 @@ import React, { memo, useState, useMemo, useEffect } from 'react';
 import { useParams, useHistory, Redirect } from 'react-router';
 import { useSelector, useDispatch } from 'react-redux';
 import classnames from 'classnames';
-import { Dropdown } from 'components';
+import { Dropdown, Dimmed, Loading } from 'components';
 import GithubIcon from 'assets/img/GitHubMark.png';
 import useFetch from 'hooks/useFetch';
 import { getBranches, compareBranch } from 'api/repo';
@@ -121,6 +121,11 @@ const ReviewStep: React.FC<Props> = () => {
 
   return (
     <div className={styles.container}>
+      {createReviewStatus === 'FETCHING' && (
+        <Dimmed>
+          <Loading />
+        </Dimmed>
+      )}
       <div className={styles.repoInfo}>
         <img src={GithubIcon} alt="github" className={styles.githubIcon} />
         <div className={styles.info}>

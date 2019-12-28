@@ -41,7 +41,6 @@ const App: React.FC = () => {
 
   useEffect(() => {
     const { accessToken } = qs.parse(search);
-    console.log(accessToken);
     const token = Array.isArray(accessToken) ? accessToken[0] : accessToken;
     dispatch(me(token || undefined));
     // eslint-disable-next-line react-hooks/exhaustive-deps

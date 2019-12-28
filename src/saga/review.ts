@@ -1,4 +1,12 @@
-import { all, fork, take, select, call, takeLatest } from 'redux-saga/effects';
+import {
+  all,
+  fork,
+  take,
+  select,
+  call,
+  takeLatest,
+  put,
+} from 'redux-saga/effects';
 import {
   getUserReviewsEntity,
   getReviewsEntity,
@@ -10,12 +18,27 @@ import {
   GET_USER_REVIEWS,
 } from 'store/review/action';
 import { fetchEntity } from 'utils/saga';
+import { showToast } from 'store/toast/action';
+import { ToastType } from 'models/toast';
 
 const fetchReviews = fetchEntity(getReviewsEntity);
 const fetchUserReviews = fetchEntity(getUserReviewsEntity);
 const createReview = fetchEntity(createReviewEntity);
 
+function* watchCreateReviewError() {
+  while (true) {
+    yield take(createReviewEntity.failure.type);
+    yield put(
+      showToast({
+        type: ToastType.Error,
+        message: '리뷰 생성에 실패하였습니다.\n 다시 시도해주세요.',
+        timeout: 3000,
+      }),
+    );
+  }
+}
 function* watchCreateReview() {
+  yield fork(watchCreateReviewError);
   while (true) {
     const { reviewId, review }: CreateReview = yield take(CREATE_REVIEW);
     yield call(createReview, reviewId, review);
