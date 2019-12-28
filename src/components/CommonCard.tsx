@@ -1,7 +1,6 @@
 import React from 'react';
 import { Review } from 'models/review';
 import { formatDate } from 'utils/format';
-import { Link } from 'react-router-dom';
 import styles from 'scss/components/Card.module.scss';
 
 type Props = Pick<
@@ -21,9 +20,14 @@ const CommonCard: React.FC<Props> = ({
         <p className={styles.language}>{language}</p>
         <p className={styles.time}>{formatDate(createdAt)}</p>
       </div>
-      <Link className={styles.repo} to={repositoryUrl}>
+      <a
+        className={styles.repo}
+        href={repositoryUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         {head}
-      </Link>
+      </a>
       <p className={styles.description}>{description}</p>
     </>
   );
