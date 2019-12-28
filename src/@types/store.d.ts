@@ -3,11 +3,9 @@ import { RootState } from 'store';
 declare global {
   type StoreState = RootState;
   type EntitySchema = {
-    action: {
-      request: (...p: any[]) => any;
-      success: (...p: any[]) => any;
-      failure: (...p: any[]) => any;
-    };
+    request: (...p: any[]) => any;
+    success: (...p: any[]) => any;
+    failure: (...p: any[]) => any;
     service: (...args: any[]) => any;
   };
   type EntityActions<T extends EntitySchema> = ReturnType<

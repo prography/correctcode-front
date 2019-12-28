@@ -1,18 +1,7 @@
-import { getRepos } from 'api/repo';
+import * as repoApi from 'api/repo';
 import { createEntity } from 'utils/redux';
 
-export enum GetReposActions {
-  saga = 'GET_REPOS_SAGA',
-  request = 'GET_REPOS_REQUEST',
-  success = 'GET_REPOS_SUCCESS',
-  failure = 'GET_REPOS_FAILURE',
-}
+export const GET_REPOS = 'GET_REPOS' as const;
 
-export const getReposEntity = createEntity(GetReposActions, getRepos);
-export const getReposSaga = () => ({ type: GetReposActions.saga });
-
-export type GetReposSaga = ReturnType<typeof getReposSaga>;
-
-type RepoAction = EntityActions<typeof getReposEntity>;
-
-export default RepoAction;
+export const getReposEntity = createEntity(GET_REPOS, repoApi.getRepos);
+export const getRepos = () => ({ type: GET_REPOS });

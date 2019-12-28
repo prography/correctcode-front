@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Switch, Route, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import qs from 'query-string';
-import { meSaga } from 'store/auth/action';
+import { me } from 'store/auth/action';
 import { PageLayout, Nav } from 'components';
 
 import AuthCheckPage from 'pages/AuthCheckPage';
@@ -43,7 +43,7 @@ const App: React.FC = () => {
     const { accessToken } = qs.parse(search);
     console.log(accessToken);
     const token = Array.isArray(accessToken) ? accessToken[0] : accessToken;
-    dispatch(meSaga(token || undefined));
+    dispatch(me(token || undefined));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

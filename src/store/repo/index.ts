@@ -1,7 +1,6 @@
-import produce from 'immer';
-import { createReducer, baseAsyncActionHandler } from 'utils/redux';
+import { createReducer } from 'utils/redux';
+import { getReposEntity } from 'store/repo/action';
 import { Repo } from 'models/repo';
-import RepoAction, { GetReposActions } from './action';
 
 export type RepoState = {
   repos: Repo[];
@@ -13,12 +12,16 @@ const initialState: RepoState = {
   getReposStatus: 'INIT',
 };
 
-export default createReducer<RepoAction, RepoState>(initialState, {
-  ...baseAsyncActionHandler('getReposStatus', GetReposActions),
-  [GetReposActions.success]: (state, action) => {
-    return produce(state, draft => {
-      draft.repos = action.payload;
-      draft.getReposStatus = 'SUCCESS';
+export default createReducer(initialState, switcher => {
+  switcher
+    .addCase(getReposEntity.request, state => {
+      state.getReposStatus = 'FETCHING';
+    })
+    .addCase(getReposEntity.success, (state, action) => {
+      state.getReposStatus = 'SUCCESS';
+      state.repos = action.payload;
+    })
+    .addCase(getReposEntity.failure, state => {
+      state.getReposStatus = 'FAILURE';
     });
-  },
 });

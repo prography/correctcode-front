@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import classnames from 'classnames';
-import { getReposSaga } from 'store/repo/action';
+import { getRepos } from 'store/repo/action';
 import { Link } from 'react-router-dom';
 import { RepoItem, EmptySection, Loading } from 'components';
 import { APP_NAME } from 'constants/github';
@@ -27,7 +27,7 @@ const RepoStep = () => {
     setSearchWord(e.target.value);
 
   useEffect(() => {
-    dispatch(getReposSaga());
+    dispatch(getRepos());
   }, [dispatch]);
 
   return (

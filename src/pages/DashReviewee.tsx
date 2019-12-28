@@ -4,16 +4,18 @@ import { Nav, CardListNoti, SideBar, Loading, RevieweeCard } from 'components';
 import pageStyles from 'scss/pages/DashBoard.module.scss';
 import cardStyles from 'scss/components/Card.module.scss';
 import { UserType } from 'models/review';
-import { getUserReviewsSaga } from 'store/review/action';
+import { getUserReviews } from 'store/review/action';
 
 const DashReviewee = () => {
-  const reviews = useSelector((state: StoreState) => state.review.reviews);
+  const reviews = useSelector(
+    (state: StoreState) => state.review.userReviews.items,
+  );
   const dispatch = useDispatch();
   const isFetching = useSelector(
-    (state: StoreState) => state.review.getUserReviewsStatus !== 'SUCCESS',
+    (state: StoreState) => state.review.userReviews.status !== 'SUCCESS',
   );
   useEffect(() => {
-    dispatch(getUserReviewsSaga(UserType.REVIEWEE));
+    dispatch(getUserReviews(UserType.REVIEWEE));
   }, [dispatch]);
 
   return (
