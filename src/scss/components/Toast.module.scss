@@ -1,0 +1,45 @@
+@import 'scss/base.scss';
+
+.container {
+  position: fixed;
+  bottom: 0;
+  left: calc(50% - 150px);
+  width: 300px;
+  z-index: 6;
+}
+
+.toast {
+  cursor: pointer;
+  width: 300px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  opacity: 0;
+  transform: translateY(100px);
+  transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+  white-space: pre-line;
+
+  display: flex;
+  align-items: center;
+
+  box-shadow: $card-box-shadow;
+
+  .icon {
+    padding: 10px;
+  }
+  .message {
+    flex: 1;
+    padding: 10px;
+    text-align: center;
+  }
+}
+
+.toastShow {
+  opacity: 1;
+  transform: translateY(0px);
+}
+.toastClose {
+  opacity: 0;
+  transform: translateY(-100px);
+}

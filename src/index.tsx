@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import 'scss/main.scss';
 import App from 'App';
 import { BrowserRouter } from 'react-router-dom';
+import { ToastContainer } from 'components';
 import * as serviceWorker from './serviceWorker';
 import createStore from './store/createStore';
 
@@ -13,6 +14,7 @@ ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
       <App />
+      <ToastContainer />
     </BrowserRouter>
   </Provider>,
   document.getElementById('root'),

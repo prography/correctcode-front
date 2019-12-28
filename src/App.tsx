@@ -3,7 +3,7 @@ import { Switch, Route, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import qs from 'query-string';
 import { me } from 'store/auth/action';
-import { PageLayout, Nav, Dimmed } from 'components';
+import { PageLayout, Nav } from 'components';
 
 import AuthCheckPage from 'pages/AuthCheckPage';
 import Home from 'pages/Home';
