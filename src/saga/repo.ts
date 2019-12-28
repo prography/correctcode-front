@@ -1,11 +1,11 @@
 import { all, fork, takeLatest } from 'redux-saga/effects';
-import { getReposEntity, GetReposActions } from 'store/repo/action';
+import { getReposEntity, GET_REPOS } from 'store/repo/action';
 import { fetchEntity } from 'utils/saga';
 
 const fetchGetRepos = fetchEntity(getReposEntity);
 
 function* watchGetRepos() {
-  yield takeLatest(GetReposActions.saga, fetchGetRepos);
+  yield takeLatest(GET_REPOS, fetchGetRepos);
 }
 
 export default function* root() {

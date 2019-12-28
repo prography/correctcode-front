@@ -1,7 +1,6 @@
-import produce from 'immer';
-import { createReducer, baseAsyncActionHandler } from 'utils/redux';
+import { createReducer } from 'utils/redux';
 import { User } from 'models/user';
-import AuthAction, { LoginAction, MeAction } from './action';
+import { meEntity } from './action';
 
 export type AuthState = {
   user: User & {
@@ -24,19 +23,25 @@ const initialState: AuthState = {
   meStatus: 'INIT',
 };
 
-const reducer = createReducer<AuthAction, AuthState>(initialState, {
-  ...baseAsyncActionHandler('loginStatus', LoginAction),
-  ...baseAsyncActionHandler('meStatus', MeAction),
-  [MeAction.success]: (state, action) => {
-    return produce(state, draft => {
-      draft.meStatus = 'SUCCESS';
-      draft.user.isLoggedIn = true;
-      draft.user = {
+const reducer = createReducer(initialState, switcher => {
+  switcher
+    .addCase(meEntity.request, state => {
+      state.meStatus = 'FETCHING';
+    })
+    .addCase(meEntity.success, (state, action) => {
+      state.meStatus = 'SUCCESS';
+      state.user = {
         ...action.payload,
         isLoggedIn: true,
       };
+    })
+    .addCase(meEntity.failure, state => {
+      state.meStatus = 'FAILURE';
+      state.user = {
+        ...initialState.user,
+        isLoggedIn: false,
+      };
     });
-  },
 });
 
 export default reducer;

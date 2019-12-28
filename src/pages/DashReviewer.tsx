@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import cx from 'classnames';
 import { Nav, SideBar, Loading, ReviewerCard, CardListNoti } from 'components';
-import { getReviewsSaga, getUserReviewsSaga } from 'store/review/action';
+import { getReviews, getUserReviews } from 'store/review/action';
 import { UserType } from 'models/review';
 
 import cardStyles from 'scss/components/Card.module.scss';
@@ -10,19 +10,19 @@ import pageStyles from 'scss/pages/DashBoard.module.scss';
 
 const DashReviewer = () => {
   const [isReviewers, setIsReviewers] = useState(false);
-  const reviews = useSelector((state: StoreState) =>
+  const { items: reviews } = useSelector((state: StoreState) =>
     isReviewers ? state.review.reviews : state.review.userReviews,
   );
   const dispatch = useDispatch();
   const isFetching = useSelector(
-    (state: StoreState) => state.review.getReviewsStatus === 'FETCHING',
+    (state: StoreState) => state.review.reviews.status === 'FETCHING',
   );
 
   useEffect(() => {
     if (isReviewers) {
-      dispatch(getUserReviewsSaga(UserType.REVIEWER));
+      dispatch(getUserReviews(UserType.REVIEWER));
     } else {
-      dispatch(getReviewsSaga());
+      dispatch(getReviews());
     }
   }, [dispatch, isReviewers]);
 

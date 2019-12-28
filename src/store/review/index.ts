@@ -1,44 +1,86 @@
-import produce from 'immer';
-import { createReducer, baseAsyncActionHandler } from 'utils/redux';
-import ReviewAction, {
-  GetReviewsActions,
-  GetUserReviewsActions,
-  CreateReviewActions,
+import { createReducer } from 'utils/redux';
+import {
+  getReviewsEntity,
+  getUserReviewsEntity,
+  createReviewEntity,
 } from 'store/review/action';
 import { Review } from 'models/review';
+import { combineReducers } from 'redux';
 
 export type ReviewState = {
-  reviews: Review[];
-  userReviews: Review[];
-  getReviewsStatus: Status;
-  getUserReviewsStatus: Status;
-  createReviewStatus: Status;
+  reviews: {
+    items: Review[];
+    status: Status;
+  };
+  userReviews: {
+    items: Review[];
+    status: Status;
+  };
+  createReview: {
+    status: Status;
+  };
 };
 
 const initialState: ReviewState = {
-  reviews: [],
-  userReviews: [],
-  getReviewsStatus: 'INIT',
-  getUserReviewsStatus: 'INIT',
-  createReviewStatus: 'INIT',
+  reviews: {
+    items: [],
+    status: 'INIT',
+  },
+  userReviews: {
+    items: [],
+    status: 'INIT',
+  },
+  createReview: {
+    status: 'INIT',
+  },
 };
 
-const reducer = createReducer<ReviewAction, ReviewState>(initialState, {
-  ...baseAsyncActionHandler('getReviewsStatus', GetReviewsActions),
-  ...baseAsyncActionHandler('getUserReviewsStatus', GetReviewsActions),
-  ...baseAsyncActionHandler('createReviewStatus', CreateReviewActions),
-  [GetUserReviewsActions.success]: (state, action) => {
-    return produce(state, draft => {
-      draft.reviews = action.payload;
-      draft.getUserReviewsStatus = 'SUCCESS';
+const reviewsReducer = createReducer(initialState.reviews, switcher => {
+  switcher
+    .addCase(getReviewsEntity.request, state => {
+      state.status = 'FETCHING';
+    })
+    .addCase(getReviewsEntity.success, (state, action) => {
+      state.status = 'SUCCESS';
+      state.items = action.payload;
+    })
+    .addCase(getReviewsEntity.failure, state => {
+      state.status = 'FAILURE';
     });
-  },
-  [GetReviewsActions.success]: (state, action) => {
-    return produce(state, draft => {
-      draft.userReviews = action.payload;
-      draft.getReviewsStatus = 'SUCCESS';
-    });
-  },
 });
 
-export default reducer;
+const userReviewsReducer = createReducer(initialState.userReviews, switcher => {
+  switcher
+    .addCase(getUserReviewsEntity.request, state => {
+      state.status = 'FETCHING';
+    })
+    .addCase(getUserReviewsEntity.success, (state, action) => {
+      state.status = 'SUCCESS';
+      state.items = action.payload;
+    })
+    .addCase(getUserReviewsEntity.failure, state => {
+      state.status = 'FAILURE';
+    });
+});
+
+const createReviewReducer = createReducer(
+  initialState.createReview,
+  switcher => {
+    switcher
+      .addCase(createReviewEntity.request, state => {
+        state.status = 'FETCHING';
+      })
+      .addCase(createReviewEntity.success, (state, action) => {
+        state.status = 'SUCCESS';
+      })
+      .addCase(createReviewEntity.failure, state => {
+        state.status = 'FAILURE';
+      });
+  },
+);
+
+export default combineReducers({
+  reviews: reviewsReducer,
+  userReviews: userReviewsReducer,
+  createReview: createReviewReducer,
+});

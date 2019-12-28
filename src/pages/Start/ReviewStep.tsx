@@ -7,7 +7,7 @@ import GithubIcon from 'assets/img/GitHubMark.png';
 import useFetch from 'hooks/useFetch';
 import { getBranches, compareBranch } from 'api/repo';
 import { Repo } from 'models/repo';
-import { createReviewSaga } from 'store/review/action';
+import { createReview } from 'store/review/action';
 import usePrevious from 'hooks/usePrevious';
 import styles from 'scss/pages/ReviewStep.module.scss';
 
@@ -46,7 +46,7 @@ const ReviewStep: React.FC<Props> = () => {
     state.repo.repos.find(({ id }) => String(id) === repoId),
   );
   const createReviewStatus = useSelector(
-    (state: StoreState) => state.review.createReviewStatus,
+    (state: StoreState) => state.review.createReview.status,
   );
   const prevStatus = usePrevious(createReviewStatus);
 
@@ -67,7 +67,7 @@ const ReviewStep: React.FC<Props> = () => {
   const handleCreateReview = () => {
     repoId &&
       dispatch(
-        createReviewSaga(repoId, {
+        createReview(repoId, {
           title: 'temp title',
           description: message,
           base: firstBranch,

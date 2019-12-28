@@ -1,58 +1,35 @@
-import { createReview, getUserReviews, getReviews } from 'api/review';
+import * as reviewApi from 'api/review';
 import { createEntity } from 'utils/redux';
 import { UserType, NewReview } from 'models/review';
 
-export enum GetReviewsActions {
-  saga = 'GET_REVIEWS_SAGA',
-  request = 'GET_REVIEWS_REQUEST',
-  success = 'GET_REVIEWS_SUCCESS',
-  failure = 'GET_REVIEWS_FAILURE',
-}
-export enum GetUserReviewsActions {
-  saga = 'GET_USER_REVIEWS_SAGA',
-  request = 'GET_USER_REVIEWS_REQUEST',
-  success = 'GET_USER_REVIEWS_SUCCESS',
-  failure = 'GET_USER_REVIEWS_FAILURE',
-}
+export const GET_REVIEWS = 'GET_REVIEWS';
+export const GET_USER_REVIEWS = 'GET_USER_REVIEWS';
+export const CREATE_REVIEW = 'CREATE_REVIEW';
 
-export enum CreateReviewActions {
-  saga = 'CREATE_REVIEW_SAGA',
-  request = 'CREATE_REVIEW_REQUEST',
-  success = 'CREATE_REVIEW_SUCCESS',
-  failure = 'CREATE_REVIEW_FAILURE',
-}
-
-export const getReviewsEntity = createEntity(GetReviewsActions, getReviews);
-export const getReviewsSaga = () => ({
-  type: GetReviewsActions.saga,
+export const getReviewsEntity = createEntity(GET_REVIEWS, reviewApi.getReviews);
+export const getReviews = () => ({
+  type: GET_REVIEWS,
 });
 
 export const getUserReviewsEntity = createEntity(
-  GetUserReviewsActions,
-  getUserReviews,
+  GET_USER_REVIEWS,
+  reviewApi.getUserReviews,
 );
-export const getUserReviewsSaga = (userType: UserType) => ({
-  type: GetUserReviewsActions.saga,
+export const getUserReviews = (userType: UserType) => ({
+  type: GET_USER_REVIEWS,
   userType,
 });
 
 export const createReviewEntity = createEntity(
-  CreateReviewActions,
-  createReview,
+  CREATE_REVIEW,
+  reviewApi.createReview,
 );
-export const createReviewSaga = (reviewId: string, review: NewReview) => ({
-  type: CreateReviewActions.saga,
+export const createReview = (reviewId: string, review: NewReview) => ({
+  type: CREATE_REVIEW,
   reviewId,
   review,
 });
 
-export type GetReviewsSaga = ReturnType<typeof getReviewsSaga>;
-export type GetUserReviewsSaga = ReturnType<typeof getUserReviewsSaga>;
-export type CreateReviewSaga = ReturnType<typeof createReviewSaga>;
-
-type ReviewAction =
-  | EntityActions<typeof createReviewEntity>
-  | EntityActions<typeof getReviewsEntity>
-  | EntityActions<typeof getUserReviewsEntity>;
-
-export default ReviewAction;
+export type GetReviews = ReturnType<typeof getReviews>;
+export type GetUserReviews = ReturnType<typeof getUserReviews>;
+export type CreateReview = ReturnType<typeof createReview>;
