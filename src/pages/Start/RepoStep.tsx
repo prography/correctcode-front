@@ -2,7 +2,6 @@ import React, { useEffect, useState, useMemo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import classnames from 'classnames';
 import { getRepos } from 'store/repo/action';
-import { Link } from 'react-router-dom';
 import { RepoItem, EmptySection, Loading } from 'components';
 import { APP_NAME } from 'constants/github';
 import profileImg from 'assets/img/TemporaryProfileImg.png';
@@ -55,12 +54,12 @@ const RepoStep = () => {
         ))}
       </div>
       <div className={styles.repoListFooter}>
-        <Link
+        <a
           className={styles.repoAddLink}
-          to={`https://github.com/apps/${APP_NAME}/installations/new`}
+          href={`https://github.com/apps/${APP_NAME}/installations/new`}
         >
           Add Repository
-        </Link>
+        </a>
       </div>
     </div>
   );
