@@ -29,8 +29,6 @@ export const createEntity = <Params extends any[], Res>(
   request: createAction<Params>(`${prefix}_REQUEST`),
   success: createAction<Res>(`${prefix}_SUCCESS`),
   failure: createAction<string>(`${prefix}_FAILURE`),
-  update: createAction<Res>(`${prefix}_UPDATE`),
-  reset: createAction<any>(`${prefix}_RESET`),
   service,
 });
 // 내부적으로 immer를 사용하는 handler

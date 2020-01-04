@@ -3,6 +3,8 @@ import {
   getReviewsEntity,
   getUserReviewsEntity,
   createReviewEntity,
+  resetReviews,
+  resetUserReviews,
 } from 'store/review/action';
 import { Review } from 'models/review';
 import { combineReducers } from 'redux';
@@ -47,7 +49,7 @@ const reviewsReducer = createReducer(initialState.reviews, switcher => {
     .addCase(getReviewsEntity.failure, state => {
       state.status = 'FAILURE';
     })
-    .addCase(getReviewsEntity.reset, state => {
+    .addCase(resetReviews, state => {
       state.items = [];
       state.status = 'INIT';
     });
@@ -65,7 +67,7 @@ const userReviewsReducer = createReducer(initialState.userReviews, switcher => {
     .addCase(getUserReviewsEntity.failure, state => {
       state.status = 'FAILURE';
     })
-    .addCase(getUserReviewsEntity.reset, state => {
+    .addCase(resetUserReviews, state => {
       state.items = [];
       state.status = 'INIT';
     });
@@ -78,7 +80,7 @@ const createReviewReducer = createReducer(
       .addCase(createReviewEntity.request, state => {
         state.status = 'FETCHING';
       })
-      .addCase(createReviewEntity.success, (state, action) => {
+      .addCase(createReviewEntity.success, state => {
         state.status = 'SUCCESS';
       })
       .addCase(createReviewEntity.failure, state => {
