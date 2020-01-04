@@ -19,16 +19,17 @@ type Props = {
 
 enum CompareStatus {
   Init = 'init',
-  behind = 'behind',
-  ahead = 'ahead',
-  loading = 'loading',
+  Behind = 'behind',
+  Ahead = 'ahead',
+  Loading = 'loading',
 }
 
 const CompareMessage = {
   [CompareStatus.Init]: '',
-  [CompareStatus.behind]: '❌ Base 브랜치가 Compare 브랜치보다 뒤에 있습니다.',
-  [CompareStatus.ahead]: '👌 등록할 수 있는 브랜치입니다.',
-  [CompareStatus.loading]: '🔍 브랜치 검사 중입니다.',
+  [CompareStatus.Behind]:
+    '❌ Base 브랜치가 Compare 브랜치와 같거나 뒤에 있습니다.',
+  [CompareStatus.Ahead]: '👌 등록할 수 있는 브랜치입니다.',
+  [CompareStatus.Loading]: '🔍 브랜치 검사 중입니다.',
 };
 
 const ReviewStep: React.FC<Props> = () => {
@@ -107,10 +108,10 @@ const ReviewStep: React.FC<Props> = () => {
     if (!repoId || !firstBranch || !secondBranch) {
       return setCompareStatus(CompareStatus.Init);
     }
-    setCompareStatus(CompareStatus.loading);
+    setCompareStatus(CompareStatus.Loading);
     compareBranch(repoId, firstBranch, secondBranch).then(({ status }) => {
       setCompareStatus(
-        status === 'behind' ? CompareStatus.behind : CompareStatus.ahead,
+        status !== 'ahead' ? CompareStatus.Behind : CompareStatus.Ahead,
       );
     });
   }, [repoId, firstBranch, secondBranch]);
@@ -175,10 +176,10 @@ const ReviewStep: React.FC<Props> = () => {
               />
               <div
                 className={classnames(styles.compareMessage, {
-                  [styles.error]: compareStatus === CompareStatus.behind,
-                  [styles.success]: compareStatus === CompareStatus.ahead,
+                  [styles.error]: compareStatus === CompareStatus.Behind,
+                  [styles.success]: compareStatus === CompareStatus.Ahead,
                   [styles.init]: compareStatus === CompareStatus.Init,
-                  [styles.loading]: compareStatus === CompareStatus.loading,
+                  [styles.loading]: compareStatus === CompareStatus.Loading,
                 })}
               >
                 {CompareMessage[compareStatus]}
@@ -195,7 +196,7 @@ const ReviewStep: React.FC<Props> = () => {
             <button
               className={styles.button}
               disabled={
-                !isButtonActive || compareStatus !== CompareStatus.ahead
+                !isButtonActive || compareStatus !== CompareStatus.Ahead
               }
               onClick={handleCreateReview}
             >
