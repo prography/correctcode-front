@@ -11,7 +11,7 @@ import pageStyles from 'scss/pages/DashBoard.module.scss';
 const DashReviewer = () => {
   const [isReviewers, setIsReviewers] = useState(false);
   const { items: reviews } = useSelector((state: StoreState) =>
-    isReviewers ? state.review.reviews : state.review.userReviews,
+    isReviewers ? state.review.userReviews : state.review.reviews,
   );
   const dispatch = useDispatch();
   const isFetching = useSelector(
