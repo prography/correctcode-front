@@ -17,4 +17,4 @@ export type Branch = {
   protected: boolean;
 };
 
-export type BranchStatus = 'ahead' | 'behind';
+export type BranchStatus = 'ahead' | 'behind' | 'identical';
