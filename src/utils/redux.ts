@@ -10,10 +10,14 @@ type TypedActionCreator<Type extends string> = {
 };
 // type이 있는 ActionCreator 만들기
 export const createAction = <P, Type extends string = string>(type: Type) => {
-  const fn = (payload: P) => ({
-    type,
-    payload,
-  });
+  function fn(payload?: P): { type: Type };
+  function fn(payload: P): { type: Type; payload: P };
+  function fn(payload: any): any {
+    return {
+      type,
+      payload,
+    };
+  }
   fn.type = type;
   return fn;
 };
@@ -67,6 +71,31 @@ export const createReducer = <S>(
     return state;
   };
 
+  return reducer;
+};
+
+export const createAsyncReducer = <
+  T,
+  S extends { status: Status; items?: T[] } // data 형식 정규화 하기
+>(
+  initialState: S,
+  entity: EntitySchema,
+  createSwitcher?: (builder: Switcher<S>) => void,
+) => {
+  const reducer = createReducer(initialState, switcher => {
+    switcher
+      .addCase(entity.request, state => {
+        state.status = 'FETCHING';
+      })
+      .addCase(entity.success, (state, action) => {
+        state.status = 'SUCCESS';
+        state.items = action.payload;
+      })
+      .addCase(entity.failure, state => {
+        state.status = 'FAILURE';
+      });
+    createSwitcher && createSwitcher(switcher);
+  });
   return reducer;
 };
 

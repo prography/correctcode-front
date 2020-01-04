@@ -44,7 +44,7 @@ const ReviewStep: React.FC<Props> = () => {
   // const [tag, setTag] = useState('');
   const [message, setMessage] = useState('');
   const currentRepo = useSelector((state: StoreState) =>
-    state.repo.repos.find(({ id }) => String(id) === repoId),
+    state.repo.items.find(({ id }) => String(id) === repoId),
   );
   const createReviewStatus = useSelector(
     (state: StoreState) => state.review.createReview.status,

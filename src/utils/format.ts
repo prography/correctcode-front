@@ -14,6 +14,9 @@ export const formatDate = (
   date: string,
   dateFormat: string = DEFAULT_DATE_FORMAT,
 ) => {
+  if (!date) {
+    return date;
+  }
   const parsedDate = parseISO(date);
   if (isBefore(subWeeks(Date.now(), 1), parsedDate)) {
     return `${formatDistanceStrict(parsedDate, Date.now(), {

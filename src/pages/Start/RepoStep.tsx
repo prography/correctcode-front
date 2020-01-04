@@ -11,13 +11,13 @@ import styles from 'scss/pages/RepoStep.module.scss';
 const RepoStep = () => {
   const [searchWord, setSearchWord] = useState('');
   const username = useSelector((state: StoreState) => state.auth.user.name);
-  const repos = useSelector((state: StoreState) => state.repo.repos);
+  const repos = useSelector((state: StoreState) => state.repo.items);
   const repoResults = useMemo(
     () => repos.filter(({ name }) => name.match(searchWord)),
     [repos, searchWord],
   );
   const isFetching = useSelector(
-    (state: StoreState) => state.repo.getReposStatus === 'FETCHING',
+    (state: StoreState) => state.repo.status === 'FETCHING',
   );
   const isEmpty = !isFetching && repoResults.length === 0;
   const dispatch = useDispatch();
