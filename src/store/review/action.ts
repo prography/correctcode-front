@@ -10,6 +10,7 @@ export const getReviewsEntity = createEntity(GET_REVIEWS, reviewApi.getReviews);
 export const getReviews = () => ({
   type: GET_REVIEWS,
 });
+export const resetReviews = getReviewsEntity.reset;
 
 export const getUserReviewsEntity = createEntity(
   GET_USER_REVIEWS,
@@ -19,6 +20,7 @@ export const getUserReviews = (userType: UserType) => ({
   type: GET_USER_REVIEWS,
   userType,
 });
+export const resetUserReviews = getUserReviewsEntity.reset;
 
 export const createReviewEntity = createEntity(
   CREATE_REVIEW,

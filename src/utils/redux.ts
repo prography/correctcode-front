@@ -10,10 +10,14 @@ type TypedActionCreator<Type extends string> = {
 };
 // type이 있는 ActionCreator 만들기
 export const createAction = <P, Type extends string = string>(type: Type) => {
-  const fn = (payload: P) => ({
-    type,
-    payload,
-  });
+  function fn(payload?: P): { type: Type };
+  function fn(payload: P): { type: Type; payload: P };
+  function fn(payload: any): any {
+    return {
+      type,
+      payload,
+    };
+  }
   fn.type = type;
   return fn;
 };
@@ -25,6 +29,8 @@ export const createEntity = <Params extends any[], Res>(
   request: createAction<Params>(`${prefix}_REQUEST`),
   success: createAction<Res>(`${prefix}_SUCCESS`),
   failure: createAction<string>(`${prefix}_FAILURE`),
+  update: createAction<Res>(`${prefix}_UPDATE`),
+  reset: createAction<any>(`${prefix}_RESET`),
   service,
 });
 // 내부적으로 immer를 사용하는 handler

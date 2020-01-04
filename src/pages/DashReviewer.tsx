@@ -2,7 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import cx from 'classnames';
 import { Nav, SideBar, Loading, ReviewerCard, CardListNoti } from 'components';
-import { getReviews, getUserReviews } from 'store/review/action';
+import {
+  getReviews,
+  getUserReviews,
+  resetReviews,
+  resetUserReviews,
+} from 'store/review/action';
 import { UserType } from 'models/review';
 
 import cardStyles from 'scss/components/Card.module.scss';
@@ -21,8 +26,10 @@ const DashReviewer = () => {
   useEffect(() => {
     if (isReviewers) {
       dispatch(getUserReviews(UserType.REVIEWER));
+      dispatch(resetReviews());
     } else {
       dispatch(getReviews());
+      dispatch(resetUserReviews());
     }
   }, [dispatch, isReviewers]);
 

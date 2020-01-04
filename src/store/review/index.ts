@@ -46,6 +46,10 @@ const reviewsReducer = createReducer(initialState.reviews, switcher => {
     })
     .addCase(getReviewsEntity.failure, state => {
       state.status = 'FAILURE';
+    })
+    .addCase(getReviewsEntity.reset, state => {
+      state.items = [];
+      state.status = 'INIT';
     });
 });
 
@@ -60,6 +64,10 @@ const userReviewsReducer = createReducer(initialState.userReviews, switcher => {
     })
     .addCase(getUserReviewsEntity.failure, state => {
       state.status = 'FAILURE';
+    })
+    .addCase(getUserReviewsEntity.reset, state => {
+      state.items = [];
+      state.status = 'INIT';
     });
 });
 
