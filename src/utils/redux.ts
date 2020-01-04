@@ -74,6 +74,31 @@ export const createReducer = <S>(
   return reducer;
 };
 
+export const createAsyncReducer = <
+  T,
+  S extends { status: Status; items?: T[] } // data 형식 정규화 하기
+>(
+  initialState: S,
+  entity: EntitySchema,
+  createSwitcher?: (builder: Switcher<S>) => void,
+) => {
+  const reducer = createReducer(initialState, switcher => {
+    switcher
+      .addCase(entity.request, state => {
+        state.status = 'FETCHING';
+      })
+      .addCase(entity.success, (state, action) => {
+        state.status = 'SUCCESS';
+        state.items = action.payload;
+      })
+      .addCase(entity.failure, state => {
+        state.status = 'FAILURE';
+      });
+    createSwitcher && createSwitcher(switcher);
+  });
+  return reducer;
+};
+
 /*
 간편한 리듀서 만들기 초안..
 

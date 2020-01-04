@@ -1,4 +1,4 @@
-import { createReducer } from 'utils/redux';
+import { createReducer, createAsyncReducer } from 'utils/redux';
 import {
   getReviewsEntity,
   getUserReviewsEntity,
@@ -9,6 +9,7 @@ import {
 import { Review } from 'models/review';
 import { combineReducers } from 'redux';
 
+// TODO: 서버 리스폰스 형식 정해지면 데이터 타입 정규화
 export type ReviewState = {
   reviews: {
     items: Review[];
@@ -37,56 +38,31 @@ const initialState: ReviewState = {
   },
 };
 
-const reviewsReducer = createReducer(initialState.reviews, switcher => {
-  switcher
-    .addCase(getReviewsEntity.request, state => {
-      state.status = 'FETCHING';
-    })
-    .addCase(getReviewsEntity.success, (state, action) => {
-      state.status = 'SUCCESS';
-      state.items = action.payload;
-    })
-    .addCase(getReviewsEntity.failure, state => {
-      state.status = 'FAILURE';
-    })
-    .addCase(resetReviews, state => {
-      state.items = [];
-      state.status = 'INIT';
-    });
-});
-
-const userReviewsReducer = createReducer(initialState.userReviews, switcher => {
-  switcher
-    .addCase(getUserReviewsEntity.request, state => {
-      state.status = 'FETCHING';
-    })
-    .addCase(getUserReviewsEntity.success, (state, action) => {
-      state.status = 'SUCCESS';
-      state.items = action.payload;
-    })
-    .addCase(getUserReviewsEntity.failure, state => {
-      state.status = 'FAILURE';
-    })
-    .addCase(resetUserReviews, state => {
-      state.items = [];
-      state.status = 'INIT';
-    });
-});
-
-const createReviewReducer = createReducer(
-  initialState.createReview,
+const reviewsReducer = createAsyncReducer(
+  initialState.reviews,
+  getReviewsEntity,
   switcher => {
-    switcher
-      .addCase(createReviewEntity.request, state => {
-        state.status = 'FETCHING';
-      })
-      .addCase(createReviewEntity.success, state => {
-        state.status = 'SUCCESS';
-      })
-      .addCase(createReviewEntity.failure, state => {
-        state.status = 'FAILURE';
-      });
+    switcher.addCase(resetReviews, state => {
+      state.items = [];
+      state.status = 'INIT';
+    });
   },
+);
+
+const userReviewsReducer = createAsyncReducer(
+  initialState.userReviews,
+  getUserReviewsEntity,
+  switcher => {
+    switcher.addCase(resetUserReviews, state => {
+      state.items = [];
+      state.status = 'INIT';
+    });
+  },
+);
+
+const createReviewReducer = createAsyncReducer(
+  initialState.createReview,
+  createReviewEntity,
 );
 
 export default combineReducers({
