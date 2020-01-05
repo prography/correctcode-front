@@ -1,9 +1,9 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import classnames from 'classnames';
 import { getRepos } from 'store/repo/action';
 import { RepoItem, EmptySection, Loading } from 'components';
 import { APP_NAME } from 'constants/github';
+import { FaSearch } from 'react-icons/fa';
 import profileImg from 'assets/img/TemporaryProfileImg.png';
 
 import styles from 'scss/pages/RepoStep.module.scss';
@@ -16,10 +16,9 @@ const RepoStep = () => {
     () => repos.filter(({ name }) => name.match(searchWord)),
     [repos, searchWord],
   );
-  const isFetching = useSelector(
-    (state: StoreState) => state.repo.status === 'FETCHING',
-  );
-  const isEmpty = !isFetching && repoResults.length === 0;
+  const status = useSelector((state: StoreState) => state.repo.status);
+  const isItemReady = status === 'SUCCESS' || repos.length !== 0;
+  const isEmpty = isItemReady && repoResults.length === 0;
   const dispatch = useDispatch();
 
   const handleSearchWordChange = (e: React.ChangeEvent<HTMLInputElement>) =>
@@ -37,7 +36,7 @@ const RepoStep = () => {
           <span className={styles.name}>{username}</span>
         </div>
         <div className={styles.search}>
-          <i className={classnames('fas fa-search', styles.icon)}></i>
+          <FaSearch className={styles.icon} />
           <input
             className={styles.input}
             placeholder="Search Repo"
@@ -47,7 +46,7 @@ const RepoStep = () => {
         </div>
       </div>
       <div className={styles.repoListBody}>
-        {isFetching && <Loading />}
+        {!isItemReady && <Loading />}
         {isEmpty && <EmptySection message="등록된 Repository가 없어요." />}
         {repoResults.map(repo => (
           <RepoItem key={repo.id} {...repo} />

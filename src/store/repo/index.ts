@@ -1,4 +1,4 @@
-import { createReducer, createAsyncReducer } from 'utils/redux';
+import { createAsyncReducer } from 'utils/redux';
 import { getReposEntity } from 'store/repo/action';
 import { Repo } from 'models/repo';
 

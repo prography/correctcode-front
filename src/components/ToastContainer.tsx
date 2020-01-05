@@ -4,6 +4,12 @@ import styles from 'scss/components/Toast.module.scss';
 import { Toast, ToastType } from 'models/toast';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteToast } from 'store/toast/action';
+import {
+  FaBell,
+  FaCheckCircle,
+  FaExclamationTriangle,
+  FaExclamationCircle,
+} from 'react-icons/fa';
 
 enum ToastStatus {
   Init = 'init',
@@ -11,10 +17,10 @@ enum ToastStatus {
   Close = 'close',
 }
 const Icon = {
-  [ToastType.Default]: <i className="fas fa-bell"></i>,
-  [ToastType.Success]: <i className="fas fa-check-circle"></i>,
-  [ToastType.Warning]: <i className="fas fa-exclamation-triangle"></i>,
-  [ToastType.Error]: <i className="fas fa-exclamation-circle"></i>,
+  [ToastType.Default]: <FaBell />,
+  [ToastType.Success]: <FaCheckCircle />,
+  [ToastType.Warning]: <FaExclamationTriangle />,
+  [ToastType.Error]: <FaExclamationCircle />,
 };
 type ToastProps = Toast;
 
