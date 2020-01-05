@@ -16,10 +16,9 @@ const RepoStep = () => {
     () => repos.filter(({ name }) => name.match(searchWord)),
     [repos, searchWord],
   );
-  const isFetching = useSelector(
-    (state: StoreState) => state.repo.status === 'FETCHING',
-  );
-  const isEmpty = !isFetching && repoResults.length === 0;
+  const status = useSelector((state: StoreState) => state.repo.status);
+  const isItemReady = status === 'SUCCESS' || repos.length !== 0;
+  const isEmpty = isItemReady && repoResults.length === 0;
   const dispatch = useDispatch();
 
   const handleSearchWordChange = (e: React.ChangeEvent<HTMLInputElement>) =>
@@ -47,7 +46,7 @@ const RepoStep = () => {
         </div>
       </div>
       <div className={styles.repoListBody}>
-        {isFetching && <Loading />}
+        {!isItemReady && <Loading />}
         {isEmpty && <EmptySection message="등록된 Repository가 없어요." />}
         {repoResults.map(repo => (
           <RepoItem key={repo.id} {...repo} />

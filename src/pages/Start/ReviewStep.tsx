@@ -8,7 +8,7 @@ import { getBranches, compareBranch } from 'api/repo';
 import { Repo } from 'models/repo';
 import { createReview } from 'store/review/action';
 import usePrevious from 'hooks/usePrevious';
-import { FaGithubSquare } from 'react-icons/fa';
+import { FaGithubSquare, FaCodeBranch, FaLongArrowAltUp } from 'react-icons/fa';
 import styles from 'scss/pages/ReviewStep.module.scss';
 
 const MAX_MESSAGE_COUNT = 100;
@@ -140,13 +140,16 @@ const ReviewStep: React.FC<Props> = () => {
             <span className={styles.description}>리뷰어에게 보내는 메세지</span>
           </div>
           <div className={styles.formItem}>
-            <Dropdown
-              items={branches}
-              selected={firstBranch}
-              placeholder="Base 브랜치 선택"
-              loading={isFetching.branch}
-              onSelect={onFirstBranchSelect}
-            />
+            <div className={styles.dropdown}>
+              <FaCodeBranch />
+              <Dropdown
+                items={branches}
+                selected={firstBranch}
+                placeholder="Base 브랜치 선택"
+                loading={isFetching.branch}
+                onSelect={onFirstBranchSelect}
+              />
+            </div>
           </div>
         </div>
         <div className={styles.formRow}>
@@ -167,13 +170,16 @@ const ReviewStep: React.FC<Props> = () => {
           </div>
           <div className={styles.formCol}>
             <div className={styles.formItem}>
-              <Dropdown
-                items={secondBranches}
-                selected={secondBranch}
-                placeholder="Compare 브랜치 선택"
-                loading={isFetching.branch}
-                onSelect={onSecondBranchSelect}
-              />
+              <div className={styles.dropdown}>
+                <FaLongArrowAltUp />
+                <Dropdown
+                  items={secondBranches}
+                  selected={secondBranch}
+                  placeholder="Compare 브랜치 선택"
+                  loading={isFetching.branch}
+                  onSelect={onSecondBranchSelect}
+                />
+              </div>
               <div
                 className={classnames(styles.compareMessage, {
                   [styles.error]: compareStatus === CompareStatus.Behind,
