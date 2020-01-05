@@ -1,4 +1,4 @@
-import { createReducer, createAsyncReducer } from 'utils/redux';
+import { createAsyncReducer } from 'utils/redux';
 import {
   getReviewsEntity,
   getUserReviewsEntity,

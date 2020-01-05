@@ -3,12 +3,12 @@ import { useParams, useHistory, Redirect } from 'react-router';
 import { useSelector, useDispatch } from 'react-redux';
 import classnames from 'classnames';
 import { Dropdown, Dimmed, Loading } from 'components';
-import GithubIcon from 'assets/img/GitHubMark.png';
 import useFetch from 'hooks/useFetch';
 import { getBranches, compareBranch } from 'api/repo';
 import { Repo } from 'models/repo';
 import { createReview } from 'store/review/action';
 import usePrevious from 'hooks/usePrevious';
+import { FaGithubSquare } from 'react-icons/fa';
 import styles from 'scss/pages/ReviewStep.module.scss';
 
 const MAX_MESSAGE_COUNT = 100;
@@ -128,7 +128,7 @@ const ReviewStep: React.FC<Props> = () => {
         </Dimmed>
       )}
       <div className={styles.repoInfo}>
-        <img src={GithubIcon} alt="github" className={styles.githubIcon} />
+        <FaGithubSquare className={styles.githubIcon} />
         <div className={styles.info}>
           <span className={styles.ownername}>{ownername}</span>
           <span className={styles.reponame}>/{reponame}</span>

@@ -1,5 +1,6 @@
 import React, { useState, useRef, memo } from 'react';
 import classnames from 'classnames';
+import { FaAngleDown } from 'react-icons/fa';
 
 import styles from 'scss/components/Dropdown.module.scss';
 import useOnClickOutside from 'hooks/useClickOutside';
@@ -52,7 +53,7 @@ const Dropdown: React.FC<Props> = ({
         >
           {selected || placeholder}
         </span>
-        <i className={classnames('fas fa-chevron-down', styles.icon)}></i>
+        <FaAngleDown className={styles.icon} />
       </button>
       <ul
         className={classnames(styles.list, {

@@ -1,9 +1,9 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import classnames from 'classnames';
 import { getRepos } from 'store/repo/action';
 import { RepoItem, EmptySection, Loading } from 'components';
 import { APP_NAME } from 'constants/github';
+import { FaSearch } from 'react-icons/fa';
 import profileImg from 'assets/img/TemporaryProfileImg.png';
 
 import styles from 'scss/pages/RepoStep.module.scss';
@@ -37,7 +37,7 @@ const RepoStep = () => {
           <span className={styles.name}>{username}</span>
         </div>
         <div className={styles.search}>
-          <i className={classnames('fas fa-search', styles.icon)}></i>
+          <FaSearch className={styles.icon} />
           <input
             className={styles.input}
             placeholder="Search Repo"
