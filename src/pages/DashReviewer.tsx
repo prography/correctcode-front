@@ -1,7 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import cx from 'classnames';
-import { Nav, SideBar, Loading, ReviewerCard, CardListNoti } from 'components';
+import {
+  Nav,
+  SideBar,
+  Loading,
+  ReviewerCard,
+  CardListNoti,
+  FetchingCard,
+} from 'components';
 import {
   getReviews,
   getUserReviews,
@@ -65,15 +72,15 @@ const DashReviewer = () => {
             </div>
           </div>
           <div className={cardStyles.cardList}>
-            <CardListNoti
-              userType={UserType.REVIEWER}
-              reviews={reviews}
-              isReviewers={true}
-            />
             {isFetching ? (
-              <Loading />
+              <FetchingCard />
             ) : (
               <>
+                <CardListNoti
+                  userType={UserType.REVIEWER}
+                  reviews={reviews}
+                  isReviewers={true}
+                />
                 {reviews.map(review => (
                   <ReviewerCard key={review.id} {...review} />
                 ))}
