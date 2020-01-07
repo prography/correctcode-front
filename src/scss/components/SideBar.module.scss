@@ -1,24 +1,47 @@
 .SideBarBox {
-    float: left;
+  float: left;
 
-    img {
-        margin-left: 48px;
-        width: 160px;
-        height: 160px;
-        border-radius: 80px;
-    }
+  img {
+    margin-left: 48px;
+    width: 160px;
+    height: 160px;
+    border-radius: 80px;
+  }
 
-    p {
-        margin-left: 48px;
-    }
+  p {
+    margin-left: 48px;
+  }
 
-    .name {
-        font-size: 21px;
-        color: #333333;
-    }
+  .name {
+    font-size: 21px;
+    color: #333333;
+  }
 
-    .description {
-        font-size: 16px;
-        color: #747C84;
-    }
+  .description {
+    font-size: 16px;
+    color: #747c84;
+  }
+
+  .fetchingImg {
+    margin-left: 48px;
+    width: 160px;
+    height: 160px;
+    border-radius: 80px;
+    background-color: #d8d8d8;
+  }
+  .fetchingName {
+    margin-left: 43px;
+    margin-top: 31px;
+    width: 124px;
+    height: 18px;
+    background-color: #d8d8d8;
+  }
+
+  .fetchingDescription {
+    margin-left: 43px;
+    margin-top: 11px;
+    width: 80px;
+    height: 18px;
+    background-color: #d8d8d8;
+  }
 }

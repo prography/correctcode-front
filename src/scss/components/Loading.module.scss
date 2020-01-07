@@ -1,4 +1,3 @@
-
 .container {
   width: 100%;
   height: 100%;
@@ -6,4 +5,105 @@
   align-items: center;
   justify-content: center;
   background: inherit;
+}
+
+// 박스 세팅
+@mixin card-setting {
+  width: 736px;
+  border-radius: 6px;
+  box-shadow: 2px 2px 9px 0 rgba(157, 157, 157, 0.35);
+  display: inline-block;
+  margin-bottom: 26px;
+  position: relative;
+  padding: 31px 0px 20px 0px;
+  background-color: #ccc;
+}
+
+.box {
+  @include card-setting;
+  height: 248px;
+
+  :first-child {
+    display: flex;
+    align-items: center;
+  }
+}
+
+//박스 내용물
+
+.language {
+  width: 59px;
+  height: 18px;
+  background-color: #d8d8d8;
+  margin-bottom: 3px;
+  margin-left: 30px;
+}
+
+.time {
+  width: 125px;
+  height: 18px;
+  background-color: #d8d8d8;
+  float: right;
+  margin-right: 26px;
+  margin-left: auto;
+}
+
+.repo {
+  width: 306px;
+  height: 26px;
+  background-color: #d8d8d8;
+  margin-left: 30px;
+  margin-top: 8px;
+}
+
+.description {
+  width: 115px;
+  height: 18px;
+  background-color: #d8d8d8;
+  margin: 8px 30px;
+}
+
+//상태 박스
+.statusBox {
+  position: absolute;
+  width: 736px;
+  height: 60px;
+  bottom: 0;
+  display: inline-flex;
+  align-items: center;
+  background: #c8c8c8;
+  border-radius: 0 0 6px 6px;
+}
+
+.user {
+  width: 172px;
+  height: 18px;
+  background-color: #d8d8d8;
+  margin-left: 30px;
+}
+
+//Noti
+.notiBox {
+  @include card-setting;
+  height: 200px;
+}
+.noti1 {
+  width: 256px;
+  height: 24px;
+  background-color: #d8d8d8;
+  margin-left: 30px;
+}
+.noti2 {
+  width: 213px;
+  height: 18px;
+  background-color: #d8d8d8;
+  margin-top: 11px;
+  margin-left: 30px;
+}
+.noti3 {
+  width: 346px;
+  height: 18px;
+  background-color: #d8d8d8;
+  margin-top: 8px;
+  margin-left: 30px;
 }

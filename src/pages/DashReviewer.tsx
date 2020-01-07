@@ -44,7 +44,7 @@ const DashReviewer = () => {
     <div>
       <Nav isReviewer={true} />
       <div className={pageStyles.underNav}>
-        <SideBar />
+        <SideBar isFetching={isFetching} />
         <div style={{ display: 'inline-block', width: '816px' }}>
           <div className={cardStyles.reviewerBox}>
             <div
