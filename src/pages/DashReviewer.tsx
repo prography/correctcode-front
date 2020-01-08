@@ -4,7 +4,6 @@ import cx from 'classnames';
 import {
   Nav,
   SideBar,
-  Loading,
   ReviewerCard,
   CardListNoti,
   FetchingCard,
