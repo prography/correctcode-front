@@ -56,8 +56,8 @@ const RevieweeCard: React.FC<Props> = ({
           <p className={styles.revieweePending}>리뷰어를 기다리고 있어요.</p>
         </div>
       ) : (
-          <StatusComponent status={status} reviewer={reviewer} />
-        )}
+        <StatusComponent status={status} reviewer={reviewer} />
+      )}
     </div>
   );
 };

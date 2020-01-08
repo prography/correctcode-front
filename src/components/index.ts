@@ -13,3 +13,4 @@ export { default as SideBar } from './SideBar';
 export { default as Lottie } from './Lottie';
 export { default as Loading } from './Loading';
 export { default as ToastContainer } from './ToastContainer';
+export { default as FetchingCard } from './FetchingCard';

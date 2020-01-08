@@ -1,11 +1,16 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Nav, CardListNoti, SideBar, Loading, RevieweeCard } from 'components';
+import {
+  Nav,
+  CardListNoti,
+  SideBar,
+  RevieweeCard,
+  FetchingCard,
+} from 'components';
 import pageStyles from 'scss/pages/DashBoard.module.scss';
 import cardStyles from 'scss/components/Card.module.scss';
 import { UserType } from 'models/review';
 import { getUserReviews } from 'store/review/action';
-
 const DashReviewee = () => {
   const reviews = useSelector(
     (state: StoreState) => state.review.userReviews.items,
@@ -22,17 +27,17 @@ const DashReviewee = () => {
     <div>
       <Nav />
       <div className={pageStyles.underNav}>
-        <SideBar />
+        <SideBar isFetching={isFetching} />
         <div className={cardStyles.cardList}>
-          <CardListNoti
-            userType={UserType.REVIEWEE}
-            reviews={reviews}
-            isReviewers={false}
-          />
           {isFetching ? (
-            <Loading />
+            <FetchingCard />
           ) : (
             <>
+              <CardListNoti
+                userType={UserType.REVIEWEE}
+                reviews={reviews}
+                isReviewers={false}
+              />
               {reviews.map(review => (
                 <RevieweeCard key={review.id} {...review} />
               ))}
