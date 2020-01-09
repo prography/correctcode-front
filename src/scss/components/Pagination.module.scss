@@ -11,6 +11,7 @@
   margin-right: 5px;
   &:hover {
     background-color: $green-light;
+    cursor: pointer;
   }
 }
 .paginationLayout {
@@ -51,5 +52,12 @@
     &.currentPage {
       background-color: $green-light;
     }
+  }
+  .pageDots {
+    @include centerlize;
+    width: 29px;
+    height: 32px;
+    border-radius: 6px;
+    margin-right: 5px;
   }
 }

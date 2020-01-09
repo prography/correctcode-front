@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { PageNum } from 'components';
-import classnames from 'classnames';
 import styles from 'scss/components/Pagination.module.scss';
 
 type Props = {
@@ -23,64 +22,94 @@ const UnderPagination = ({ pageAmount, currentPage, handlePageNum }: Props) => {
   }
   return (
     <>
-      <div className={styles.moveNumList}>
+      <div
+        className={styles.moveNumList}
+        onClick={() => handlePageNum(currentPage - 1)}
+      >
         <div>&#60;</div>
       </div>
       {rows}
-      <div className={styles.moveNumList}>
+      <div
+        className={styles.moveNumList}
+        onClick={() => handlePageNum(currentPage + 1)}
+      >
         <div>&#62;</div>
       </div>
     </>
   );
 };
 const SidePagination = ({ pageAmount, currentPage, handlePageNum }: Props) => {
-  const isLeftSide = currentPage < 6;
-  const middleNum = isLeftSide ? 5 : pageAmount - 4;
+  const isDots = currentPage < 6;
+  const middleNum = currentPage < 6 ? 5 : pageAmount - 4;
+
   return (
     <>
-      <div className={styles.moveNumList}>
+      <div
+        className={styles.moveNumList}
+        onClick={() => handlePageNum(currentPage - 1)}
+      >
         <div>&#60;</div>
       </div>
-      <PageNum
-        pageNum={1}
-        currentPage={currentPage}
-        handlePageNum={handlePageNum}
-      />
-      <div className={styles.pageNum}>{!isLeftSide ? '···' : 2}</div>
-      <PageNum
-        pageNum={middleNum - 2}
-        currentPage={currentPage}
-        handlePageNum={handlePageNum}
-      />
-      <PageNum
-        pageNum={middleNum - 1}
-        currentPage={currentPage}
-        handlePageNum={handlePageNum}
-      />
-      <PageNum
-        pageNum={middleNum}
-        currentPage={currentPage}
-        handlePageNum={handlePageNum}
-      />
-      <PageNum
-        pageNum={middleNum + 1}
-        currentPage={currentPage}
-        handlePageNum={handlePageNum}
-      />
-      <PageNum
-        pageNum={middleNum + 2}
-        currentPage={currentPage}
-        handlePageNum={handlePageNum}
-      />
-      <div className={styles.pageNum}>
-        {isLeftSide ? '···' : pageAmount - 1}
+      <div className={styles.numList}>
+        <PageNum
+          pageNum={1}
+          currentPage={currentPage}
+          handlePageNum={handlePageNum}
+        />
+        {!isDots ? (
+          <div className={styles.pageDots}>···</div>
+        ) : (
+          <PageNum
+            pageNum={2}
+            currentPage={currentPage}
+            handlePageNum={handlePageNum}
+          />
+        )}
+
+        <PageNum
+          pageNum={middleNum - 2}
+          currentPage={currentPage}
+          handlePageNum={handlePageNum}
+        />
+        <PageNum
+          pageNum={middleNum - 1}
+          currentPage={currentPage}
+          handlePageNum={handlePageNum}
+        />
+        <PageNum
+          pageNum={middleNum}
+          currentPage={currentPage}
+          handlePageNum={handlePageNum}
+        />
+        <PageNum
+          pageNum={middleNum + 1}
+          currentPage={currentPage}
+          handlePageNum={handlePageNum}
+        />
+        <PageNum
+          pageNum={middleNum + 2}
+          currentPage={currentPage}
+          handlePageNum={handlePageNum}
+        />
+        {isDots ? (
+          <div className={styles.pageDots}>···</div>
+        ) : (
+          <PageNum
+            pageNum={pageAmount - 1}
+            currentPage={currentPage}
+            handlePageNum={handlePageNum}
+          />
+        )}
+        <PageNum
+          pageNum={pageAmount}
+          currentPage={currentPage}
+          handlePageNum={handlePageNum}
+        />
       </div>
-      <PageNum
-        pageNum={pageAmount}
-        currentPage={currentPage}
-        handlePageNum={handlePageNum}
-      />
-      <div className={styles.moveNumList}>
+      <div
+        className={styles.moveNumList}
+        onClick={() => handlePageNum(currentPage + 1)}
+      >
         <div>&#62;</div>
       </div>
     </>
@@ -93,12 +122,15 @@ const MiddlePagination = ({
 }: Props) => {
   return (
     <>
-      <div className={styles.moveNumList}>
+      <div
+        className={styles.moveNumList}
+        onClick={() => handlePageNum(currentPage - 1)}
+      >
         <div>&#60;</div>
       </div>
       <div className={styles.numList}>
         <PageNum pageNum={1} handlePageNum={handlePageNum} />
-        <div className={styles.pageNum}>&middot;&middot;&middot;</div>
+        <div className={styles.pageDots}>···</div>
         <PageNum pageNum={currentPage - 2} handlePageNum={handlePageNum} />
         <PageNum pageNum={currentPage - 1} handlePageNum={handlePageNum} />
         <PageNum
@@ -108,10 +140,13 @@ const MiddlePagination = ({
         />
         <PageNum pageNum={currentPage + 1} handlePageNum={handlePageNum} />
         <PageNum pageNum={currentPage + 2} handlePageNum={handlePageNum} />
-        <div className={styles.pageNum}>&middot;&middot;&middot;</div>
+        <div className={styles.pageDots}>···</div>
         <PageNum pageNum={pageAmount} handlePageNum={handlePageNum} />
       </div>
-      <div className={styles.moveNumList}>
+      <div
+        className={styles.moveNumList}
+        onClick={() => handlePageNum(currentPage + 1)}
+      >
         <div>&#62;</div>
       </div>
     </>
@@ -120,22 +155,20 @@ const MiddlePagination = ({
 
 const Pagination: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const pageAmount = 21;
+  const pageAmount = 23;
   //각종 함수들
   const handlePageNum = (value: number) => {
+    if (value < 1 || value > pageAmount) {
+      return 0;
+    }
     setCurrentPage(value);
   };
-  //지정되는 컴포넌트
-  let StatusPagination = SidePagination;
-  if (pageAmount < 10) {
-    StatusPagination = UnderPagination;
-  } else {
-    StatusPagination =
-      5 < currentPage && currentPage < pageAmount - 5
-        ? MiddlePagination
-        : SidePagination;
-  }
-
+  const StatusPagination =
+    pageAmount < 10
+      ? UnderPagination
+      : 5 < currentPage && currentPage < pageAmount - 5
+      ? MiddlePagination
+      : SidePagination;
   return (
     <div className={styles.paginationLayout}>
       <StatusPagination
