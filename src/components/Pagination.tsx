@@ -36,7 +36,7 @@ const PageNum: React.FC<PageNumProps> = ({
   );
 };
 
-const UpdatedPagination = ({
+const MiddlePagination = ({
   pageAmount,
   currentPage,
   handlePageNum,
@@ -128,7 +128,7 @@ const Pagination: React.FC = () => {
         handlePageNum={handlePageNum}
       />
 
-      <UpdatedPagination
+      <MiddlePagination
         currentPage={currentPage}
         pageAmount={pageAmount}
         handlePageNum={handlePageNum}
