@@ -11,7 +11,7 @@ type Props = {
 type PageNumProps = {
   isCurrentPage?: boolean;
   pageNum: number;
-  currentPage?: number;
+  currentPage: number;
   handlePageNum: (value: number) => void;
 };
 
