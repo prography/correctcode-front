@@ -6,7 +6,7 @@ import {
   SideBar,
   RevieweeCard,
   FetchingCard,
-  Pagination,
+  // Pagination,
 } from 'components';
 import pageStyles from 'scss/pages/DashBoard.module.scss';
 import cardStyles from 'scss/components/Card.module.scss';
@@ -44,7 +44,7 @@ const DashReviewee = () => {
               ))}
             </>
           )}
-          <Pagination />
+          {/* <Pagination /> */}
         </div>
       </div>
     </div>

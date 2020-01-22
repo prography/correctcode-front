@@ -5,7 +5,7 @@ import styles from 'scss/components/Card.module.scss';
 
 type Props = Pick<
   Review,
-  'language' | 'createdAt' | 'repositoryUrl' | 'head' | 'description'
+  'language' | 'createdAt' | 'repositoryUrl' | 'head' | 'description' | 'number'
 >;
 const CommonCard: React.FC<Props> = ({
   language,
@@ -13,6 +13,7 @@ const CommonCard: React.FC<Props> = ({
   repositoryUrl,
   head,
   description,
+  number,
 }) => {
   return (
     <>
@@ -22,7 +23,7 @@ const CommonCard: React.FC<Props> = ({
       </div>
       <a
         className={styles.repo}
-        href={repositoryUrl}
+        href={`${repositoryUrl}/pull/${number}`}
         target="_blank"
         rel="noopener noreferrer"
       >
