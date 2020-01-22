@@ -37,6 +37,7 @@ const RevieweeCard: React.FC<Props> = ({
   createdAt,
   language,
   head,
+  number,
   description,
   repositoryUrl,
 }) => {
@@ -46,6 +47,7 @@ const RevieweeCard: React.FC<Props> = ({
     <div className={styles.box}>
       <CommonCard
         language={language}
+        number={number}
         createdAt={createdAt}
         repositoryUrl={repositoryUrl}
         head={head}

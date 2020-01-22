@@ -47,12 +47,14 @@ const ReviewerCard: React.FC<Props> = ({
   createdAt,
   language,
   reviewee,
+  number,
 }) => {
   const isPending = status === 'pending';
   const StatusComponent = isPending ? PendingCard : MatchedCard;
   return (
     <div className={styles.box}>
       <CommonCard
+        number={number}
         language={language}
         createdAt={createdAt}
         repositoryUrl={repositoryUrl}
