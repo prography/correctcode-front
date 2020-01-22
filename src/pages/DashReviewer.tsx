@@ -7,7 +7,7 @@ import {
   ReviewerCard,
   CardListNoti,
   FetchingCard,
-  Pagination,
+  // Pagination,
 } from 'components';
 import {
   getReviews,
@@ -86,7 +86,7 @@ const DashReviewer = () => {
                 ))}
               </>
             )}
-            <Pagination />
+            {/* <Pagination /> */}
           </div>
         </div>
       </div>
