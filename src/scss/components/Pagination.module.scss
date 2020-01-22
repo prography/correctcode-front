@@ -1,0 +1,63 @@
+@import 'scss/_variables';
+@mixin centerlize {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@mixin pageBox {
+  width: 29px;
+  height: 32px;
+  border-radius: 6px;
+  margin-right: 5px;
+  &:hover {
+    background-color: $green-light;
+    cursor: pointer;
+  }
+}
+.paginationLayout {
+  width: 445px;
+  height: 46px;
+  border-radius: 6px;
+  border: solid 1px #d9d9d9;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 70px auto 30px 146px;
+  font-family: NotoSansKR;
+  font-size: 15px;
+  font-weight: bold;
+
+  .moveNumList {
+    width: 53px;
+    height: 46px;
+    border-radius: 6px;
+    @include centerlize;
+    div {
+      @include pageBox;
+      @include centerlize;
+    }
+  }
+
+  .numList {
+    width: 339px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .pageNum {
+    @include centerlize;
+    @include pageBox;
+    font-weight: 500;
+    &.currentPage {
+      background-color: $green-light;
+    }
+  }
+  .pageDots {
+    @include centerlize;
+    width: 29px;
+    height: 32px;
+    border-radius: 6px;
+    margin-right: 5px;
+  }
+}
