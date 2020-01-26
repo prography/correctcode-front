@@ -3,7 +3,7 @@ import { Switch, Route, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import qs from 'query-string';
 import { me } from 'store/auth/action';
-import { PageLayout, Nav } from 'components';
+import { PageLayout, Nav, DetectMobile } from 'components';
 
 import AuthCheckPage from 'pages/AuthCheckPage';
 import Home from 'pages/Home';
@@ -51,10 +51,12 @@ const App: React.FC = () => {
   }
 
   return (
-    <Switch>
-      <Route path="/" exact component={Home} />
-      <Route path="/*" component={Pages} />
-    </Switch>
+    <DetectMobile>
+      <Switch>
+        <Route path="/" exact component={Home} />
+        <Route path="/*" component={Pages} />
+      </Switch>
+    </DetectMobile>
   );
 };
 
