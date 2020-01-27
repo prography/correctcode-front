@@ -35,6 +35,37 @@
   display: flex;
   align-items: center;
 
+  .contact {
+    @include centerAlign;
+    width: 100px;
+    height: 36px;
+    border-radius: 15px;
+    border: 1px solid #111;
+    margin-right: 20px;
+    cursor: pointer;
+    a {
+      text-decoration: none;
+      color: #111;
+    }
+    &:hover {
+      border: 1px solid $green-light;
+      a {
+        color: $green-light;
+      }
+    }
+    &.startpageContact {
+      border: 1px solid #fff;
+      a {
+        color: #fff;
+      }
+      &:hover {
+        border: 1px solid $green-dark;
+        a {
+          color: $green-dark;
+        }
+      }
+    }
+  }
   span {
     display: inline-block;
     font-size: 18px;
