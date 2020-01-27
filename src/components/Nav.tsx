@@ -26,6 +26,15 @@ const Nav: React.FC<Props> = ({ isStartPage = false, isReviewer }) => {
           <img src={logo} className={styles.logo} alt="logo" />
         </Link>
         <div className={styles.profile}>
+          <div
+            className={classnames(styles.contact, {
+              [styles.startpageContact]: isStartPage,
+            })}
+          >
+            <a href="https://forms.gle/n8poWfpe1wLhrWQ26" target="blank">
+              CONTACT
+            </a>
+          </div>
           <img
             src={user.profileImg ? user.profileImg : profileImg}
             className={styles.profileImg}

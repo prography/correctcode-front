@@ -1,16 +1,12 @@
 @import 'scss/_variables';
-@mixin centerlize {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+
 @mixin pageBox {
   width: 29px;
   height: 32px;
   border-radius: 6px;
   margin-right: 5px;
   &:hover {
-    background-color: $green-light;
+    background-color: $gray-light;
     cursor: pointer;
   }
 }
@@ -32,10 +28,10 @@
     width: 53px;
     height: 46px;
     border-radius: 6px;
-    @include centerlize;
+    @include centerAlign;
     div {
       @include pageBox;
-      @include centerlize;
+      @include centerAlign;
     }
   }
 
@@ -46,15 +42,27 @@
     align-items: center;
   }
   .pageNum {
-    @include centerlize;
+    @include centerAlign;
     @include pageBox;
     font-weight: 500;
     &.currentPage {
       background-color: $green-light;
+
+      animation-name: changeColor;
+      animation-duration: 0.8s;
+      animation-timing-function: ease-out;
+    }
+    @keyframes changeColor {
+      0% {
+        background-color: $gray-light;
+      }
+      100% {
+        background-color: $green-light;
+      }
     }
   }
   .pageDots {
-    @include centerlize;
+    @include centerAlign;
     width: 29px;
     height: 32px;
     border-radius: 6px;
