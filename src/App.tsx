@@ -3,7 +3,7 @@ import { Switch, Route, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import qs from 'query-string';
 import { me } from 'store/auth/action';
-import { PageLayout, Nav, DetectMobile } from 'components';
+import { PageLayout, Nav } from 'components';
 
 import AuthCheckPage from 'pages/AuthCheckPage';
 import Home from 'pages/Home';
@@ -11,6 +11,7 @@ import DashReviewee from 'pages/DashReviewee';
 import DashReviewer from 'pages/DashReviewer';
 import ErrorPage from 'pages/ErrorPage';
 import Start from 'pages/Start';
+import useDevice from 'hooks/useDevice';
 
 const Pages = () => {
   const { pathname } = useLocation();
@@ -39,6 +40,8 @@ const App: React.FC = () => {
   const dispatch = useDispatch();
   const { search } = useLocation();
 
+  useDevice();
+
   useEffect(() => {
     const { accessToken } = qs.parse(search);
     const token = Array.isArray(accessToken) ? accessToken[0] : accessToken;
@@ -51,12 +54,10 @@ const App: React.FC = () => {
   }
 
   return (
-    <DetectMobile>
-      <Switch>
-        <Route path="/" exact component={Home} />
-        <Route path="/*" component={Pages} />
-      </Switch>
-    </DetectMobile>
+    <Switch>
+      <Route path="/" exact component={Home} />
+      <Route path="/*" component={Pages} />
+    </Switch>
   );
 };
 
