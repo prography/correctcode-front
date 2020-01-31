@@ -32,10 +32,19 @@
   width: 100%;
   padding: 0 10px;
   margin-top: 10px;
+
+  display: flex;
+  justify-content: space-between;
+
+  @include respond-below(sm) {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 .formRow {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   margin-top: 10px;
 }
@@ -115,5 +124,10 @@
   cursor: pointer;
   &:disabled {
     background-color: $gray;
+  }
+
+  margin-top: 100px;
+  @include respond-below(sm) {
+    margin-top: 10px;
   }
 }

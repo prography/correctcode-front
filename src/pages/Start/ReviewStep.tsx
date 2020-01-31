@@ -139,20 +139,7 @@ const ReviewStep: React.FC<Props> = () => {
           <div className={styles.formItem}>
             <span className={styles.description}>리뷰어에게 보내는 메세지</span>
           </div>
-          <div className={styles.formItem}>
-            <div className={styles.dropdown}>
-              <FaCodeBranch />
-              <Dropdown
-                items={branches}
-                selected={firstBranch}
-                placeholder="Base 브랜치 선택"
-                loading={isFetching.branch}
-                onSelect={onFirstBranchSelect}
-              />
-            </div>
-          </div>
-        </div>
-        <div className={styles.formRow}>
+
           <div className={styles.formItem}>
             <textarea
               value={message}
@@ -168,7 +155,21 @@ const ReviewStep: React.FC<Props> = () => {
               <span>{message.length}/100</span>
             </div>
           </div>
+        </div>
+        <div className={styles.formRow}>
           <div className={styles.formCol}>
+            <div className={styles.formItem}>
+              <div className={styles.dropdown}>
+                <FaCodeBranch />
+                <Dropdown
+                  items={branches}
+                  selected={firstBranch}
+                  placeholder="Base 브랜치 선택"
+                  loading={isFetching.branch}
+                  onSelect={onFirstBranchSelect}
+                />
+              </div>
+            </div>
             <div className={styles.formItem}>
               <div className={styles.dropdown}>
                 <FaLongArrowAltUp />
@@ -180,16 +181,17 @@ const ReviewStep: React.FC<Props> = () => {
                   onSelect={onSecondBranchSelect}
                 />
               </div>
-              <div
-                className={classnames(styles.compareMessage, {
-                  [styles.error]: compareStatus === CompareStatus.Behind,
-                  [styles.success]: compareStatus === CompareStatus.Ahead,
-                  [styles.init]: compareStatus === CompareStatus.Init,
-                  [styles.loading]: compareStatus === CompareStatus.Loading,
-                })}
-              >
-                {CompareMessage[compareStatus]}
-              </div>
+            </div>
+
+            <div
+              className={classnames(styles.compareMessage, {
+                [styles.error]: compareStatus === CompareStatus.Behind,
+                [styles.success]: compareStatus === CompareStatus.Ahead,
+                [styles.init]: compareStatus === CompareStatus.Init,
+                [styles.loading]: compareStatus === CompareStatus.Loading,
+              })}
+            >
+              {CompareMessage[compareStatus]}
             </div>
             {/* <div className={styles.formItem}>
               <Dropdown

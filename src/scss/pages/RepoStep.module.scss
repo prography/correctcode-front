@@ -9,6 +9,7 @@
   justify-content: space-between;
 
   .profile {
+    max-width: 150px;
     display: flex;
     align-items: center;
     padding: 10px;
@@ -41,11 +42,19 @@
       margin-left: 10px;
     }
   }
+
+  @include respond-below(sm) {
+    display: block;
+    .profile {
+      margin-bottom: 10px;
+    }
+  }
 }
 
 .repoListBody {
   margin-top: 10px;
-  height: 244px;
+  min-height: 244px;
+  max-height: 300px;
   overflow-y: auto;
 }
 

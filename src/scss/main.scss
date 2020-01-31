@@ -23,6 +23,10 @@ button {
     'Droid Sans', 'Helvetica Neue', sans-serif;
 }
 
+p {
+  word-break: keep-all;
+}
+
 *,
 *::before,
 *::after {

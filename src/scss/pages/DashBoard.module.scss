@@ -1,6 +1,11 @@
+@import 'scss/base';
 .underNav {
   width: 1119px;
   margin: auto;
   display: flex;
   margin-top: 36px;
+
+  @include respond-below(sm) {
+    width: 100%;
+  }
 }

@@ -3,7 +3,7 @@
 .NavBox {
   position: fixed;
   top: 0;
-  width: 100%;
+  width: 100vw;
   height: 80px;
   color: #333;
   background-color: #fff;
@@ -20,12 +20,20 @@
   margin: 0 120px;
   display: flex;
   align-items: center;
+
+  @include respond-below(sm) {
+    margin: 0px 20px;
+  }
 }
 .left {
   flex: 1;
   .logo {
     width: 214px;
     height: auto;
+
+    @include respond-below(sm) {
+      width: 150px;
+    }
   }
 }
 
@@ -65,6 +73,9 @@
         }
       }
     }
+    @include respond-below(sm) {
+      display: none;
+    }
   }
   span {
     display: inline-block;
@@ -74,7 +85,6 @@
   }
 
   .profileImg {
-    width: 36px;
-    height: 36px;
+    width: 2rem;
   }
 }
