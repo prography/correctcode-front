@@ -1,9 +1,9 @@
-@import 'scss/_variables';
-@import 'scss/_font';
+@import 'scss/base';
 
 .homeBody {
   width: 100%;
   height: 100vh;
+  overflow: hidden;
   background-color: $green-light;
   @include centerAlign;
 }
@@ -32,6 +32,16 @@
     color: #eaeaea;
     margin-left: 117px;
   }
+
+  @include respond-below(sm) {
+    width: 95%;
+    .homeLogo {
+      margin: 30px 10px;
+    }
+    .homeSlogan {
+      margin-left: 10px;
+    }
+  }
 }
 
 .bottomDivs {
@@ -42,6 +52,11 @@
   justify-content: space-between;
   align-items: flex-end;
   padding: 0px 100px 0px 117px;
+
+  @include respond-below(sm) {
+    margin-left: 10px;
+    padding: 0;
+  }
 }
 
 .signInAnchor {
@@ -77,4 +92,8 @@
 
 .backgroundLogo {
   width: 210px;
+
+  @include respond-below(md) {
+    display: none;
+  }
 }

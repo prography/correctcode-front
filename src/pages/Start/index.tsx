@@ -4,6 +4,7 @@ import { Step as StepComponent } from 'components';
 import RepoStep from './RepoStep';
 import ReviewStep from './ReviewStep';
 import styles from 'scss/pages/Start.module.scss';
+import { useSelector } from 'react-redux';
 
 enum Step {
   github = 'github',
@@ -36,6 +37,7 @@ const STEPS = [
 ];
 
 const ReviewStartPage = () => {
+  const isMobile = useSelector((state: StoreState) => state.device.isMobile);
   const { step: stepParam } = useParams<{ step: Step }>();
   const stepIdx = useMemo(
     () => STEPS.findIndex(({ step }) => step === stepParam),
@@ -51,7 +53,7 @@ const ReviewStartPage = () => {
 
   return (
     <div className={styles.container}>
-      <StepComponent steps={STEPS} currentStep={stepIdx} />
+      {!isMobile && <StepComponent steps={STEPS} currentStep={stepIdx} />}
       <div className={styles.inner}>
         <div className={styles.title}>{title}</div>
         <Switch>

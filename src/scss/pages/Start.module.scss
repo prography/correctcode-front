@@ -1,8 +1,10 @@
 @import 'scss/base.scss';
 
 .container {
-  width: 1120px;
-  margin: 24px auto;
+  width: 100%;
+  max-width: 1120px;
+  height: calc(100vh - 100px);
+  margin: auto;
   padding: 40px 20px;
   background-color: $white;
 
@@ -11,7 +13,9 @@
 }
 
 .inner {
-  width: 740px;
+  width: 100%;
+  height: 100%;
+  max-width: 740px;
   margin: auto;
 }
 
@@ -22,4 +26,8 @@
   color: $black-light;
 
   padding: 100px 0;
+
+  @include respond-below(sm) {
+    padding: 20px 0;
+  }
 }

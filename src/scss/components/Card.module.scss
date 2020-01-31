@@ -1,21 +1,27 @@
-@import 'scss/_variables';
-@import 'scss/_font';
+@import 'scss/base';
 
 // 박스 세팅
 @mixin card-setting {
-  width: 736px;
+  width: 100%;
+  max-width: 736px;
   border-radius: 6px;
   box-shadow: 2px 2px 9px 0 rgba(157, 157, 157, 0.35);
-  display: inline-block;
   margin-bottom: 26px;
   position: relative;
   padding: 28px 0px 20px 0px;
+
+  @include respond-below(sm) {
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 .box {
   @include card-setting;
-  height: 248px;
+  min-height: 248px;
   background-color: #ffffff;
+  position: relative;
 
   :first-child {
     display: flex;
@@ -58,14 +64,13 @@
   color: #898989;
   font-size: 15px;
   margin: 16px 30px;
-  width: 500px;
   height: 102px;
 }
 
 //상태 박스
 .statusBox {
   position: absolute;
-  width: 736px;
+  width: 100%;
   height: 60px;
   bottom: 0;
   display: inline-flex;
@@ -121,14 +126,20 @@
 
 //CardList
 .cardList {
+  width: 100%;
   margin-left: 80px;
   float: left;
+
+  @include respond-below(sm) {
+    margin: auto;
+    float: none;
+  }
 }
 
 //box_new
 .box_request {
   @include card-setting;
-  height: 200px;
+  min-height: 200px;
   background-color: $green-light;
 
   p {
@@ -164,7 +175,7 @@
 //reviewerDash 에서 사용하는 리뷰 찾기 or 내가 한 리뷰 구분하는 버튼
 
 @mixin reviewsDetail {
-  width: 368px;
+  width: 50%;
   height: 62px;
   background-color: #eaeaea;
   border: 1px solid #eaeaea;
@@ -182,7 +193,7 @@
 }
 
 .reviewerBox {
-  width: 736px;
+  max-width: 736px;
   height: 62px;
   border-radius: 6px;
   display: flex;
@@ -199,5 +210,11 @@
   .historyReviews {
     @include reviewsDetail;
     border-radius: 0 6px 6px 0;
+  }
+
+  @include respond-below(sm) {
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
