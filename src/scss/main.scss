@@ -1,4 +1,5 @@
 @import 'scss/base.scss';
+@import '../css/tailwind.css'; // tailwind/index.css 빌드 된 css를 import
 
 body {
   margin: 0;
