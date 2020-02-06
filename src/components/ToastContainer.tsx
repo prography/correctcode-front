@@ -16,11 +16,23 @@ enum ToastStatus {
   Show = 'show',
   Close = 'close',
 }
-const Icon = {
-  [ToastType.Default]: <FaBell />,
-  [ToastType.Success]: <FaCheckCircle />,
-  [ToastType.Warning]: <FaExclamationTriangle />,
-  [ToastType.Error]: <FaExclamationCircle />,
+const ToastAsset = {
+  [ToastType.Default]: {
+    className: 'text-black bg-white',
+    Icon: <FaBell />,
+  },
+  [ToastType.Success]: {
+    className: 'text-white bg-success',
+    Icon: <FaCheckCircle />,
+  },
+  [ToastType.Warning]: {
+    className: 'text-white bg-warning',
+    Icon: <FaExclamationTriangle />,
+  },
+  [ToastType.Error]: {
+    className: 'text-white bg-error',
+    Icon: <FaExclamationCircle />,
+  },
 };
 type ToastProps = Toast;
 
@@ -28,6 +40,7 @@ const ToastItem: React.FC<ToastProps> = ({ id, type, message, timeout }) => {
   const [status, setStatus] = useState(ToastStatus.Init);
   const dispatch = useDispatch();
   const timeoutId = useRef<number>();
+  const { className, Icon } = ToastAsset[type];
   const closeToast = () => setStatus(ToastStatus.Close);
   useEffect(() => {
     requestAnimationFrame(() => {
@@ -47,14 +60,14 @@ const ToastItem: React.FC<ToastProps> = ({ id, type, message, timeout }) => {
     status === ToastStatus.Close && deleteToastItem();
   return (
     <div
-      className={classnames(styles.toast, `${type}-container`, {
+      className={classnames(styles.toast, className, {
         [styles.toastShow]: status === ToastStatus.Show,
         [styles.toastClose]: status === ToastStatus.Close,
       })}
       onTransitionEnd={handleTransitionEnd}
       onClick={closeToast}
     >
-      <div className={styles.icon}>{Icon[type]}</div>
+      <div className={styles.icon}>{Icon}</div>
       <div className={styles.message}>{message}</div>
     </div>
   );
