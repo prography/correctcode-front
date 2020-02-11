@@ -12,6 +12,8 @@ module.exports = {
     colors: {
       transparent: 'transparent',
       primary: '#5bd3b4',
+      primaryDark: '#0f741e',
+      primaryBlack: '#1b3137',
       success: '#058463',
       warning: '#f6be09',
       error: '#d43c3c',
@@ -28,6 +30,7 @@ module.exports = {
         600: '#718096',
         700: '#4a5568',
         800: '#2d3748',
+        850: '#333333',
         900: '#1a202c',
       },
       red: {
@@ -145,11 +148,14 @@ module.exports = {
       '16': '4rem',
       '20': '5rem',
       '24': '6rem',
+      '28': '7rem',
       '32': '8rem',
+      '36': '9rem',
       '40': '10rem',
       '48': '12rem',
       '56': '14rem',
       '64': '16rem',
+      '72': '18rem',
     },
     backgroundColor: theme => theme('colors'),
     backgroundPosition: {
