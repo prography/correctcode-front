@@ -1,7 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import profileImg from 'assets/img/TemporaryProfileImg.png';
-import styles from 'scss/components/SideBar.module.scss';
 
 type Props = {
   isFetching: boolean;
@@ -10,21 +9,22 @@ type Props = {
 const SideBar: React.FC<Props> = ({ isFetching }) => {
   const user = useSelector((state: StoreState) => state.auth.user);
   return (
-    <div className={styles.SideBarBox}>
+    <div className="float-left hidden sm:block">
       {isFetching ? (
         <>
-          <div className={styles.fetchingImg} />
-          <div className={styles.fetchingName} />
-          <div className={styles.fetchingDescription} />
+          <div className="ml-12 w-40 h-40 rounded-full bg-placeholder" />
+          <div className="ml-12 mt-8 w-32 h-4 bg-placeholder" />
+          <div className="ml-12 mt-3 w-20 h-4 bg-placeholder" />
         </>
       ) : (
         <>
           <img
+            className="ml-12 w-40 h-40 rounded-full"
             src={user.profileImg ? user.profileImg : profileImg}
             alt="profile"
           />
-          <p className={styles.name}>{user.displayName}</p>
-          <p className={styles.description}>{user.email}</p>
+          <p className="ml-12 mt-8 text-xl text-gray-850">{user.displayName}</p>
+          <p className="ml-12 mt-3 text-base text-description">{user.email}</p>
         </>
       )}
     </div>

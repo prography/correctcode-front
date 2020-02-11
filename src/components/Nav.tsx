@@ -41,7 +41,7 @@ const Nav: React.FC<Props> = ({ isStartPage = false, isReviewer }) => {
             className="w-8"
             alt="profile"
           />
-          <span className="inline-block text-base font-medium ml-2">
+          <span className="inline-block text-lg font-medium ml-2">
             {user.displayName}
           </span>
         </div>

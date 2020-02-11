@@ -17,6 +17,8 @@ module.exports = {
       success: '#058463',
       warning: '#f6be09',
       error: '#d43c3c',
+      placeholder: '#d8d8d8',
+      description: '#747c84',
 
       black: '#000',
       white: '#fff',
