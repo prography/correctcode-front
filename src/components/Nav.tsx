@@ -26,7 +26,7 @@ const Nav: React.FC<Props> = ({ isStartPage = false, isReviewer }) => {
         <div className="w-auto h-8 flex items-center">
           <a href="https://forms.gle/n8poWfpe1wLhrWQ26" target="blank">
             <div
-              className={`hidden sm:flex justify-center items-center w-24 h-8 rounded-lg border mr-4 cursor-pointer
+              className={`hidden sm:flex justify-center items-center w-24 h-8 rounded-lg border mr-5 cursor-pointer
             ${
               isStartPage
                 ? 'border-white hover:border-primaryDark text-white hover:text-primaryDark'
@@ -41,7 +41,7 @@ const Nav: React.FC<Props> = ({ isStartPage = false, isReviewer }) => {
             className="w-8"
             alt="profile"
           />
-          <span className="inline-block text-lg font-medium ml-2">
+          <span className="inline-block text-lg font-medium ml-3">
             {user.displayName}
           </span>
         </div>

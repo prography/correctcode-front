@@ -9,12 +9,12 @@ type Props = {
 const SideBar: React.FC<Props> = ({ isFetching }) => {
   const user = useSelector((state: StoreState) => state.auth.user);
   return (
-    <div className="float-left hidden sm:block">
+    <div className="float-left mr-20 hidden sm:block">
       {isFetching ? (
         <>
-          <div className="ml-12 w-40 h-40 rounded-full bg-placeholder" />
-          <div className="ml-12 mt-8 w-32 h-4 bg-placeholder" />
-          <div className="ml-12 mt-3 w-20 h-4 bg-placeholder" />
+          <div className="ml-12 w-40 h-40 mr-12 rounded-full bg-placeholder" />
+          <div className="ml-12 mt-8 w-32 mr-12 h-4 bg-placeholder" />
+          <div className="ml-12 mt-3 w-20 mr-12 h-4 bg-placeholder" />
         </>
       ) : (
         <>

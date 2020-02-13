@@ -1,8 +1,8 @@
 import React, { useMemo } from 'react';
 import { Review, UserType } from 'models/review';
 import Message from './Message';
-import styles from 'scss/components/Card.module.scss';
 import { Link } from 'react-router-dom';
+
 type RevieweeStatus = 'request' | 'waiting';
 type ReviewerStatus = 'empty' | 'null';
 
@@ -13,7 +13,10 @@ const MessageConfig = {
       message: '최상의 코드 전문가들이 6시간 이내에 리뷰를 시작합니다.',
       subMessage: 'Python, Javascript 언어 답변이 가장 빠릅니다.',
       children: (
-        <Link to="/start/repo" className={styles.requestButton}>
+        <Link
+          to="/start/repo"
+          className="w-36 h-10 bg-primaryTwo text-white font-bold no-underline border-0 ml-8 mt-4  flex justify-center items-center cursor-pointer transition-colors duration-200 hover:bg-primaryTwoDarken"
+        >
           리뷰 요청하기
         </Link>
       ),
@@ -29,7 +32,11 @@ const MessageConfig = {
       title: '리뷰를 기다리는 코드가 없어요.',
       message: '곧 리뷰가 등록될거에요.',
       subMessage: '심호흡 한 번 하고 조금만 기다려보아요.',
-      children: () => <div className={styles.requestButton}>리뷰 요청하기</div>,
+      children: () => (
+        <div className="w-36 h-10 bg-primaryTwo text-white font-bold no-underline border-0 ml-8 mt-4 flex justify-center items-center cursor-pointer transition-colors duration-200 hover:bg-primaryTwoDarken">
+          리뷰 요청하기
+        </div>
+      ),
     },
     null: {
       title: '리뷰 중인 코드가 없어요.',

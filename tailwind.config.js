@@ -12,12 +12,18 @@ module.exports = {
     colors: {
       transparent: 'transparent',
       primary: '#5bd3b4',
+      primaryTwo: '#0dba8d',
+      primaryTwoDarken: '#089c75',
       primaryDark: '#0f741e',
       primaryBlack: '#1b3137',
       success: '#058463',
       warning: '#f6be09',
       error: '#d43c3c',
+      lightergray: ' #f9f9f9',
+      reviewergray: '#eaeaea',
       placeholder: '#d8d8d8',
+      placeholderBackground: '#cccccc',
+      placeholderBackgroundTwo: '#c8c8c8',
       description: '#747c84',
 
       black: '#000',
@@ -144,6 +150,7 @@ module.exports = {
       '4': '1rem',
       '5': '1.25rem',
       '6': '1.5rem',
+      '7': '1.75rem',
       '8': '2rem',
       '10': '2.5rem',
       '12': '3rem',
@@ -158,6 +165,7 @@ module.exports = {
       '56': '14rem',
       '64': '16rem',
       '72': '18rem',
+      underNav: '70rem',
     },
     backgroundColor: theme => theme('colors'),
     backgroundPosition: {
@@ -352,6 +360,7 @@ module.exports = {
     }),
     minHeight: {
       '0': '0',
+      box: '62rem',
       full: '100%',
       screen: '100vh',
     },
