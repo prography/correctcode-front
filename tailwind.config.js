@@ -21,8 +21,8 @@ module.exports = {
       error: '#d43c3c',
       lightergray: ' #f9f9f9',
       reviewergray: '#eaeaea',
-      placeholder: '#d8d8d8',
-      placeholderBackground: '#cccccc',
+      placeholder: '#f3f3f3',
+      placeholderBackground: '#f3f3f3',
       placeholderBackgroundTwo: '#c8c8c8',
       description: '#747c84',
 

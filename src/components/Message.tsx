@@ -1,5 +1,4 @@
 import React from 'react';
-import styles from 'scss/components/Card.module.scss';
 
 type Props = {
   title: string;
