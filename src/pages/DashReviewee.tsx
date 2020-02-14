@@ -31,14 +31,14 @@ const DashReviewee = () => {
         <SideBar />
         <div style={{ display: 'inline-block', width: '736px' }}>
           <div className="w-full px-5 sm:px-0 float-none sm:float-left">
+            <CardListNoti
+              userType={UserType.REVIEWEE}
+              reviews={reviews}
+              isReviewers={false}
+            />
             <PlaceHolder placeHolder={<FetchingCard />}>
               {isReady && (
                 <>
-                  <CardListNoti
-                    userType={UserType.REVIEWEE}
-                    reviews={reviews}
-                    isReviewers={false}
-                  />
                   {reviews.map(review => (
                     <RevieweeCard key={review.id} {...review} />
                   ))}
