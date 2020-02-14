@@ -31,8 +31,9 @@
     "typescript": "^3.7.2"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build:tailwind": "tailwind build src/css/index.css -o src/css/tailwind.css",
+    "start": "npm run build:tailwind && react-scripts start",
+    "build": "tailwind build src/css/index.css -o src/css/tailwind.css && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint 'src/**.{ts,tsx,js,jsx}' --fix",
@@ -65,9 +66,12 @@
   },
   "devDependencies": {
     "@types/react": "^16.9.2",
+    "autoprefixer": "^9.7.4",
     "http-proxy-middleware": "^0.20.0",
     "husky": "^3.1.0",
     "lint-staged": "^9.4.2",
-    "prettier": "^1.19.1"
+    "postcss-cli": "^7.1.0",
+    "prettier": "^1.19.1",
+    "tailwindcss": "^1.2.0"
   }
 }

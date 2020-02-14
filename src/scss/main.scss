@@ -1,4 +1,5 @@
 @import 'scss/base.scss';
+@import '../css/tailwind.css'; // tailwind/index.css 빌드 된 css를 import
 
 body {
   margin: 0;
@@ -32,24 +33,4 @@ p {
 *::after {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-}
-
-.success-container {
-  color: white;
-  background-color: $success;
-}
-
-.error-container {
-  color: white;
-  background-color: $red;
-}
-
-.warning-container {
-  color: white;
-  background-color: $warning;
-}
-
-.default-container {
-  color: black;
-  background-color: white;
 }

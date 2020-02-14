@@ -2,31 +2,30 @@ import React, { FC } from 'react';
 import { Review } from 'models/review';
 import { CommonCard } from 'components';
 import cx from 'classnames';
-import styles from 'scss/components/Card.module.scss';
 
 type Props = Review;
 type MatchedCardProps = Pick<Review, 'reviewer' | 'status'>;
 
-const PendingCard: FC = () => (
-  <div className={styles.statusBox}>
-    <p className={styles.revieweePending}>리뷰어를 기다리고 있어요.</p>
-  </div>
-);
 const MatchedCard: FC<MatchedCardProps> = ({ reviewer, status }) => {
   return (
-    <div className={styles.statusBox}>
+    <div className="absolute inline-flex w-full h-20 bottom-0 items-center bg-lightergray rounded-b-lg">
       <img
-        className={styles.profileImg}
+        className="w-8 h-8 rounded-full ml-8"
         src={reviewer.profileImg}
         alt="Profile"
       />
-      <p className={styles.user}>{reviewer.name}</p>
+      <p className="ml-2 tracking-tight text-gray-850">{reviewer.name}</p>
       <div
-        className={cx(styles.statusColor, {
-          [styles.completed]: status === 'completed',
-        })}
+        className={cx(
+          'ml-auto w-6 h-6 rounded border border-primaryDark float-right',
+          {
+            'bg-primaryDark': status === 'completed',
+          },
+        )}
       />
-      <div className={styles.status}>{status}</div>
+      <div className="text-sm font-bold text-primaryDark float-right mr-6 ml-2">
+        {status}
+      </div>
     </div>
   );
 };
@@ -42,9 +41,9 @@ const RevieweeCard: React.FC<Props> = ({
   repositoryUrl,
 }) => {
   const isPending = status === 'pending';
-  const StatusComponent = isPending ? PendingCard : MatchedCard;
+
   return (
-    <div className={styles.box}>
+    <div className="relative w-auto max-w-screen-md h-64 mb-8 pt-7 pb-5 rounded-md bg-white shadow-md first:flex first:items-center">
       <CommonCard
         language={language}
         number={number}
@@ -54,11 +53,13 @@ const RevieweeCard: React.FC<Props> = ({
         description={description}
       />
       {isPending ? (
-        <div className={styles.statusBox}>
-          <p className={styles.revieweePending}>리뷰어를 기다리고 있어요.</p>
+        <div className="absolute inline-flex w-full h-16 bottom-0 items-center bg-lightergray rounded-b-lg">
+          <p className="text-base font-bold text-primaryDark pl-8 tracking-tight">
+            리뷰어를 기다리고 있어요.
+          </p>
         </div>
       ) : (
-        <StatusComponent status={status} reviewer={reviewer} />
+        <MatchedCard status={status} reviewer={reviewer} />
       )}
     </div>
   );
