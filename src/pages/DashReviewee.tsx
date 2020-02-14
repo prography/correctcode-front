@@ -8,8 +8,7 @@ import {
   FetchingCard,
   // Pagination,
 } from 'components';
-import pageStyles from 'scss/pages/DashBoard.module.scss';
-import cardStyles from 'scss/components/Card.module.scss';
+
 import { UserType } from 'models/review';
 import { getUserReviews } from 'store/review/action';
 const DashReviewee = () => {
@@ -27,24 +26,26 @@ const DashReviewee = () => {
   return (
     <div>
       <Nav />
-      <div className={pageStyles.underNav}>
+      <div className="w-full sm:w-underNav mt-10 mx-auto flex">
         <SideBar isFetching={isFetching} />
-        <div className={cardStyles.cardList}>
-          {isFetching ? (
-            <FetchingCard />
-          ) : (
-            <>
-              <CardListNoti
-                userType={UserType.REVIEWEE}
-                reviews={reviews}
-                isReviewers={false}
-              />
-              {reviews.map(review => (
-                <RevieweeCard key={review.id} {...review} />
-              ))}
-            </>
-          )}
-          {/* <Pagination /> */}
+        <div style={{ display: 'inline-block', width: '736px' }}>
+          <div className="w-full px-5 sm:px-0 float-none sm:float-left">
+            {isFetching ? (
+              <FetchingCard />
+            ) : (
+              <>
+                <CardListNoti
+                  userType={UserType.REVIEWEE}
+                  reviews={reviews}
+                  isReviewers={false}
+                />
+                {reviews.map(review => (
+                  <RevieweeCard key={review.id} {...review} />
+                ))}
+              </>
+            )}
+            {/* <Pagination /> */}
+          </div>
         </div>
       </div>
     </div>

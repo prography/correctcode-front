@@ -1,0 +1,9 @@
+.basic {
+  background-repeat: no-repeat;
+  background-size: 0% 100%;
+  transition: background-size 0.4s;
+  background-image: linear-gradient(transparent 50%, #5bd3b5c4 90%);
+  &:hover {
+    background-size: 100% 100%;
+  }
+}
