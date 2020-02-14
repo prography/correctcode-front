@@ -7,6 +7,7 @@ import {
   ReviewerCard,
   CardListNoti,
   FetchingCard,
+  PlaceHolder,
   // Pagination,
 } from 'components';
 import {
@@ -23,8 +24,8 @@ const DashReviewer = () => {
     isReviewers ? state.review.userReviews : state.review.reviews,
   );
   const dispatch = useDispatch();
-  const isFetching = useSelector(
-    (state: StoreState) => state.review.reviews.status === 'FETCHING',
+  const isReady = useSelector(
+    (state: StoreState) => state.review.reviews.status === 'SUCCESS',
   );
 
   useEffect(() => {
@@ -77,20 +78,20 @@ const DashReviewer = () => {
             </div>
           </div>
           <div className="w-full px-5 sm:px-0 float-none sm:float-left">
-            {isFetching ? (
-              <FetchingCard />
-            ) : (
-              <>
-                <CardListNoti
-                  userType={UserType.REVIEWER}
-                  reviews={reviews}
-                  isReviewers={true}
-                />
-                {reviews.map(review => (
-                  <ReviewerCard key={review.id} {...review} />
-                ))}
-              </>
-            )}
+            <PlaceHolder placeHolder={<FetchingCard />}>
+              {isReady && (
+                <>
+                  <CardListNoti
+                    userType={UserType.REVIEWER}
+                    reviews={reviews}
+                    isReviewers={true}
+                  />
+                  {reviews.map(review => (
+                    <ReviewerCard key={review.id} {...review} />
+                  ))}
+                </>
+              )}
+            </PlaceHolder>
             {/* <Pagination /> */}
           </div>
         </div>
