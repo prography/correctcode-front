@@ -48,7 +48,7 @@ const DashReviewer = () => {
     <div>
       <Nav isReviewer={true} />
       <div className="w-full sm:w-underNav mt-10 mx-auto flex">
-        <SideBar isFetching={isFetching} />
+        <SideBar />
         <div style={{ display: 'inline-block', width: '736px' }}>
           <div className="w-11/12 sm:w-full mx-auto h-16 rounded-lg flex text-lg font-bold mb-10">
             <div

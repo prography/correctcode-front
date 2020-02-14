@@ -27,7 +27,7 @@ const DashReviewee = () => {
     <div>
       <Nav />
       <div className="w-full sm:w-underNav mt-10 mx-auto flex">
-        <SideBar isFetching={isFetching} />
+        <SideBar />
         <div style={{ display: 'inline-block', width: '736px' }}>
           <div className="w-full px-5 sm:px-0 float-none sm:float-left">
             {isFetching ? (
