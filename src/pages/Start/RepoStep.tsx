@@ -1,12 +1,16 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getRepos } from 'store/repo/action';
-import { RepoItem, EmptySection, PlaceHolder, Button } from 'components';
+import {
+  RepoItem,
+  EmptySection,
+  PlaceHolder,
+  Button,
+  RepoPlaceHolder,
+} from 'components';
 import { APP_NAME } from 'constants/github';
 import { FaSearch } from 'react-icons/fa';
 import profileImg from 'assets/img/TemporaryProfileImg.png';
-
-import FetchingRepo from 'components/FetchingRepo';
 
 const RepoStep = () => {
   const [searchWord, setSearchWord] = useState('');
@@ -46,7 +50,7 @@ const RepoStep = () => {
         </div>
       </div>
       <div className="mt-2 mb-2 h-64 overflow-auto">
-        <PlaceHolder placeHolder={<FetchingRepo />}>
+        <PlaceHolder placeHolder={<RepoPlaceHolder />}>
           {isItemReady &&
             (isEmpty ? (
               <EmptySection
