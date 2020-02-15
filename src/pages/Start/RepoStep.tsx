@@ -34,15 +34,15 @@ const RepoStep = () => {
 
   return (
     <div>
-      <div className="flex justify-between">
+      <div className="flex justify-between flex-wrap">
         <div className="flex items-center bg-gray-200 p-2 rounded">
           <img src={profileImg} alt="profile" className="w-8 h-8" />
           <span className="ml-2 font-bold">{username}</span>
         </div>
-        <div className="flex items-center p-2 border border-gray-400 rounded">
+        <div className="flex flex-1 sm:flex-none items-center p-2 border border-gray-400 rounded">
           <FaSearch className="text-gray-400" />
           <input
-            className="ml-2 outline-none"
+            className="w-full ml-2 outline-none"
             placeholder="Search Repo"
             value={searchWord}
             onChange={handleSearchWordChange}
