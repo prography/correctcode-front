@@ -1,12 +1,22 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getRepos } from 'store/repo/action';
-import { RepoItem, EmptySection, Loading } from 'components';
+import { RepoItem, EmptySection, PlaceHolder } from 'components';
 import { APP_NAME } from 'constants/github';
 import { FaSearch } from 'react-icons/fa';
 import profileImg from 'assets/img/TemporaryProfileImg.png';
 
 import styles from 'scss/pages/RepoStep.module.scss';
+import FetchingRepo from 'components/FetchingRepo';
+
+const AddRepoButton = () => (
+  <a
+    className="bg-primary hover:bg-primaryTwo text-white font-bold py-2 px-4 rounded"
+    href={`https://github.com/apps/${APP_NAME}/installations/new`}
+  >
+    Repository 추가
+  </a>
+);
 
 const RepoStep = () => {
   const [searchWord, setSearchWord] = useState('');
@@ -45,20 +55,27 @@ const RepoStep = () => {
           />
         </div>
       </div>
-      <div className={styles.repoListBody}>
-        {!isItemReady && <Loading />}
-        {isEmpty && <EmptySection message="등록된 Repository가 없어요." />}
-        {repoResults.map(repo => (
-          <RepoItem key={repo.id} {...repo} />
-        ))}
+      <div className="mt-2 mb-2 h-64 overflow-auto">
+        <PlaceHolder placeHolder={<FetchingRepo />}>
+          {isItemReady &&
+            (isEmpty ? (
+              <EmptySection
+                message={
+                  <>
+                    등록된 Repository가 없어요.
+                    <div className="w-full mt-6 text-center">
+                      <AddRepoButton />
+                    </div>
+                  </>
+                }
+              />
+            ) : (
+              repoResults.map(repo => <RepoItem key={repo.id} {...repo} />)
+            ))}
+        </PlaceHolder>
       </div>
-      <div className={styles.repoListFooter}>
-        <a
-          className={styles.repoAddLink}
-          href={`https://github.com/apps/${APP_NAME}/installations/new`}
-        >
-          Add Repository
-        </a>
+      <div className="w-full mt-6 text-right">
+        <AddRepoButton />
       </div>
     </div>
   );

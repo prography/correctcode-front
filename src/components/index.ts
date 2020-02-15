@@ -16,4 +16,5 @@ export { default as Loading } from './Loading';
 export { default as ToastContainer } from './ToastContainer';
 export { default as FetchingCard } from './FetchingCard';
 export { default as Pagination } from './Pagination';
+export { default as PlaceHolder } from './PlaceHolder';
 export { default as CommonCard } from './CommonCard';

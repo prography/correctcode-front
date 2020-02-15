@@ -2,7 +2,6 @@ import React, { FC } from 'react';
 import { Review } from 'models/review';
 import { CommonCard } from 'components';
 import cx from 'classnames';
-import styles from 'scss/components/Card.module.scss';
 
 type Props = Review;
 

@@ -7,6 +7,7 @@ import {
   ReviewerCard,
   CardListNoti,
   FetchingCard,
+  PlaceHolder,
   // Pagination,
 } from 'components';
 import {
@@ -23,8 +24,8 @@ const DashReviewer = () => {
     isReviewers ? state.review.userReviews : state.review.reviews,
   );
   const dispatch = useDispatch();
-  const isFetching = useSelector(
-    (state: StoreState) => state.review.reviews.status === 'FETCHING',
+  const isReady = useSelector(
+    (state: StoreState) => state.review.reviews.status === 'SUCCESS',
   );
 
   useEffect(() => {
@@ -48,7 +49,7 @@ const DashReviewer = () => {
     <div>
       <Nav isReviewer={true} />
       <div className="w-full sm:w-underNav mt-10 mx-auto flex">
-        <SideBar isFetching={isFetching} />
+        <SideBar />
         <div style={{ display: 'inline-block', width: '736px' }}>
           <div className="w-11/12 sm:w-full mx-auto h-16 rounded-lg flex text-lg font-bold mb-10">
             <div
@@ -77,20 +78,20 @@ const DashReviewer = () => {
             </div>
           </div>
           <div className="w-full px-5 sm:px-0 float-none sm:float-left">
-            {isFetching ? (
-              <FetchingCard />
-            ) : (
-              <>
-                <CardListNoti
-                  userType={UserType.REVIEWER}
-                  reviews={reviews}
-                  isReviewers={true}
-                />
-                {reviews.map(review => (
-                  <ReviewerCard key={review.id} {...review} />
-                ))}
-              </>
-            )}
+            <PlaceHolder placeHolder={<FetchingCard />}>
+              {isReady && (
+                <>
+                  <CardListNoti
+                    userType={UserType.REVIEWER}
+                    reviews={reviews}
+                    isReviewers={true}
+                  />
+                  {reviews.map(review => (
+                    <ReviewerCard key={review.id} {...review} />
+                  ))}
+                </>
+              )}
+            </PlaceHolder>
             {/* <Pagination /> */}
           </div>
         </div>
