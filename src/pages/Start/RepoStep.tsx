@@ -6,7 +6,6 @@ import { APP_NAME } from 'constants/github';
 import { FaSearch } from 'react-icons/fa';
 import profileImg from 'assets/img/TemporaryProfileImg.png';
 
-import styles from 'scss/pages/RepoStep.module.scss';
 import FetchingRepo from 'components/FetchingRepo';
 
 const RepoStep = () => {
@@ -30,16 +29,16 @@ const RepoStep = () => {
   }, [dispatch]);
 
   return (
-    <div className={styles.container}>
-      <div className={styles.repoListHeader}>
-        <div className={styles.profile}>
-          <img src={profileImg} alt="profile" className={styles.img} />
-          <span className={styles.name}>{username}</span>
+    <div>
+      <div className="flex justify-between">
+        <div className="flex items-center bg-gray-200 p-2 rounded">
+          <img src={profileImg} alt="profile" className="w-8 h-8" />
+          <span className="ml-2 font-bold">{username}</span>
         </div>
-        <div className={styles.search}>
-          <FaSearch className={styles.icon} />
+        <div className="flex items-center p-2 border border-gray-400 rounded">
+          <FaSearch className="text-gray-400" />
           <input
-            className={styles.input}
+            className="ml-2 outline-none"
             placeholder="Search Repo"
             value={searchWord}
             onChange={handleSearchWordChange}
