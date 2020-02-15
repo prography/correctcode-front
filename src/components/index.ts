@@ -1,4 +1,5 @@
 export { default as RepoItem } from './RepoItem';
+export { default as Button } from './Button';
 export { default as Dropdown } from './Dropdown';
 export { default as DetectMobile } from './DetectMobile';
 export { default as Dimmed } from './Dimmed';

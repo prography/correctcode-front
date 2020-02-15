@@ -2,14 +2,13 @@ import React, { memo, useState, useMemo, useEffect } from 'react';
 import { useParams, useHistory, Redirect } from 'react-router';
 import { useSelector, useDispatch } from 'react-redux';
 import classnames from 'classnames';
-import { Dropdown, Dimmed, Loading } from 'components';
+import { Dropdown, Dimmed, Loading, Button } from 'components';
 import useFetch from 'hooks/useFetch';
 import { getBranches, compareBranch } from 'api/repo';
 import { Repo } from 'models/repo';
 import { createReview } from 'store/review/action';
 import usePrevious from 'hooks/usePrevious';
 import { FaGithubSquare, FaCodeBranch, FaLongArrowAltUp } from 'react-icons/fa';
-import styles from 'scss/pages/ReviewStep.module.scss';
 
 const MAX_MESSAGE_COUNT = 100;
 
@@ -121,74 +120,71 @@ const ReviewStep: React.FC<Props> = () => {
   }
 
   return (
-    <div className={styles.container}>
+    <div>
       {createReviewStatus === 'FETCHING' && (
         <Dimmed>
           <Loading />
         </Dimmed>
       )}
-      <div className={styles.repoInfo}>
-        <FaGithubSquare className={styles.githubIcon} />
-        <div className={styles.info}>
-          <span className={styles.ownername}>{ownername}</span>
-          <span className={styles.reponame}>/{reponame}</span>
+      <div className="bg-gray-100 rounded p-2 mb-2 flex">
+        <FaGithubSquare className="w-8 h-8" />
+        <div className="ml-2">
+          <span className="text-primary">{ownername}</span>
+          <span>/{reponame}</span>
         </div>
       </div>
-      <div className={styles.form}>
-        <div className={styles.formRow}>
-          <div className={styles.formItem}>
-            <span className={styles.description}>리뷰어에게 보내는 메세지</span>
+      <div className="flex justify-between flex-wrap">
+        <div className="sm:flex-1 sm:mr-2 w-full">
+          <div className="font-bold border-b py-2">
+            <span>리뷰어에게 보내는 메세지</span>
           </div>
 
-          <div className={styles.formItem}>
+          <div className="border-b mt-2 py-2">
             <textarea
               value={message}
-              className={styles.message}
+              className="w-full h-36 outline-none border-none"
               placeholder="최대 100자까지 입력 가능합니다."
               onChange={handleMessageChange}
             />
             <div
-              className={classnames(styles.messageCount, {
-                [styles.maxMessageCount]: isMaxMessageCount,
+              className={classnames('text-right', {
+                'text-error': isMaxMessageCount,
+                'text-gray-400': !isMaxMessageCount,
               })}
             >
               <span>{message.length}/100</span>
             </div>
           </div>
         </div>
-        <div className={styles.formRow}>
-          <div className={styles.formCol}>
-            <div className={styles.formItem}>
-              <div className={styles.dropdown}>
-                <FaCodeBranch />
-                <Dropdown
-                  items={branches}
-                  selected={firstBranch}
-                  placeholder="Base 브랜치 선택"
-                  loading={isFetching.branch}
-                  onSelect={onFirstBranchSelect}
-                />
-              </div>
+        <div className="flex-1">
+          <div className="sm:flex-1 w-full">
+            <div className="flex items-center py-2 border-b">
+              <FaCodeBranch />
+              <Dropdown
+                items={branches}
+                selected={firstBranch}
+                placeholder="Base 브랜치 선택"
+                loading={isFetching.branch}
+                onSelect={onFirstBranchSelect}
+              />
             </div>
-            <div className={styles.formItem}>
-              <div className={styles.dropdown}>
-                <FaLongArrowAltUp />
-                <Dropdown
-                  items={secondBranches}
-                  selected={secondBranch}
-                  placeholder="Compare 브랜치 선택"
-                  loading={isFetching.branch}
-                  onSelect={onSecondBranchSelect}
-                />
-              </div>
+            <div className="flex items-center py-2 border-b">
+              <FaLongArrowAltUp />
+              <Dropdown
+                items={secondBranches}
+                selected={secondBranch}
+                placeholder="Compare 브랜치 선택"
+                loading={isFetching.branch}
+                onSelect={onSecondBranchSelect}
+              />
             </div>
 
             <div
-              className={classnames(styles.compareMessage, {
-                [styles.error]: compareStatus === CompareStatus.Behind,
-                [styles.success]: compareStatus === CompareStatus.Ahead,
-                [styles.init]: compareStatus === CompareStatus.Init,
-                [styles.loading]: compareStatus === CompareStatus.Loading,
+              className={classnames('mt-2 text-sm', {
+                'text-error': compareStatus === CompareStatus.Behind,
+                'text-success': compareStatus === CompareStatus.Ahead,
+                hidden: compareStatus === CompareStatus.Init,
+                'text-gray-400': compareStatus === CompareStatus.Loading,
               })}
             >
               {CompareMessage[compareStatus]}
@@ -201,15 +197,16 @@ const ReviewStep: React.FC<Props> = () => {
                 onSelect={onTagSelect}
               />
             </div> */}
-            <button
-              className={styles.button}
+
+            <Button
+              className="w-full mt-2"
               disabled={
                 !isButtonActive || compareStatus !== CompareStatus.Ahead
               }
               onClick={handleCreateReview}
             >
               등록 완료하기
-            </button>
+            </Button>
           </div>
         </div>
       </div>
