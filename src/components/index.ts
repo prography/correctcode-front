@@ -1,4 +1,5 @@
 export { default as RepoItem } from './RepoItem';
+export { default as Button } from './Button';
 export { default as Dropdown } from './Dropdown';
 export { default as DetectMobile } from './DetectMobile';
 export { default as Dimmed } from './Dimmed';
@@ -14,7 +15,8 @@ export { default as SideBar } from './SideBar';
 export { default as Lottie } from './Lottie';
 export { default as Loading } from './Loading';
 export { default as ToastContainer } from './ToastContainer';
-export { default as FetchingCard } from './FetchingCard';
 export { default as Pagination } from './Pagination';
 export { default as PlaceHolder } from './PlaceHolder';
 export { default as CommonCard } from './CommonCard';
+
+export * from './PlaceHolderItem';

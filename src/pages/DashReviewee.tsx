@@ -5,7 +5,7 @@ import {
   CardListNoti,
   SideBar,
   RevieweeCard,
-  FetchingCard,
+  CardPlaceHolder,
   PlaceHolder,
   // Pagination,
 } from 'components';
@@ -36,7 +36,7 @@ const DashReviewee = () => {
               reviews={reviews}
               isReviewers={false}
             />
-            <PlaceHolder placeHolder={<FetchingCard />}>
+            <PlaceHolder placeHolder={<CardPlaceHolder />}>
               {isReady && (
                 <>
                   {reviews.map(review => (

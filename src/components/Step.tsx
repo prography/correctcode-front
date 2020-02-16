@@ -1,7 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import classnames from 'classnames';
-import styles from 'scss/components/Step.module.scss';
 
 type Step = {
   step: string;
@@ -27,31 +26,52 @@ const Step: React.FC<Props> = ({ steps, currentStep }) => {
   };
 
   return (
-    <div className={styles.container}>
-      {steps.map(({ description }, i) => (
-        <div
-          className={classnames(styles.wrapper, {
-            [styles.isActiveCircle]: i <= currentStep,
-            [styles.isActiveLine]: i < currentStep,
-          })}
-          key={i}
-          onClick={handleCircleClick(i)}
-        >
-          <div className={styles.step}>
-            <div
-              className={classnames(styles.circle, {
-                [styles.isClickAble]: isClickAble(i),
-              })}
-            />
-            <div className={styles.text}>
-              <div className={styles.stepIndex}>Step {i + 1}</div>
-              <div className={styles.description}>{description}</div>
+    <>
+      <div className="flex sm:w-3/4 m-auto">
+        {steps.map((_, i) => {
+          const isLast = i === steps.length - 1;
+          return (
+            <React.Fragment key={i}>
+              <div
+                className={classnames('flex items-center', !isLast && 'flex-1')}
+                onClick={handleCircleClick(i)}
+              >
+                <div
+                  className={classnames('rounded-full w-8 h-8', {
+                    'bg-primary': i <= currentStep,
+                    'bg-gray-200': i > currentStep,
+                    'cursor-pointer': isClickAble(i),
+                  })}
+                />
+                <div
+                  className={classnames('flex-1 h-2', {
+                    'bg-primary': i < currentStep,
+                    'bg-gray-200': i >= currentStep,
+                  })}
+                />
+              </div>
+            </React.Fragment>
+          );
+        })}
+      </div>
+      <div className="flex sm:w-3/4 m-auto">
+        {steps.map(({ description }, i) => {
+          const isLast = i === steps.length - 1;
+          return (
+            <div className={classnames(!isLast && 'flex-1')} key={i}>
+              <div className="w-8 whitespace-no-wrap">
+                <span className="text-xs sm:text-sm text-gray-400">
+                  Step {i + 1}
+                </span>
+                <br />
+                <span className="text-xs sm:text-base">{description}</span>
+              </div>
+              <div className="flex-1 h-2" />
             </div>
-            {i !== steps.length - 1 && <div className={styles.line} />}
-          </div>
-        </div>
-      ))}
-    </div>
+          );
+        })}
+      </div>
+    </>
   );
 };
 

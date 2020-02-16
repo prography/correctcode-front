@@ -6,7 +6,7 @@ import {
   SideBar,
   ReviewerCard,
   CardListNoti,
-  FetchingCard,
+  CardPlaceHolder,
   PlaceHolder,
   // Pagination,
 } from 'components';
@@ -78,7 +78,7 @@ const DashReviewer = () => {
             </div>
           </div>
           <div className="w-full px-5 sm:px-0 float-none sm:float-left">
-            <PlaceHolder placeHolder={<FetchingCard />}>
+            <PlaceHolder placeHolder={<CardPlaceHolder />}>
               {isReady && (
                 <>
                   <CardListNoti

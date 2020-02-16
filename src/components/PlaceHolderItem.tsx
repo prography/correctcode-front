@@ -1,5 +1,6 @@
 import React from 'react';
 
+/* 카드 플레이스 홀더 */
 const FetchingCardModel = () => {
   return (
     <div className="w-full h-64 rounded-md shadow-md inline-block mb-6 relative pt-8 pb-5 bg-white first:flex first:items-center">
@@ -24,7 +25,7 @@ const FetchingCardModel = () => {
   );
 };
 
-const FetchingCard: React.FC = () => {
+export const CardPlaceHolder: React.FC = () => {
   return (
     <div>
       <FetchingCardModel />
@@ -34,4 +35,27 @@ const FetchingCard: React.FC = () => {
   );
 };
 
-export default FetchingCard;
+/* 레포 플레이스 홀더 */
+
+const FetchingRepoItem = () => {
+  return (
+    <div className="w-full px-2 py-6 bg-white flex items-center border-b border-placeholder">
+      {/* Icon */}
+      <div className="w-8 h-8 bg-placeholder rounded" />
+      {/* Title */}
+      <div className="flex-1 ml-3">
+        <div className="w-24 h-5 bg-placeholder rounded" />
+        <div className="mt-2 w-36 h-5 bg-placeholder rounded" />
+      </div>
+      <div className="w-4 h-4 bg-placeholder rounded" />
+    </div>
+  );
+};
+
+export const RepoPlaceHolder = () => (
+  <>
+    {[...new Array(3)].map((_, i) => (
+      <FetchingRepoItem key={i} />
+    ))}
+  </>
+);

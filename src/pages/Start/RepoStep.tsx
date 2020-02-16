@@ -1,22 +1,16 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getRepos } from 'store/repo/action';
-import { RepoItem, EmptySection, PlaceHolder } from 'components';
+import {
+  RepoItem,
+  EmptySection,
+  PlaceHolder,
+  Button,
+  RepoPlaceHolder,
+} from 'components';
 import { APP_NAME } from 'constants/github';
 import { FaSearch } from 'react-icons/fa';
 import profileImg from 'assets/img/TemporaryProfileImg.png';
-
-import styles from 'scss/pages/RepoStep.module.scss';
-import FetchingRepo from 'components/FetchingRepo';
-
-const AddRepoButton = () => (
-  <a
-    className="bg-primary hover:bg-primaryTwo text-white font-bold py-2 px-4 rounded"
-    href={`https://github.com/apps/${APP_NAME}/installations/new`}
-  >
-    Repository 추가
-  </a>
-);
 
 const RepoStep = () => {
   const [searchWord, setSearchWord] = useState('');
@@ -39,16 +33,16 @@ const RepoStep = () => {
   }, [dispatch]);
 
   return (
-    <div className={styles.container}>
-      <div className={styles.repoListHeader}>
-        <div className={styles.profile}>
-          <img src={profileImg} alt="profile" className={styles.img} />
-          <span className={styles.name}>{username}</span>
+    <div>
+      <div className="flex justify-between flex-wrap">
+        <div className="flex items-center bg-gray-200 p-2 rounded">
+          <img src={profileImg} alt="profile" className="w-8 h-8" />
+          <span className="ml-2 font-bold">{username}</span>
         </div>
-        <div className={styles.search}>
-          <FaSearch className={styles.icon} />
+        <div className="flex flex-1 sm:flex-none items-center p-2 border border-gray-400 rounded">
+          <FaSearch className="text-gray-400" />
           <input
-            className={styles.input}
+            className="w-full ml-2 outline-none"
             placeholder="Search Repo"
             value={searchWord}
             onChange={handleSearchWordChange}
@@ -56,7 +50,7 @@ const RepoStep = () => {
         </div>
       </div>
       <div className="mt-2 mb-2 h-64 overflow-auto">
-        <PlaceHolder placeHolder={<FetchingRepo />}>
+        <PlaceHolder placeHolder={<RepoPlaceHolder />}>
           {isItemReady &&
             (isEmpty ? (
               <EmptySection
@@ -64,7 +58,11 @@ const RepoStep = () => {
                   <>
                     등록된 Repository가 없어요.
                     <div className="w-full mt-6 text-center">
-                      <AddRepoButton />
+                      <Button
+                        href={`https://github.com/apps/${APP_NAME}/installations/new`}
+                      >
+                        Repository 추가
+                      </Button>
                     </div>
                   </>
                 }
@@ -75,7 +73,9 @@ const RepoStep = () => {
         </PlaceHolder>
       </div>
       <div className="w-full mt-6 text-right">
-        <AddRepoButton />
+        <Button href={`https://github.com/apps/${APP_NAME}/installations/new`}>
+          Repository 추가
+        </Button>
       </div>
     </div>
   );
