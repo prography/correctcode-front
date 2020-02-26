@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import classnames from 'classnames';
 
 type Props = {
-  isCurrentPage?: boolean;
   pageAmount: number;
   currentPage: number;
   handlePageNum: (value: number) => void;
@@ -18,14 +17,14 @@ const PageNum: React.FC<PageNumProps> = ({
   currentPage,
   handlePageNum,
 }) => {
+  const isCurrentpage = currentPage === pageNum;
   return (
     <div
       className={classnames(
         'w-7 h-7 rounded mr-1 font-medium flex justify-center items-center cursor-pointer',
         {
-          'transition duration-500 bg-primary hover:bg-primary':
-            currentPage === pageNum,
-          'hover:bg-reviewergray': currentPage !== pageNum,
+          'transition duration-500 bg-primary hover:bg-primary': isCurrentpage,
+          'hover:bg-reviewergray': !isCurrentpage,
         },
       )}
       onClick={() => handlePageNum(pageNum)}
@@ -112,13 +111,7 @@ const Pagination: React.FC = () => {
 
   //각종 함수들
   const handlePageNum = (value: number) => {
-    if (value < 1) {
-      setCurrentPage(1);
-    } else if (value > pageAmount) {
-      setCurrentPage(pageAmount);
-    } else {
-      setCurrentPage(value);
-    }
+    setCurrentPage(Math.max(1, Math.min(pageAmount, value)));
   };
 
   return (
