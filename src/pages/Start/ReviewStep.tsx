@@ -2,7 +2,7 @@ import React, { memo, useState, useMemo, useEffect } from 'react';
 import { useParams, useHistory, Redirect } from 'react-router';
 import { useSelector, useDispatch } from 'react-redux';
 import classnames from 'classnames';
-import { Dropdown, Dimmed, Loading, Button } from 'components';
+import { Dropdown, Dimmed, Loading, Button, ReviewForm } from 'components';
 import useFetch from 'hooks/useFetch';
 import { getBranches, compareBranch } from 'api/repo';
 import { Repo } from 'models/repo';
@@ -50,7 +50,6 @@ const ReviewStep: React.FC<Props> = () => {
   );
   const prevStatus = usePrevious(createReviewStatus);
 
-  const isMaxMessageCount = message.length === MAX_MESSAGE_COUNT;
   const isButtonActive = message && firstBranch && secondBranch;
   const name = currentRepo?.name || '';
   const [ownername, reponame] = name.split('/');
@@ -61,8 +60,8 @@ const ReviewStep: React.FC<Props> = () => {
   };
   const onSecondBranchSelect = (branch: string) => setSecondBranch(branch);
   // const onTagSelect = (tag: string) => setTag(tag);
-  const handleMessageChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setMessage(e.target.value);
+  const handleMessageChange = (message: string) => {
+    setMessage(message);
   };
   const handleCreateReview = () => {
     repoId &&
@@ -134,28 +133,11 @@ const ReviewStep: React.FC<Props> = () => {
         </div>
       </div>
       <div className="flex justify-between flex-wrap">
-        <div className="sm:flex-1 sm:mr-2 w-full">
-          <div className="font-bold border-b py-2">
-            <span>리뷰어에게 보내는 메세지</span>
-          </div>
-
-          <div className="border-b mt-2 py-2">
-            <textarea
-              value={message}
-              className="w-full h-36 outline-none border-none"
-              placeholder="최대 100자까지 입력 가능합니다."
-              onChange={handleMessageChange}
-            />
-            <div
-              className={classnames('text-right', {
-                'text-error': isMaxMessageCount,
-                'text-gray-400': !isMaxMessageCount,
-              })}
-            >
-              <span>{message.length}/100</span>
-            </div>
-          </div>
-        </div>
+        <ReviewForm
+          message={message}
+          onMessageChange={handleMessageChange}
+          maxMessageCount={MAX_MESSAGE_COUNT}
+        />
         <div className="flex-1">
           <div className="sm:flex-1 w-full">
             <div className="flex items-center py-2 border-b">
