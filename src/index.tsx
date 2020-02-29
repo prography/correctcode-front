@@ -3,8 +3,9 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import 'scss/main.scss';
 import App from 'App';
-import { BrowserRouter } from 'react-router-dom';
+import { Router } from 'react-router-dom';
 import { ToastContainer } from 'components';
+import history from 'utils/history';
 import * as serviceWorker from './serviceWorker';
 import createStore from './store/createStore';
 
@@ -12,10 +13,10 @@ const store = createStore();
 
 ReactDOM.render(
   <Provider store={store}>
-    <BrowserRouter>
+    <Router history={history}>
       <App />
       <ToastContainer />
-    </BrowserRouter>
+    </Router>
   </Provider>,
   document.getElementById('root'),
 );

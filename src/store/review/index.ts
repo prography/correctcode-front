@@ -5,6 +5,7 @@ import {
   createReviewEntity,
   resetReviews,
   resetUserReviews,
+  createReviewByPrEntity,
 } from 'store/review/action';
 import { Review } from 'models/review';
 import { combineReducers } from 'redux';
@@ -22,6 +23,9 @@ export type ReviewState = {
   createReview: {
     status: Status;
   };
+  createReviewByPr: {
+    status: Status;
+  };
 };
 
 const initialState: ReviewState = {
@@ -34,6 +38,9 @@ const initialState: ReviewState = {
     status: 'INIT',
   },
   createReview: {
+    status: 'INIT',
+  },
+  createReviewByPr: {
     status: 'INIT',
   },
 };
@@ -65,8 +72,14 @@ const createReviewReducer = createAsyncReducer(
   createReviewEntity,
 );
 
+const createReviewByPrReducer = createAsyncReducer(
+  initialState.createReviewByPr,
+  createReviewByPrEntity,
+);
+
 export default combineReducers({
   reviews: reviewsReducer,
   userReviews: userReviewsReducer,
   createReview: createReviewReducer,
+  createReviewByPr: createReviewByPrReducer,
 });

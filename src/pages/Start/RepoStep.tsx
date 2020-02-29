@@ -7,14 +7,13 @@ import {
   PlaceHolder,
   Button,
   RepoPlaceHolder,
+  ProfileBox,
 } from 'components';
 import { APP_NAME } from 'constants/github';
 import { FaSearch } from 'react-icons/fa';
-import profileImg from 'assets/img/TemporaryProfileImg.png';
 
 const RepoStep = () => {
   const [searchWord, setSearchWord] = useState('');
-  const username = useSelector((state: StoreState) => state.auth.user.name);
   const repos = useSelector((state: StoreState) => state.repo.items);
   const repoResults = useMemo(
     () => repos.filter(({ name }) => name.match(searchWord)),
@@ -35,10 +34,7 @@ const RepoStep = () => {
   return (
     <div>
       <div className="flex justify-between flex-wrap">
-        <div className="flex items-center bg-gray-200 p-2 rounded">
-          <img src={profileImg} alt="profile" className="w-8 h-8" />
-          <span className="ml-2 font-bold">{username}</span>
-        </div>
+        <ProfileBox />
         <div className="flex flex-1 sm:flex-none items-center p-2 border border-gray-400 rounded">
           <FaSearch className="text-gray-400" />
           <input
