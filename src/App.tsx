@@ -21,7 +21,7 @@ const ProtectedPages = () => {
     (state: StoreState) => state.auth.user.isLoggedIn,
   );
   const query = useLocationSearch();
-
+  console.log(isLoggedIn);
   if (!isLoggedIn) {
     return (
       <Redirect to={`?${qs.stringify({ ...query, redirectUrl: pathname })}`} />
@@ -64,10 +64,10 @@ const App: React.FC = () => {
   }
 
   return (
-    <Switch>
+    <>
       <Route path="/" exact component={Home} />
       <ProtectedPages />
-    </Switch>
+    </>
   );
 };
 
