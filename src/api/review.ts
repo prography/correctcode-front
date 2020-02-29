@@ -9,6 +9,18 @@ export const createReview = async (repoId: string, review: NewReview) => {
   return data.data;
 };
 
+export const createReviewByPr = async (
+  repoId: string,
+  prId: string,
+  review: Pick<NewReview, 'title' | 'description'>,
+) => {
+  const { data } = await fetcher.post<{ data: NewReview }>(
+    `/repositories/${repoId}/pulls/${prId}/review`,
+    review,
+  );
+  return data.data;
+};
+
 export const getReviews = async () => {
   const { data } = await fetcher.get<{ data: Review[] }>(`/reviews`);
   return data.data;

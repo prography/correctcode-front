@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Switch, Route, useLocation } from 'react-router-dom';
+import { Switch, Route, useLocation, Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import qs from 'query-string';
 import { me } from 'store/auth/action';
@@ -11,17 +11,30 @@ import DashReviewee from 'pages/DashReviewee';
 import DashReviewer from 'pages/DashReviewer';
 import ErrorPage from 'pages/ErrorPage';
 import Start from 'pages/Start';
-import useDevice from 'hooks/useDevice';
+import PrToReview from 'pages/PrToReview';
+import useLocationSearch from 'hooks/useLocationSearch';
 
-const Pages = () => {
+const ProtectedPages = () => {
   const { pathname } = useLocation();
   const isStartPage = pathname.startsWith('/start');
+  const isLoggedIn = useSelector(
+    (state: StoreState) => state.auth.user.isLoggedIn,
+  );
+  const query = useLocationSearch();
+
+  if (!isLoggedIn) {
+    return (
+      <Redirect to={`?${qs.stringify({ ...query, redirectUrl: pathname })}`} />
+    );
+  }
+
   return (
     <>
       <Nav isStartPage={isStartPage} />
       <PageLayout isStartPage={isStartPage}>
         <Switch>
           <Route path="/auth/callback" exact component={AuthCheckPage} />
+          <Route path="/prToReview" exact component={PrToReview} />
           <Route path="/reviewee" exact component={DashReviewee} />
           <Route path="/reviewer" exact component={DashReviewer} />
           <Route path="/start/:step" component={Start} />
@@ -38,14 +51,11 @@ const App: React.FC = () => {
       state.auth.meStatus === 'FETCHING' || state.auth.meStatus === 'INIT',
   );
   const dispatch = useDispatch();
-  const { search } = useLocation();
-
-  useDevice();
+  const { accessToken } = useLocationSearch();
 
   useEffect(() => {
-    const { accessToken } = qs.parse(search);
-    const token = Array.isArray(accessToken) ? accessToken[0] : accessToken;
-    dispatch(me(token || undefined));
+    const token = accessToken?.toString();
+    dispatch(me(token));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -56,7 +66,7 @@ const App: React.FC = () => {
   return (
     <Switch>
       <Route path="/" exact component={Home} />
-      <Route path="/*" component={Pages} />
+      <ProtectedPages />
     </Switch>
   );
 };
