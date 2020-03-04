@@ -1,15 +1,12 @@
 import React, { useState } from 'react';
 import classnames from 'classnames';
-import styles from 'scss/components/Pagination.module.scss';
 
 type Props = {
-  isCurrentPage?: boolean;
   pageAmount: number;
   currentPage: number;
   handlePageNum: (value: number) => void;
 };
 type PageNumProps = {
-  isCurrentPage?: boolean;
   pageNum: number;
   currentPage: number;
   handlePageNum: (value: number) => void;
@@ -17,18 +14,19 @@ type PageNumProps = {
 
 const PageNum: React.FC<PageNumProps> = ({
   pageNum,
-  isCurrentPage,
   currentPage,
   handlePageNum,
 }) => {
-  if (currentPage) {
-    isCurrentPage = currentPage === pageNum;
-  }
+  const isCurrentpage = currentPage === pageNum;
   return (
     <div
-      className={classnames(styles.pageNum, {
-        [styles.currentPage]: isCurrentPage,
-      })}
+      className={classnames(
+        'w-7 h-7 rounded mr-1 font-medium flex justify-center items-center cursor-pointer',
+        {
+          'transition duration-500 bg-primary hover:bg-primary': isCurrentpage,
+          'hover:bg-reviewergray': !isCurrentpage,
+        },
+      )}
       onClick={() => handlePageNum(pageNum)}
     >
       {pageNum}
@@ -42,7 +40,6 @@ const MiddlePagination = ({
   handlePageNum,
 }: Props) => {
   const leftDots = currentPage - 1 > 4;
-
   const rightDots = pageAmount - currentPage > 4 && pageAmount > 9;
   const rows = [];
   const pageNum =
@@ -55,6 +52,7 @@ const MiddlePagination = ({
     for (let i = 2; i < pageAmount; i++) {
       rows.push(
         <PageNum
+          key={i}
           pageNum={i}
           currentPage={currentPage}
           handlePageNum={handlePageNum}
@@ -65,6 +63,7 @@ const MiddlePagination = ({
     for (let i = pageNum; i < pageNum + 5; i++) {
       rows.push(
         <PageNum
+          key={i}
           pageNum={i}
           currentPage={currentPage}
           handlePageNum={handlePageNum}
@@ -78,7 +77,9 @@ const MiddlePagination = ({
       {pageAmount < 10 ? (
         ''
       ) : leftDots ? (
-        <div className={styles.pageDots}>···</div>
+        <div className="w-7 h-7 rounded mr-1 flex justify-center items-center">
+          ···
+        </div>
       ) : (
         <PageNum
           pageNum={2}
@@ -90,7 +91,9 @@ const MiddlePagination = ({
       {pageAmount < 10 ? (
         ''
       ) : rightDots ? (
-        <div className={styles.pageDots}>···</div>
+        <div className="w-7 h-7 rounded mr-1 flex justify-center items-center">
+          ···
+        </div>
       ) : (
         <PageNum
           pageNum={pageAmount - 1}
@@ -108,19 +111,18 @@ const Pagination: React.FC = () => {
 
   //각종 함수들
   const handlePageNum = (value: number) => {
-    if (value < 1 || value > pageAmount) {
-      return 0;
-    }
-    setCurrentPage(value);
+    setCurrentPage(Math.max(1, Math.min(pageAmount, value)));
   };
 
   return (
-    <div className={styles.paginationLayout}>
+    <div className="w-3/5 h-12 mt-10 mb-8 mr-auto ml-auto rounded border border-placeholder bg-white flex justify-center items-center text-base font-bold">
       <div
-        className={styles.moveNumList}
-        onClick={() => handlePageNum(currentPage - 1)}
+        className="w-12 h-10 rounded flex justify-center items-center"
+        onClick={() => handlePageNum(currentPage - 10)}
       >
-        <div>&#60;</div>
+        <div className="w-7 h-7 rounded mr-1 hover:bg-primary cursor-pointer flex justify-center items-center">
+          &#60;
+        </div>
       </div>
       <PageNum
         pageNum={1}
@@ -143,10 +145,12 @@ const Pagination: React.FC = () => {
         />
       )}
       <div
-        className={styles.moveNumList}
-        onClick={() => handlePageNum(currentPage + 1)}
+        className="w-12 h-10 rounded flex justify-center items-center"
+        onClick={() => handlePageNum(currentPage + 10)}
       >
-        <div>&#62;</div>
+        <div className="w-7 h-7 rounded hover:bg-primary cursor-pointer flex justify-center items-center">
+          &#62;
+        </div>
       </div>
     </div>
   );
