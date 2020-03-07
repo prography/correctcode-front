@@ -8,9 +8,11 @@ module.exports = {
       sm: '768px',
       md: '992px',
       lg: '1200px',
+      xl: '1280px',
     },
     colors: {
       transparent: 'transparent',
+      background: '#3D2462',
       primary: '#5bd3b4',
       primaryTwo: '#0dba8d',
       primaryTwoDarken: '#089c75',
@@ -25,6 +27,7 @@ module.exports = {
       placeholderBackground: '#f3f3f3',
       placeholderBackgroundTwo: '#c8c8c8',
       description: '#747c84',
+      pastelBlue: '#4C56BB',
 
       black: '#000',
       white: '#fff',
@@ -165,6 +168,8 @@ module.exports = {
       '56': '14rem',
       '64': '16rem',
       '72': '18rem',
+      '80': '20rem',
+      '120': '30rem',
       underNav: '70rem',
     },
     backgroundColor: theme => theme('colors'),
@@ -194,6 +199,9 @@ module.exports = {
       default: '0.25rem',
       md: '0.375rem',
       lg: '0.5rem',
+      '2lg': '2rem',
+      xl: '10rem',
+      '2xl': '20rem',
       full: '9999px',
     },
     borderWidth: {
@@ -283,6 +291,8 @@ module.exports = {
       '4xl': '2.25rem',
       '5xl': '3rem',
       '6xl': '4rem',
+      '7xl': '5rem',
+      '8xl': '6rem',
     },
     fontWeight: {
       hairline: '100',

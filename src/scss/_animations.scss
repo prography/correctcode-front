@@ -1,0 +1,8 @@
+@keyframes slideshow {
+  0% {
+    transform: 0;
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
