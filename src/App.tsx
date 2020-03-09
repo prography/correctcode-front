@@ -12,6 +12,7 @@ import DashReviewer from 'pages/DashReviewer';
 import ErrorPage from 'pages/ErrorPage';
 import Start from 'pages/Start';
 import useDevice from 'hooks/useDevice';
+import Guide from 'pages/Guide';
 
 const Pages = () => {
   const { pathname } = useLocation();
@@ -56,6 +57,7 @@ const App: React.FC = () => {
   return (
     <Switch>
       <Route path="/" exact component={Home} />
+      <Route path="/guide" exact component={Guide} />
       <Route path="/*" component={Pages} />
     </Switch>
   );

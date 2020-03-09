@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="443" height="329" viewBox="0 0 443 329">
+  <defs>
+    <filter id="사각형_8" x="0" y="0" width="156" height="202" filterUnits="userSpaceOnUse">
+      <feOffset dy="7" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <linearGradient id="linear-gradient" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="aqua" stop-opacity="0.729"/>
+      <stop offset="1" stop-color="#785cff" stop-opacity="0.859"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#c047ff"/>
+      <stop offset="1" stop-color="#362480"/>
+    </linearGradient>
+    <filter id="사각형_10" x="169" y="33" width="228" height="296" filterUnits="userSpaceOnUse">
+      <feOffset dy="7" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur-2"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur-2"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="파일2" transform="translate(-702 -1324)">
+    <g transform="matrix(1, 0, 0, 1, 702, 1324)" filter="url(#사각형_8)">
+      <rect id="사각형_8-2" data-name="사각형 8" width="138" height="184" rx="20" transform="translate(9 2)" fill="#fff"/>
+    </g>
+    <g id="그룹_2" data-name="그룹 2" transform="translate(732.813 1473.944)">
+      <path id="합치기_2" data-name="합치기 2" d="M88.325,83.209S7.722,93.935,1.356,72a8.181,8.181,0,0,1-.75-1.279S-.442,36.8.219,28.946C.269,22.314,9.481,13.009,33.766,0c.907,16.729,1.216,30.419,0,31.2q-7.325,5.408-12.838,10.144c1.22.382,2.35.707,3.337.976C50.147,46.573,87.648,44.4,87.648,44.4l-.478-27.393,56.066,41.645L88.843,112.884Z" transform="translate(0 0)" fill="url(#linear-gradient)"/>
+      <path id="패스_61" data-name="패스 61" d="M932.417,1225.1c-.38-.951-19.977-4.566-17.5-15.411S944.165,1185,944.165,1185l.428,31.915Z" transform="translate(-911.914 -1184.525)" opacity="0.65" fill="url(#linear-gradient-2)"/>
+    </g>
+    <rect id="사각형_11" data-name="사각형 11" width="93" height="5" transform="translate(734 1363)" fill="#e4e4e4"/>
+    <rect id="사각형_11-2" data-name="사각형 11" width="93" height="4" transform="translate(734 1377)" fill="#e4e4e4"/>
+    <rect id="사각형_11-3" data-name="사각형 11" width="93" height="4" transform="translate(734 1389)" fill="#e4e4e4"/>
+    <rect id="사각형_11-4" data-name="사각형 11" width="93" height="5" transform="translate(734 1402)" fill="#e4e4e4"/>
+    <rect id="사각형_11-5" data-name="사각형 11" width="93" height="5" transform="translate(734 1415)" fill="#e4e4e4"/>
+    <rect id="사각형_11-6" data-name="사각형 11" width="93" height="5" transform="translate(734 1427)" fill="#e4e4e4"/>
+    <g transform="matrix(1, 0, 0, 1, 702, 1324)" filter="url(#사각형_10)">
+      <rect id="사각형_10-2" data-name="사각형 10" width="210" height="278" rx="20" transform="translate(178 35)" fill="#fff"/>
+    </g>
+    <g id="타원_1" data-name="타원 1" transform="translate(1040 1544)" fill="none" stroke="#00ffd5" stroke-width="19">
+      <circle cx="52.5" cy="52.5" r="52.5" stroke="none"/>
+      <circle cx="52.5" cy="52.5" r="43" fill="none"/>
+    </g>
+    <rect id="사각형_11-7" data-name="사각형 11" width="144" height="5" transform="translate(913 1396)" fill="#c9c9c9"/>
+    <rect id="사각형_11-8" data-name="사각형 11" width="144" height="5" transform="translate(913 1409)" fill="#c9c9c9"/>
+    <rect id="사각형_11-9" data-name="사각형 11" width="144" height="5" transform="translate(913 1422)" fill="#c9c9c9"/>
+    <rect id="사각형_11-10" data-name="사각형 11" width="144" height="4" transform="translate(913 1436)" fill="#c9c9c9"/>
+    <rect id="사각형_11-11" data-name="사각형 11" width="144" height="4" transform="translate(913 1449)" fill="#c9c9c9"/>
+    <rect id="사각형_11-12" data-name="사각형 11" width="144" height="4" transform="translate(913 1462)" fill="#c9c9c9"/>
+    <rect id="사각형_11-13" data-name="사각형 11" width="144" height="5" transform="translate(913 1475)" fill="#c9c9c9"/>
+    <rect id="사각형_11-14" data-name="사각형 11" width="144" height="5" transform="translate(913 1488)" fill="#c9c9c9"/>
+    <rect id="사각형_11-15" data-name="사각형 11" width="144" height="5" transform="translate(913 1501)" fill="#c9c9c9"/>
+  </g>
+</svg>

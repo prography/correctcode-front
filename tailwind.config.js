@@ -24,7 +24,7 @@ module.exports = {
       lightergray: ' #f9f9f9',
       reviewergray: '#eaeaea',
       placeholder: '#f3f3f3',
-      placeholderBackground: '#f3f3f3',
+      placeholderBackground: '#fcfcfc',
       placeholderBackgroundTwo: '#c8c8c8',
       description: '#747c84',
       pastelBlue: '#4C56BB',

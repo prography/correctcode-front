@@ -17,7 +17,7 @@ const MessageConfig = {
           to="/start/repo"
           className="w-36 h-10 bg-primaryTwo text-white font-bold no-underline border-0 ml-8 mt-4  flex justify-center items-center cursor-pointer transition-colors duration-200 hover:bg-primaryTwoDarken"
         >
-          리뷰 요청하기
+          Repo 등록하기
         </Link>
       ),
     },
@@ -34,7 +34,7 @@ const MessageConfig = {
       subMessage: '심호흡 한 번 하고 조금만 기다려보아요.',
       children: () => (
         <div className="w-36 h-10 bg-primaryTwo text-white font-bold no-underline border-0 ml-8 mt-4 flex justify-center items-center cursor-pointer transition-colors duration-200 hover:bg-primaryTwoDarken">
-          리뷰 요청하기
+          Repo 등록하기
         </div>
       ),
     },

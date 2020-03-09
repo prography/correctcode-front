@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="306.84" height="328.939" viewBox="0 0 306.84 328.939">
+  <defs>
+    <filter id="사각형_3" x="0" y="0" width="228" height="298" filterUnits="userSpaceOnUse">
+      <feOffset dx="1" dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="사각형_4" x="12" y="14" width="228" height="298" filterUnits="userSpaceOnUse">
+      <feOffset dx="1" dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur-2"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur-2"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="사각형_5" x="27" y="30" width="228" height="298" filterUnits="userSpaceOnUse">
+      <feOffset dx="1" dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur-3"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur-3"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <linearGradient id="linear-gradient" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#f788ff"/>
+      <stop offset="1" stop-color="#4be9e4" stop-opacity="0.749"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#d2b6ff" stop-opacity="0"/>
+      <stop offset="1" stop-color="#ed4fff"/>
+    </linearGradient>
+  </defs>
+  <g id="파일" transform="translate(-269 -1320)">
+    <g transform="matrix(1, 0, 0, 1, 269, 1320)" filter="url(#사각형_3)">
+      <rect id="사각형_3-2" data-name="사각형 3" width="210" height="280" rx="20" transform="translate(8 6)" fill="#fff"/>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 269, 1320)" filter="url(#사각형_4)">
+      <rect id="사각형_4-2" data-name="사각형 4" width="210" height="280" rx="20" transform="translate(20 20)" fill="#fff"/>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 269, 1320)" filter="url(#사각형_5)">
+      <rect id="사각형_5-2" data-name="사각형 5" width="210" height="280" rx="20" transform="translate(35 36)" fill="#fff"/>
+    </g>
+    <path id="패스_57" data-name="패스 57" d="M687.4,1181.8h41.2l18.727,14.607h77.156v98.13H687.4Z" transform="translate(-347.29 247.948)" fill="url(#linear-gradient)"/>
+    <path id="패스_58" data-name="패스 58" d="M400.778,1160.611l-6.554,14.233H341.6V1149h44.57Z" transform="translate(-1.302 283.744)" fill="url(#linear-gradient-2)"/>
+    <path id="합치기_1" data-name="합치기 1" d="M48.366,65.5l-35.274,39.17L0,92.879,36.513,52.333,0,11.787,13.092,0,48.366,39.17,83.639,0,96.731,11.787,60.219,52.333,96.731,92.879,83.639,104.665Z" transform="translate(479.109 1544.274)" fill="#ff4949"/>
+  </g>
+</svg>
