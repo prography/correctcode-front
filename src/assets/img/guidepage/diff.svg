@@ -7,11 +7,11 @@
       <feComposite operator="in" in2="blur"/>
       <feComposite in="SourceGraphic"/>
     </filter>
-    <linearGradient id="linear-gradient" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+    <linearGradient id="diff-linear-gradient" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
       <stop offset="0" stop-color="aqua" stop-opacity="0.729"/>
       <stop offset="1" stop-color="#785cff" stop-opacity="0.859"/>
     </linearGradient>
-    <linearGradient id="linear-gradient-2" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+    <linearGradient id="diff-linear-gradient-2" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
       <stop offset="0" stop-color="#c047ff"/>
       <stop offset="1" stop-color="#362480"/>
     </linearGradient>
@@ -28,8 +28,8 @@
       <rect id="사각형_8-2" data-name="사각형 8" width="138" height="184" rx="20" transform="translate(9 2)" fill="#fff"/>
     </g>
     <g id="그룹_2" data-name="그룹 2" transform="translate(732.813 1473.944)">
-      <path id="합치기_2" data-name="합치기 2" d="M88.325,83.209S7.722,93.935,1.356,72a8.181,8.181,0,0,1-.75-1.279S-.442,36.8.219,28.946C.269,22.314,9.481,13.009,33.766,0c.907,16.729,1.216,30.419,0,31.2q-7.325,5.408-12.838,10.144c1.22.382,2.35.707,3.337.976C50.147,46.573,87.648,44.4,87.648,44.4l-.478-27.393,56.066,41.645L88.843,112.884Z" transform="translate(0 0)" fill="url(#linear-gradient)"/>
-      <path id="패스_61" data-name="패스 61" d="M932.417,1225.1c-.38-.951-19.977-4.566-17.5-15.411S944.165,1185,944.165,1185l.428,31.915Z" transform="translate(-911.914 -1184.525)" opacity="0.65" fill="url(#linear-gradient-2)"/>
+      <path id="합치기_2" data-name="합치기 2" d="M88.325,83.209S7.722,93.935,1.356,72a8.181,8.181,0,0,1-.75-1.279S-.442,36.8.219,28.946C.269,22.314,9.481,13.009,33.766,0c.907,16.729,1.216,30.419,0,31.2q-7.325,5.408-12.838,10.144c1.22.382,2.35.707,3.337.976C50.147,46.573,87.648,44.4,87.648,44.4l-.478-27.393,56.066,41.645L88.843,112.884Z" transform="translate(0 0)" fill="url(#diff-linear-gradient)"/>
+      <path id="패스_61" data-name="패스 61" d="M932.417,1225.1c-.38-.951-19.977-4.566-17.5-15.411S944.165,1185,944.165,1185l.428,31.915Z" transform="translate(-911.914 -1184.525)" opacity="0.65" fill="url(#diff-linear-gradient-2)"/>
     </g>
     <rect id="사각형_11" data-name="사각형 11" width="93" height="5" transform="translate(734 1363)" fill="#e4e4e4"/>
     <rect id="사각형_11-2" data-name="사각형 11" width="93" height="4" transform="translate(734 1377)" fill="#e4e4e4"/>
