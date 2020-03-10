@@ -4,7 +4,7 @@ import { ReactComponent as Logo } from 'assets/img/homepage/logo.svg';
 import { ReactComponent as Folder } from 'assets/img/guidepage/folder.svg';
 import { ReactComponent as Diff } from 'assets/img/guidepage/diff.svg';
 import { ReactComponent as Light } from 'assets/img/guidepage/light.svg';
-import { ReactComponent as UserguideFont } from 'assets/img/guidepage/userguideFont.svg';
+import { ReactComponent as GuideTitle } from 'assets/img/guidepage/guideTitle.svg';
 import capture1 from 'assets/img/guidepage/capture1.png';
 import capture2 from 'assets/img/guidepage/capture2.png';
 import capture3 from 'assets/img/guidepage/capture3.png';
@@ -21,14 +21,14 @@ const Guide = () => {
           <Logo className="w-32 lg:w-32" />
         </div>
       </div>
-      <div className="px-16 mt-24 max-w-screen-xl mx-auto">
+      <div className="px-16 mt-28 max-w-screen-xl mx-auto">
         <div className="flex">
-          <p className="text-3xl font-bold">User Guide</p>
-          <Light className="w-8 float-left" />
+          <GuideTitle className="h-8 mt-8" />
+          <Light className="w-7 float-left" />
         </div>
         <div className="ml-32 mr-40">
           <div>
-            <p className="text-2xl mt-16">1. 레포 등록하기</p>
+            <p className="text-2xl mt-28">1. 레포 등록하기</p>
             <div className="pl-16 mt-10">
               <p className="text-description">
                 로그인 후 대시보드에서{' '}
