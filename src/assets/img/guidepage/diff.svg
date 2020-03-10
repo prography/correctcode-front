@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="443" height="329" viewBox="0 0 443 329">
   <defs>
-    <filter id="사각형_8" x="0" y="0" width="156" height="202" filterUnits="userSpaceOnUse">
+    <filter id="square_8" x="0" y="0" width="156" height="202" filterUnits="userSpaceOnUse">
       <feOffset dy="7" input="SourceAlpha"/>
       <feGaussianBlur stdDeviation="3" result="blur"/>
       <feFlood flood-opacity="0.161"/>
@@ -15,7 +15,7 @@
       <stop offset="0" stop-color="#c047ff"/>
       <stop offset="1" stop-color="#362480"/>
     </linearGradient>
-    <filter id="사각형_10" x="169" y="33" width="228" height="296" filterUnits="userSpaceOnUse">
+    <filter id="square_10" x="169" y="33" width="228" height="296" filterUnits="userSpaceOnUse">
       <feOffset dy="7" input="SourceAlpha"/>
       <feGaussianBlur stdDeviation="3" result="blur-2"/>
       <feFlood flood-opacity="0.161"/>
@@ -24,7 +24,7 @@
     </filter>
   </defs>
   <g id="파일2" transform="translate(-702 -1324)">
-    <g transform="matrix(1, 0, 0, 1, 702, 1324)" filter="url(#사각형_8)">
+    <g transform="matrix(1, 0, 0, 1, 702, 1324)" filter="url(#square_8)">
       <rect id="사각형_8-2" data-name="사각형 8" width="138" height="184" rx="20" transform="translate(9 2)" fill="#fff"/>
     </g>
     <g id="그룹_2" data-name="그룹 2" transform="translate(732.813 1473.944)">
@@ -37,7 +37,7 @@
     <rect id="사각형_11-4" data-name="사각형 11" width="93" height="5" transform="translate(734 1402)" fill="#e4e4e4"/>
     <rect id="사각형_11-5" data-name="사각형 11" width="93" height="5" transform="translate(734 1415)" fill="#e4e4e4"/>
     <rect id="사각형_11-6" data-name="사각형 11" width="93" height="5" transform="translate(734 1427)" fill="#e4e4e4"/>
-    <g transform="matrix(1, 0, 0, 1, 702, 1324)" filter="url(#사각형_10)">
+    <g transform="matrix(1, 0, 0, 1, 702, 1324)" filter="url(#square_10)">
       <rect id="사각형_10-2" data-name="사각형 10" width="210" height="278" rx="20" transform="translate(178 35)" fill="#fff"/>
     </g>
     <g id="타원_1" data-name="타원 1" transform="translate(1040 1544)" fill="none" stroke="#00ffd5" stroke-width="19">

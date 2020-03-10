@@ -21,24 +21,24 @@ const Guide = () => {
           <Logo className="w-32 lg:w-32" />
         </div>
       </div>
-      <div className="px-10 mt-24 max-w-screen-xl mx-auto">
+      <div className="px-16 mt-24 max-w-screen-xl mx-auto">
         <div className="flex">
           <p className="text-3xl font-bold">User Guide</p>
           <Light className="w-8 float-left" />
         </div>
-        <div className="ml-20 mr-48">
+        <div className="ml-32 mr-40">
           <div>
             <p className="text-2xl mt-16">1. 레포 등록하기</p>
-            <div className="pl-12 mt-12">
+            <div className="pl-16 mt-10">
               <p className="text-description">
                 로그인 후 대시보드에서{' '}
                 <b className="text-primary">'Repo 등록하기'</b>를 눌러 서비스를
                 적용할 Repository를 적용해주세요
               </p>
-              <div className="h-48 my-6 mr-24 bg-lightergray rounded-t-2lg rounded-l-2lg shadow-lg flex items-center justify-center">
+              <div className="h-48 mt-8 mr-24 bg-lightergray rounded-t-2lg rounded-l-2lg shadow-lg flex items-center justify-center">
                 <img src={capture1} alt="capture1" className=" h-40" />
               </div>
-              <p className="text-description">
+              <p className="text-description mt-12">
                 <b className="text-primary">Correct code</b>를 이용하기 위해
                 서비스를 이용할 Repository에{' '}
                 <b className="text-primary">Correct code 앱</b>을 설치하는
@@ -48,12 +48,12 @@ const Guide = () => {
           </div>
           <div>
             <p className="text-2xl mt-16">2. Pull Request 생성하기</p>
-            <div className="pl-12 mt-12">
-              <div className="flex my-6">
+            <div className="pl-16 mt-10">
+              <div className="flex mt-10">
                 <Folder className="h-48" />
                 <Diff className="h-48" />
               </div>
-              <p className="text-description">
+              <p className="text-description mt-12">
                 코드 리뷰는 각 파일 단위가 아닌{' '}
                 <b className="text-primary">GIthub의 Pull Request 단위</b>로
                 이루어집니다.<br></br> 코드에 변화를 줄때마다 쉽게 리뷰를
@@ -71,12 +71,12 @@ const Guide = () => {
             </div>
           </div>
           <div>
-            <p className="text-2xl mt-16">3. 리뷰 요청하기</p>
-            <div className="pl-12 mt-12">
-              <div className="h-48 mb-6 mr-24 bg-lightergray rounded-t-2lg rounded-l-2lg shadow-lg flex items-center justify-center">
+            <p className="text-2xl mt-20">3. 리뷰 요청하기</p>
+            <div className="pl-16 mt-10">
+              <div className="h-48 mt-10 mr-24 bg-lightergray rounded-t-2lg rounded-l-2lg shadow-lg flex items-center justify-center">
                 <img src={capture2} alt="capture2" className=" h-40" />
               </div>
-              <p className="text-description">
+              <p className="text-description mt-12">
                 Github 에서 Pull Request를 생성해주시면 위와 같은 링크가
                 생성됩니다. 링크를 통해{' '}
                 <b className="text-primary">리뷰 요청을 완료</b>해주세요!
@@ -84,12 +84,12 @@ const Guide = () => {
             </div>
           </div>
           <div>
-            <p className="text-2xl mt-16">4. 리뷰 진행 상황 확인</p>
-            <div className="pl-12 mt-12">
-              <div className="h-48 mb-6 mr-24 bg-lightergray rounded-t-2lg rounded-l-2lg shadow-lg flex items-center justify-center">
+            <p className="text-2xl mt-20">4. 리뷰 진행 상황 확인</p>
+            <div className="pl-16 mt-10">
+              <div className="h-48 mr-24 bg-lightergray rounded-t-2lg rounded-l-2lg shadow-lg flex items-center justify-center">
                 <img src={capture3} alt="capture3" className=" h-48" />
               </div>
-              <p className="text-description mb-24">
+              <p className="text-description mt-12 mb-24">
                 실시간으로 리뷰 진행 상황을 확인하실 수 있습니다. Correct Code
                 는 6시간 이내로 리뷰어를 매치해드립니다.
               </p>

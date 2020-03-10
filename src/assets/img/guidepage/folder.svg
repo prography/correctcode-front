@@ -1,20 +1,20 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="306.84" height="328.939" viewBox="0 0 306.84 328.939">
   <defs>
-    <filter id="사각형_3" x="0" y="0" width="228" height="298" filterUnits="userSpaceOnUse">
+    <filter id="square_3" x="0" y="0" width="228" height="298" filterUnits="userSpaceOnUse">
       <feOffset dx="1" dy="3" input="SourceAlpha"/>
       <feGaussianBlur stdDeviation="3" result="blur"/>
       <feFlood flood-opacity="0.161"/>
       <feComposite operator="in" in2="blur"/>
       <feComposite in="SourceGraphic"/>
     </filter>
-    <filter id="사각형_4" x="12" y="14" width="228" height="298" filterUnits="userSpaceOnUse">
+    <filter id="square_4" x="12" y="14" width="228" height="298" filterUnits="userSpaceOnUse">
       <feOffset dx="1" dy="3" input="SourceAlpha"/>
       <feGaussianBlur stdDeviation="3" result="blur-2"/>
       <feFlood flood-opacity="0.161"/>
       <feComposite operator="in" in2="blur-2"/>
       <feComposite in="SourceGraphic"/>
     </filter>
-    <filter id="사각형_5" x="27" y="30" width="228" height="298" filterUnits="userSpaceOnUse">
+    <filter id="square_5" x="27" y="30" width="228" height="298" filterUnits="userSpaceOnUse">
       <feOffset dx="1" dy="3" input="SourceAlpha"/>
       <feGaussianBlur stdDeviation="3" result="blur-3"/>
       <feFlood flood-opacity="0.161"/>
@@ -31,13 +31,13 @@
     </linearGradient>
   </defs>
   <g id="파일" transform="translate(-269 -1320)">
-    <g transform="matrix(1, 0, 0, 1, 269, 1320)" filter="url(#사각형_3)">
+    <g transform="matrix(1, 0, 0, 1, 269, 1320)" filter="url(#square_3)">
       <rect id="사각형_3-2" data-name="사각형 3" width="210" height="280" rx="20" transform="translate(8 6)" fill="#fff"/>
     </g>
-    <g transform="matrix(1, 0, 0, 1, 269, 1320)" filter="url(#사각형_4)">
+    <g transform="matrix(1, 0, 0, 1, 269, 1320)" filter="url(#square_4)">
       <rect id="사각형_4-2" data-name="사각형 4" width="210" height="280" rx="20" transform="translate(20 20)" fill="#fff"/>
     </g>
-    <g transform="matrix(1, 0, 0, 1, 269, 1320)" filter="url(#사각형_5)">
+    <g transform="matrix(1, 0, 0, 1, 269, 1320)" filter="url(#square_5)">
       <rect id="사각형_5-2" data-name="사각형 5" width="210" height="280" rx="20" transform="translate(35 36)" fill="#fff"/>
     </g>
     <path id="패스_57" data-name="패스 57" d="M687.4,1181.8h41.2l18.727,14.607h77.156v98.13H687.4Z" transform="translate(-347.29 247.948)" fill="url(#linear-gradient)"/>
