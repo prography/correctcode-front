@@ -89,7 +89,7 @@ const Guide = () => {
               <div className="h-48 mr-24 bg-lightergray rounded-t-2lg rounded-l-2lg shadow-lg flex items-center justify-center">
                 <img src={capture3} alt="capture3" className=" h-48" />
               </div>
-              <p className="text-description mt-12 mb-24">
+              <p className="text-description mt-12 pb-24">
                 실시간으로 리뷰 진행 상황을 확인하실 수 있습니다. Correct Code
                 는 6시간 이내로 리뷰어를 매치해드립니다.
               </p>
