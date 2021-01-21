@@ -15,7 +15,7 @@
     "classnames": "^2.2.6",
     "date-fns": "^2.8.1",
     "history": "^4.10.1",
-    "immer": "^4.0.2",
+    "immer": "^8.0.1",
     "lodash.debounce": "^4.0.8",
     "lottie-web": "^5.5.10",
     "node-sass": "^4.13.1",
